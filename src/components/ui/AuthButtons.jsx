@@ -4,7 +4,7 @@ export const AuthButtons = () => {
 
     const handleShowLogin = () => {
 
-        localStorage.setItem('name', 'Joalrope')
+        localStorage.setItem('name', 'Jose Rodriguez')
         
         
     }
@@ -16,14 +16,14 @@ export const AuthButtons = () => {
 
 
     return (
-        <div className="navbar-buttons">
-            <button className="btn btn-sm btn-outline-info mr-3" onClick={handleShowLogin}>
+        <div className="navbar-auth">
+            <button className="btn" onClick={handleShowLogin}>
                 <i className='fas fa-sign-in-alt '></i>
-                <span> Ingresar </span>
+                <span>   Ingresar </span>
             </button>            
-            <button className="btn btn-sm btn-outline-info mr-3" onClick={handleShowRegister}>
+            <button className="btn" onClick={handleShowRegister}>
                 <i className='fas fa-user-plus '></i>
-                <span> Registrarse</span>
+                <span>   Registrarse</span>
             </button>
         </div>
             

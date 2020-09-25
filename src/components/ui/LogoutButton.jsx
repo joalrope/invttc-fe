@@ -11,12 +11,12 @@ export const LogoutButton = () => {
 
 
     return (
-        <div className="navbar-buttons">
-            <nav className="navbar navbar-light bg-light">
-                <span className="navbar-brand mb-0 h1">{name}</span>
+        <div className="navbar-auth">
+            <nav className="navbar-user-name">
+                <span className="navbar-brand-user-name">{name}</span>
             </nav>
 
-            <button className="btn btn-sm btn-outline-danger mr-5" onClick={handleLogout}>
+            <button className="btn" onClick={handleLogout}>
                 <i className='fas fa-sign-out-alt '></i>
                 <span> Salir</span>
             </button>

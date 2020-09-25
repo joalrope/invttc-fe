@@ -17,23 +17,25 @@ export const VisitorsNav = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light pt-3 pb-3">
-                <BrandNav/>
+            <nav className="navbar navbar-expand-lg">
                 <div className="navbar-options">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">Inicio</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/rental" className="nav-link">Alquiler de Equipos</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/contact" className="nav-link">Contacto</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/about" className="nav-link">Nosotros</Link>
-                        </li>
-                        {(isAuth) && <QuoteOption/>}
+                        <BrandNav/>
+                        <div className="navbar-items">
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link">Inicio</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/rental" className="nav-link">Alquiler de Equipos</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/contact" className="nav-link">Contacto</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/about" className="nav-link">Nosotros</Link>
+                            </li>
+                            {(isAuth) && <QuoteOption/>}
+                        </div>
                         <AuthButtons/>
                     </ul>
                 </div>

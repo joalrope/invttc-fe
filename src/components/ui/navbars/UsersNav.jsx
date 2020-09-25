@@ -9,27 +9,29 @@ export const UsersNav = () => {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light pt-3 pb-3">
-                <BrandNav/>
-                <div className="navbar-options">
+            <nav className="navbar navbar-expand-lg">
+                <div className="navbar-items">
                     <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/app/sales" className="nav-link">Ventas<span className="sr-only">(current)</span></Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/app/inventory" className="nav-link">Inventario</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/app/admin" className="nav-link">Administrativo</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/app/dashboard" className="nav-link">Dashboard</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/app/service" className="nav-link">Servicio</Link>
-                        </li>
+                        <BrandNav/>
+                        <div className="navbar-items">
+                            <li className="nav-item">
+                                <Link to="/app/sales" className="nav-link">Ventas<span className="sr-only">(current)</span></Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/app/inventory" className="nav-link">Inventario</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/app/admin" className="nav-link">Administrativo</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/app/dashboard" className="nav-link">Dashboard</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/app/service" className="nav-link">Servicio</Link>
+                            </li>
+                        </div>
+                        <LogoutButton/>
                     </ul>
-                <LogoutButton/>
                 </div>
             </nav>
             <UsersRouter/>

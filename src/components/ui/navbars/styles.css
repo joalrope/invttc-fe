@@ -1,5 +1,121 @@
 
+.navbar {
+    padding: 0px;
+    margin: 0px;
+}
 
-.user-name {
-    color: rgb(71, 154, 206) !important;
+.navbar-nav {
+    background-color: #f2bd15;
+    width: 100vw;
+    margin: 0px;
+    padding: 0px;
+
+    
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: space-around;
+    -ms-flex-line-pack: distribute;
+    align-content: space-around;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.navbar-brand {
+    margin: 20px 0px;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 15%;
+    -ms-flex: 0 1 15%;
+    flex: 0 1 15%;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    align-items: center;
+}
+
+.navbar-items {
+    padding: 0px;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 60%;
+    -ms-flex: 0 1 60%;
+    flex: 0 1 60%;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    justify-content: center;
+}
+
+.nav-item {
+    margin: 15px;
+    
+}
+
+.navbar-auth {
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 25%;
+    -ms-flex: 0 1 25%;
+    flex: 0 1 25%;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    justify-content: center;
+}
+
+.navbar-auth button{
+    width: 130px;
+    font-size: 1.4rem;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-right: 20px;
+    background-color: #4a4b4d;
+    border: 2px solid #060605;
+    border-radius: 6px;
+}
+
+.navbar-auth button:hover{
+    color: #000;
+}
+
+.navbar-auth button:focus{
+    border: none;
+}
+
+.navbar-user-name {
+    font-size: 1.2rem;
+    color: #060605 !important;
+    padding: 10px 25px;
+}
+
+.nav-link {
+    margin: 5px;
+    color: #060605;
+    font-size: 1.5em;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid #060605;
+    color: #060605;
 }
