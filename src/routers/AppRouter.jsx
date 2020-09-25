@@ -1,16 +1,18 @@
 import React from 'react';
 // import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { Error404Page } from '../components/pages/Error404Page';
+import { NavBar } from '../components/ui/navbars/NavBar';
 // import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
 // import { firebase } from '../../firebase/firebaseConfig';
 
-import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
-import { JournalScreen } from '../journal/JournalScreen';
+import { UsersRouter } from './UsersRouter';
+import { VisitorsRouter } from './VisitorsRouter';
 // import { login } from '../../actions/auth';
 // import { startLoadingNotes } from '../../actions/notes';
 
@@ -43,7 +45,7 @@ export const AppRouter = () => {
     // }, [dispatch, setChecking, setIsLoggedIn])
 
     const checking = false;
-    const isLoggedIn = false;
+    const isLoggedIn = true;
 
     if (checking) {
         return (
@@ -56,21 +58,22 @@ export const AppRouter = () => {
             <Router>
                 <div>
                     <Switch>
+                        <NavBar/>
                         <PublicRoute
-                            path="/auth"
+                            exact path="/"
                             isAuthenticated= { isLoggedIn }
-                            component={AuthRouter}
+                            component={VisitorsRouter}
                             redirectTo= "/"
                         />
 
                         <PrivateRoute
-                            exact path="/"
+                            exact path="/app"
                             isAuthenticated= { isLoggedIn }
-                            component={JournalScreen}
-                            redirectTo= "/auth/login"
+                            component={UsersRouter}
+                            redirectTo= "/"
                         />
 
-                        <Redirect to='/auth/login' />
+                        <Redirect to='/404' component={Error404Page} />
                     </Switch>
                 </div>
             </Router>

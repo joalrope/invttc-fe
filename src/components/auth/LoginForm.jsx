@@ -1,36 +1,36 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { startHideLogin, startLogin, startShowPassForgot, startShowRegister } from '../../actions/auth';
-import { useForm } from '../../hooks/userForm';
+// import { useDispatch } from 'react-redux';
+// import { startHideLogin, startLogin, startShowPassForgot, startShowRegister } from '../../actions/auth';
+// import { useForm } from '../../hooks/userForm';
 import './styles.css';
 
 export const LoginForm = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     
-    const [formValues, handleInputChange] = useForm({
-        Email: '',
-        Password: ''
-    });
+    // const [formValues, handleInputChange] = useForm({
+    //     Email: '',
+    //     Password: ''
+    // });
     
-    const {Email, Password} = formValues;
+    // const {Email, Password} = formValues;
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(startLogin(Email, Password));
+        // dispatch(startLogin(Email, Password));
     }
 
     const handleHideLogin = () => {
-        dispatch(startHideLogin());
+        // dispatch(startHideLogin());
     }
 
     const handleShowRegister = () => {
-        dispatch(startShowRegister());
+        // dispatch(startShowRegister());
         handleHideLogin();
     }
 
     const handleShowPasswordForgot = () => {
-        dispatch(startShowPassForgot());
+        // dispatch(startShowPassForgot());
         handleHideLogin();
     }
     
@@ -48,8 +48,8 @@ export const LoginForm = () => {
                         className="form-control col-form-label-sm"
                         placeholder="Correo"
                         name="Email"
-                        value= {Email}
-                        onChange={handleInputChange}
+                        // value= {Email}
+                        // onChange={handleInputChange}
                     />
                 </div>
                 <div className="form-group">
@@ -59,8 +59,8 @@ export const LoginForm = () => {
                         placeholder="Contraseña"
                         autoComplete="new-password"
                         name="Password"
-                        value={Password}
-                        onChange={handleInputChange}
+                        // value={Password}
+                        // onChange={handleInputChange}
                     />
                 </div>
                 <div className="form-group">

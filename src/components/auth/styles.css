@@ -34,11 +34,7 @@
     cursor: pointer;
 }
 
-.register-form {
-    color: #fff;
-}
-
-.register-form .ForgetPwd{
+.register-form, .ForgetPwd{
     color: #fff;
     font-weight: 600;
     text-decoration: none;

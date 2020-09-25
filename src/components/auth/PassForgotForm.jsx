@@ -1,28 +1,28 @@
 import React from 'react';
-import { startHidePassForgot, startPassRecovery } from '../../actions/auth';
-import { useDispatch } from 'react-redux';
-import { useForm } from '../../hooks/userForm';
+// import { startHidePassForgot, startPassRecovery } from '../../actions/auth';
+// import { useDispatch } from 'react-redux';
+// import { useForm } from '../../hooks/userForm';
 import './styles.css';
 
 export const PassForgotForm = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const [formValues, handleInputChange] = useForm({
-        Email: '',
-    });
+    // const [formValues, handleInputChange] = useForm({
+    //     Email: '',
+    // });
 
-    const {Email} = formValues;
+    // const {Email} = formValues;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`Enviando para recuperar contraseña de usuario: ${Email}`)
+        // alert(`Enviando para recuperar contraseña de usuario: ${Email}`)
         handleHidePassForgot();
-        dispatch(startPassRecovery(Email));
+        // dispatch(startPassRecovery(Email));
     }
 
     const handleHidePassForgot = () => {
-        dispatch(startHidePassForgot());
+        // dispatch(startHidePassForgot());
     }
     
 
@@ -39,8 +39,8 @@ export const PassForgotForm = () => {
                         className="form-control"
                         placeholder="Correo"
                         name="Email"
-                        value={Email}
-                        onChange={handleInputChange}
+                        // value={Email}
+                        // onChange={handleInputChange}
                     />
                 </div>
 
