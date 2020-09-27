@@ -15,21 +15,16 @@ export const VisitorsRouter = () => {
     const RegisterVisible = false;
     
     return (
-        <div>
-            <div>
-                {(loginVisible) && <LoginForm/>}
-                {(RegisterVisible) && <RegisterForm/>}
+        <Switch >
+            {(loginVisible) && <LoginForm/>}
+            {(RegisterVisible) && <RegisterForm/>}
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/rental' component={RentalPage} />
+            <Route exact path='/quote' component={QuotePage} />
+            <Route exact path='/about' component={AboutPage} />
+            <Route exact path='/contact' component={ContactPage} />
 
-                <Switch >
-                    <Route exact path='/' component={HomePage} />
-                    <Route exact path='/rental' component={RentalPage} />
-                    <Route exact path='/quote' component={QuotePage} />
-                    <Route exact path='/about' component={AboutPage} />
-                    <Route exact path='/contact' component={ContactPage} />
-
-                    <Redirect to='/'/>
-                </Switch>
-            </div>
-        </div>
+            <Redirect to='/'/>
+        </Switch>
     )
 }

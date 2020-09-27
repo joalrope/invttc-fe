@@ -1,0 +1,148 @@
+html, body {
+    font-size: 12px;
+}
+
+.navbar-app {
+    margin: 0;
+    padding: 0;
+    background-color: #f2bd15 !important;
+}
+
+.navbar-toggler {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+.nav-bar-item {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #000 !important;
+    border-bottom: 2px solid transparent;
+    margin: 0px 20px;
+}
+
+.nav-bar-item:hover {
+    border-bottom: 2px solid #000;
+    transition: 0.5s;
+}
+
+.navbar-buttons {
+    margin: 3px 12px 15px;
+}
+
+.navbar-buttons button{
+    width: 130px;
+    color: #000;
+    font-size: 1.3rem;
+    border: 1px solid #000;
+    border-radius: 6px;
+    text-align: center;
+    margin: 0px 12px;
+}
+
+.navbar-buttons button:hover{
+    color: #f2bd15;
+    background-color: #000;
+}
+
+.navbar-buttons button:focus{
+    box-shadow: none;
+}
+
+.navbar-nav {
+    flex: 0 1 70%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1048px) {
+    .navbar-items {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 575px) {
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+
+    .navbar-items {
+        padding: 0px 0px;
+        background-color: rgba(0, 0, 0, 0.8) !important;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .nav-link {
+        margin: 0px 0px;
+        font-size: 1.5rem;
+        border-bottom: 0px solid transparent;
+        transition: 0.5s;
+        text-align: center!important;
+    }
+    
+    .nav-bar-item {
+        text-align: center;
+        color: #f2bd15 !important;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 10px;
+    }
+
+    .nav-bar-item:hover {
+        border-bottom: 1px solid hsla(46, 89%, 52%, 0.8);
+        transition: 0.5s;
+    }
+    
+    .navbar-buttons {
+        padding: 10px 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .navbar-buttons button {
+        margin: 0px 12px;
+        color: #f2bd15;
+        border: 1px solid #f2bd15;
+    }
+
+    .navbar-buttons button:hover{
+        background-color: rgba(242, 190, 21, 0.8);
+        color: #000;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .navbar-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-buttons button{
+        margin: 12px;
+    }
+
+}
+
+@media screen and (max-width: 270px) {
+    .nav-bar-item {
+        margin: 0px;
+    }
+
+}

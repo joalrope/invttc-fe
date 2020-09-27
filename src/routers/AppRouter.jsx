@@ -2,7 +2,8 @@ import React from 'react';
 // import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { Error404Page } from '../components/pages/Error404Page';
-import { NavBar } from '../components/ui/navbars/NavBar';
+import { UsersNav } from '../components/ui/navbars/UsersNav';
+import { VisitorsNav } from '../components/ui/navbars/VisitorsNav';
 // import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 
@@ -15,6 +16,7 @@ import { UsersRouter } from './UsersRouter';
 import { VisitorsRouter } from './VisitorsRouter';
 // import { login } from '../../actions/auth';
 // import { startLoadingNotes } from '../../actions/notes';
+import '../components/ui/navbars/navbar.css';
 
 
 export const AppRouter = () => {
@@ -53,29 +55,29 @@ export const AppRouter = () => {
         )
     }
 
+    const name = localStorage.getItem('name');
 
     return (
-            <Router>
-                <div>
-                    <Switch>
-                        <NavBar/>
-                        <PublicRoute
-                            exact path="/"
-                            isAuthenticated= { isLoggedIn }
-                            component={VisitorsRouter}
-                            redirectTo= "/"
-                        />
+        <Router>
+            <Switch>
+                {/* <NavBar/> */}
+                { (name) ? <UsersNav/> : <VisitorsNav/> }   
+                <PublicRoute
+                    exact path="/"
+                    isAuthenticated= { isLoggedIn }
+                    component={VisitorsRouter}
+                    redirectTo= "/"
+                />
 
-                        <PrivateRoute
-                            exact path="/app"
-                            isAuthenticated= { isLoggedIn }
-                            component={UsersRouter}
-                            redirectTo= "/"
-                        />
+                <PrivateRoute
+                    exact path="/app"
+                    isAuthenticated= { isLoggedIn }
+                    component={UsersRouter}
+                    redirectTo= "/"
+                />
 
-                        <Redirect to='/404' component={Error404Page} />
-                    </Switch>
-                </div>
-            </Router>
+                <Redirect to='/404' component={Error404Page} />
+            </Switch>
+        </Router>
     )
 }

@@ -16,16 +16,15 @@ export const AuthButtons = () => {
 
 
     return (
-        <div className="navbar-auth">
-            <button className="btn" onClick={handleShowLogin}>
+        <div className="collapse navbar-collapse navbar-buttons" id="navbarSupportedContent">
+            <button className="btn" type="submit" onClick={handleShowLogin}>
                 <i className='fas fa-sign-in-alt '></i>
-                <span>   Ingresar </span>
-            </button>            
-            <button className="btn" onClick={handleShowRegister}>
-                <i className='fas fa-user-plus '></i>
-                <span>   Registrarse</span>
+                <span>Ingresar</span>
             </button>
-        </div>
-            
+            <button className="btn my-2 my-sm-0" type="submit" onClick={handleShowRegister}>
+            <i className='fas fa-user-plus '></i>
+                Registrarse
+            </button>
+        </div>            
     )
 }
