@@ -9,7 +9,7 @@ export const PublicRoute = ({
     redirectTo,
     ...rest
 }) => {
-
+    console.log('public router');
     return (
         <Route {...rest}
             component={(props) => (

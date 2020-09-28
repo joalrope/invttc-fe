@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { VisitorsRouter } from '../../../routers/VisitorsRouter';
+// import { VisitorsRouter } from '../../../routers/VisitorsRouter';
+import { LoginForm } from '../../auth/LoginForm';
+import { RegisterForm } from '../../auth/RegisterForm';
 import { AuthButtons } from '../AuthButtons';
 import './navbar.css';
 
@@ -12,31 +14,36 @@ export const VisitorsNav = () => {
     if (role === '0') {
         isAuth = true;
     }
-
+    const loginVisible= false;
+    const RegisterVisible = false;
 
     return (
         <div>
-            <ul classNaame="navbar-nav">
-                <li classNaame="nav-item">
-                    <Link to="/home" classNaame="nav-link"><span classNaame="nav-bar-item">Inicio</span></Link>
+
+            {(loginVisible) && <LoginForm/>}
+            {(RegisterVisible) && <RegisterForm/>}
+
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/home" className="nav-link"><span className="nav-bar-item">Inicio</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/rental" classNaame="nav-link"><span classNaame="nav-bar-item">Alquiler</span></Link>
+                <li className="nav-item">
+                    <Link to="/rental" className="nav-link"><span className="nav-bar-item">Alquiler</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/cantact" classNaame="nav-link"><span classNaame="nav-bar-item">Contacto</span></Link>
+                <li className="nav-item">
+                    <Link to="/cantact" className="nav-link"><span className="nav-bar-item">Contacto</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/about" classNaame="nav-link"><span classNaame="nav-bar-item">Nosotros</span></Link>
+                <li className="nav-item">
+                    <Link to="/about" className="nav-link"><span className="nav-bar-item">Nosotros</span></Link>
                 </li>
-                <li classNaame="nav-item">
+                <li className="nav-item">
                     {
-                        (isAuth) && <Link to="/quote" classNaame="nav-link"><span classNaame="nav-bar-item">Nosotros</span></Link>
+                        (isAuth) && <Link to="/quote" className="nav-link"><span className="nav-bar-item">Nosotros</span></Link>
                     }
                 </li>
                 <AuthButtons/>
             </ul>
-            <VisitorsRouter/>
+            {/* <VisitorsRouter/> */}
         </div>
     )
 }

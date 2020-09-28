@@ -1,21 +1,11 @@
 import React from 'react';
-// import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
-import { Error404Page } from '../components/pages/Error404Page';
-import { UsersNav } from '../components/ui/navbars/UsersNav';
-import { VisitorsNav } from '../components/ui/navbars/VisitorsNav';
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-
-// import { firebase } from '../../firebase/firebaseConfig';
-
+import { VisitorsRouter } from './VisitorsRouter';
+import { UsersRouter } from './UsersRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-
-import { UsersRouter } from './UsersRouter';
-import { VisitorsRouter } from './VisitorsRouter';
-// import { login } from '../../actions/auth';
-// import { startLoadingNotes } from '../../actions/notes';
+import { Error404Page } from '../components/pages/Error404Page';
+import { NavBar } from '../components/ui/navbars/NavBar';
 import '../components/ui/navbars/navbar.css';
 
 
@@ -47,7 +37,7 @@ export const AppRouter = () => {
     // }, [dispatch, setChecking, setIsLoggedIn])
 
     const checking = false;
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     if (checking) {
         return (
@@ -55,13 +45,13 @@ export const AppRouter = () => {
         )
     }
 
-    const name = localStorage.getItem('name');
+    // const name = localStorage.getItem('name');
 
     return (
+
         <Router>
             <Switch>
-                {/* <NavBar/> */}
-                { (name) ? <UsersNav/> : <VisitorsNav/> }   
+                <NavBar/>
                 <PublicRoute
                     exact path="/"
                     isAuthenticated= { isLoggedIn }

@@ -1,7 +1,4 @@
 
-.auth-container{
-    margin-top: 15%;
-}
 
 .login-form, .register-form{
     position: absolute;
@@ -22,10 +19,6 @@
 .goto-right {
     cursor: pointer;
     text-align: right;
-}
-
-.auth-container form{
-    padding: 8%;
 }
 
 .btnSubmit{

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import { Error404Page } from '../components/pages/Error404Page';
-import { AdminPage } from '../components/pages/users/AdminPage';
-
 import { DashboardPage } from '../components/pages/users/DashboardPage';
 import { inventoryPage } from '../components/pages/users/inventoryPage';
-import { SalesPage } from '../components/pages/users/SalesPage';
 import { ServicePage } from '../components/pages/users/ServicePage';
+import { SalesPage } from '../components/pages/users/SalesPage';
+import { AdminPage } from '../components/pages/users/AdminPage';
 
 export const UsersRouter = () => {
     

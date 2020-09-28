@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { UsersRouter } from '../../../routers/UsersRouter';
+// import { UsersRouter } from '../../../routers/UsersRouter';
 import { LogoutButton } from '../LogoutButton';
 import './navbar.css';
 
@@ -9,25 +9,25 @@ export const UsersNav = () => {
 
     return (
         <div>
-            <ul classNaame="navbar-nav">
-                <li classNaame="nav-item">
-                    <Link to="/app/sales" classNaame="nav-link"><span classNaame="nav-bar-item">Ventas</span></Link>
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/app/sales" className="nav-link"><span className="nav-bar-item">Ventas</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/app/inventory" classNaame="nav-link"><span classNaame="nav-bar-item">Inventario</span></Link>
+                <li className="nav-item">
+                    <Link to="/app/inventory" className="nav-link"><span className="nav-bar-item">Inventario</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/app/admin" classNaame="nav-link"><span classNaame="nav-bar-item">Administrativo</span></Link>
+                <li className="nav-item">
+                    <Link to="/app/admin" className="nav-link"><span className="nav-bar-item">Administrativo</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/app/dashboard" classNaame="nav-link"><span classNaame="nav-bar-item">Dashboard</span></Link>
+                <li className="nav-item">
+                    <Link to="/app/dashboard" className="nav-link"><span className="nav-bar-item">Dashboard</span></Link>
                 </li>
-                <li classNaame="nav-item">
-                    <Link to="/app/servuice" classNaame="nav-link"><span classNaame="nav-bar-item">Servicio</span></Link>
+                <li className="nav-item">
+                    <Link to="/app/servuice" className="nav-link"><span className="nav-bar-item">Servicio</span></Link>
                 </li>
                 <LogoutButton/>
             </ul>
-            <UsersRouter/>
+            {/* <UsersRouter/> */}
         </div>
     )
 }
