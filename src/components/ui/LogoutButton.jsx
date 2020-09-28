@@ -11,7 +11,7 @@ export const LogoutButton = () => {
 
 
     return (
-        <div className="navbar-auth">
+        <div className="navbar-buttons">
             <nav className="navbar-user-name">
                 <span className="navbar-brand-user-name">{name}</span>
             </nav>

@@ -18,31 +18,31 @@ export const VisitorsNav = () => {
     const RegisterVisible = false;
 
     return (
-        <div>
+        <div className="navbar-items">
 
             {(loginVisible) && <LoginForm/>}
             {(RegisterVisible) && <RegisterForm/>}
 
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/home" className="nav-link"><span className="nav-bar-item">Inicio</span></Link>
+                    <Link to="/home" className="nav-link"><span className="navbar-item">Inicio</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/rental" className="nav-link"><span className="nav-bar-item">Alquiler</span></Link>
+                    <Link to="/rental" className="nav-link"><span className="navbar-item">Alquiler</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/cantact" className="nav-link"><span className="nav-bar-item">Contacto</span></Link>
+                    <Link to="/cantact" className="nav-link"><span className="navbar-item">Contacto</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/about" className="nav-link"><span className="nav-bar-item">Nosotros</span></Link>
+                    <Link to="/about" className="nav-link"><span className="navbar-item">Nosotros</span></Link>
                 </li>
                 <li className="nav-item">
                     {
-                        (isAuth) && <Link to="/quote" className="nav-link"><span className="nav-bar-item">Nosotros</span></Link>
+                        (isAuth) && <Link to="/quote" className="nav-link"><span className="navbar-item">Nosotros</span></Link>
                     }
                 </li>
-                <AuthButtons/>
             </ul>
+            <AuthButtons/>
             {/* <VisitorsRouter/> */}
         </div>
     )

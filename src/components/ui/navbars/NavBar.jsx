@@ -30,7 +30,7 @@ export const NavBar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse navbar-items" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     { (name) ? <UsersNav/> : <VisitorsNav/> } 
                 </div>
             </nav>

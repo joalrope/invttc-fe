@@ -14,7 +14,7 @@ html, body {
     top: 10px;
 }
 
-.nav-bar-item {
+.navbar-item {
     font-size: 1.5rem;
     text-align: center;
     color: #000 !important;
@@ -22,13 +22,25 @@ html, body {
     margin: 0px 20px;
 }
 
-.nav-bar-item:hover {
+.navbar-item:hover {
     border-bottom: 2px solid #000;
     transition: 0.5s;
 }
 
+.navbar-user-name {
+    font-size: 1.5rem;
+}
+
+.navbar-items {
+    display: flex;
+    flex-direction: row;
+}
+
 .navbar-buttons {
+    flex: 0 1 30%;
     margin: 3px 12px 15px;
+    display: flex;
+    flex-direction: row;
 }
 
 .navbar-buttons button{
@@ -57,7 +69,7 @@ html, body {
     flex-direction: column;
 }
 
-@media screen and (max-width: 1048px) {
+@media screen and (max-width: 1064px) {
     .navbar-items {
         flex-direction: column;
     }
@@ -69,6 +81,22 @@ html, body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 620px) {
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .navbar-buttons button{
+        margin: 0px 2px;
     }
 }
 
@@ -97,16 +125,19 @@ html, body {
         text-align: center!important;
     }
     
-    .nav-bar-item {
+    .navbar-item {
         text-align: center;
         color: #f2bd15 !important;
         border-bottom: 1px solid transparent;
-        padding-bottom: 10px;
     }
 
-    .nav-bar-item:hover {
+    .navbar-item:hover {
         border-bottom: 1px solid hsla(46, 89%, 52%, 0.8);
         transition: 0.5s;
+    }
+
+    .navbar-user-name {
+        color: #f2bd15 !important;        
     }
     
     .navbar-buttons {
@@ -141,7 +172,7 @@ html, body {
 }
 
 @media screen and (max-width: 270px) {
-    .nav-bar-item {
+    .navbar-item {
         margin: 0px;
     }
 

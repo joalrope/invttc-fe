@@ -11,22 +11,22 @@ export const UsersNav = () => {
         <div>
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/app/sales" className="nav-link"><span className="nav-bar-item">Ventas</span></Link>
+                    <Link to="/app/sales" className="nav-link"><span className="navbar-item">Ventas</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/app/inventory" className="nav-link"><span className="nav-bar-item">Inventario</span></Link>
+                    <Link to="/app/inventory" className="nav-link"><span className="navbar-item">Inventario</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/app/admin" className="nav-link"><span className="nav-bar-item">Administrativo</span></Link>
+                    <Link to="/app/admin" className="nav-link"><span className="navbar-item">Administrativo</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/app/dashboard" className="nav-link"><span className="nav-bar-item">Dashboard</span></Link>
+                    <Link to="/app/dashboard" className="nav-link"><span className="navbar-item">Dashboard</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/app/servuice" className="nav-link"><span className="nav-bar-item">Servicio</span></Link>
+                    <Link to="/app/servuice" className="nav-link"><span className="navbar-item">Servicio</span></Link>
                 </li>
-                <LogoutButton/>
             </ul>
+            <LogoutButton/>
             {/* <UsersRouter/> */}
         </div>
     )
