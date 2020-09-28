@@ -1,10 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { VisitorsRouter } from './VisitorsRouter';
 import { UsersRouter } from './UsersRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
-import { Error404Page } from '../components/pages/Error404Page';
 import { NavBar } from '../components/ui/navbars/NavBar';
 import '../components/ui/navbars/navbar.css';
 
@@ -36,8 +35,10 @@ export const AppRouter = () => {
         
     // }, [dispatch, setChecking, setIsLoggedIn])
 
+    
     const checking = false;
-    const isLoggedIn = false;
+    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+    console.log(isLoggedIn);
 
     if (checking) {
         return (
@@ -46,28 +47,30 @@ export const AppRouter = () => {
     }
 
     // const name = localStorage.getItem('name');
+    console.log('AppRouter')
 
     return (
-
         <Router>
-            <Switch>
+            <div>
                 <NavBar/>
-                <PublicRoute
-                    exact path="/"
-                    isAuthenticated= { isLoggedIn }
-                    component={VisitorsRouter}
-                    redirectTo= "/"
-                />
+                <Switch>
+                    <PublicRoute
+                        path="/"
+                        isAuthenticated= { isLoggedIn }
+                        component={VisitorsRouter}
+                        redirectTo= "/app"
+                    />
+                    <PrivateRoute
+                        exact path="/app"
+                        isAuthenticated= { isLoggedIn }
+                        component={UsersRouter}
+                        redirectTo= "/"
+                    />
+                </Switch>
 
-                <PrivateRoute
-                    exact path="/app"
-                    isAuthenticated= { isLoggedIn }
-                    component={UsersRouter}
-                    redirectTo= "/"
-                />
+                {/* {(isLoggedIn) ?  <UsersRouter/> : <VisitorsRouter/> } */}
 
-                <Redirect to='/404' component={Error404Page} />
-            </Switch>
+            </div>
         </Router>
     )
 }

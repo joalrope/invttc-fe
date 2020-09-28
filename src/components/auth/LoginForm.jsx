@@ -45,7 +45,7 @@ export const LoginForm = () => {
                 <div className="form-group">
                     <input 
                         type="text"
-                        className="form-control col-form-label-sm"
+                        className="form-control col-form-label-lg"
                         placeholder="Correo"
                         name="Email"
                         // value= {Email}
@@ -55,7 +55,7 @@ export const LoginForm = () => {
                 <div className="form-group">
                     <input
                         type="password"
-                        className="form-control col-form-label-sm"
+                        className="form-control col-form-label-lg"
                         placeholder="Contraseña"
                         autoComplete="new-password"
                         name="Password"
@@ -66,7 +66,7 @@ export const LoginForm = () => {
                 <div className="form-group">
                     <input 
                         type="submit"
-                        className="btn btn-sm btn-outline-info btnSubmit"
+                        className="btn btn-outline-info btnSubmit"
                         value="Login" 
                     />
                 </div>

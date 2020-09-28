@@ -5,7 +5,10 @@ export const LogoutButton = () => {
     const handleLogout = () => {
         // dispatch(startLogout());
         
-        localStorage.clear();
+        localStorage.setItem('isLoggedIn', false)
+        localStorage.setItem('name', '')
+        
+
     }
     const name = localStorage.getItem('name');
 

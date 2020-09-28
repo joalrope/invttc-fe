@@ -8,7 +8,7 @@ export const UsersNav = () => {
 
 
     return (
-        <div>
+        <div  className="navbar-items collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/app/sales" className="nav-link"><span className="navbar-item">Ventas</span></Link>
@@ -23,8 +23,9 @@ export const UsersNav = () => {
                     <Link to="/app/dashboard" className="nav-link"><span className="navbar-item">Dashboard</span></Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/app/servuice" className="nav-link"><span className="navbar-item">Servicio</span></Link>
+                    <Link to="/app/service" className="nav-link"><span className="navbar-item">Servicio</span></Link>
                 </li>
+                <Link to="/404"/>
             </ul>
             <LogoutButton/>
             {/* <UsersRouter/> */}
