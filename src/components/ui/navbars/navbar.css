@@ -76,13 +76,14 @@ html, body {
     flex-direction: column;
 }
 
-@media screen and (max-width: 1064px) {
+@media screen and (max-width: 1260px) {
+
     .navbar-items {
         flex-direction: column;
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 970px) {
 
     .navbar-nav {
         display: flex;
@@ -168,6 +169,7 @@ html, body {
 }
 
 @media screen and (max-width: 320px) {
+
     .navbar-buttons {
         display: flex;
         flex-direction: column;
@@ -177,10 +179,17 @@ html, body {
         margin: 12px;
     }
 
+    .navbar-logo img {
+        
+        padding: 0px;
+        height: 10vh;
+    }
 }
 
 @media screen and (max-width: 270px) {
-    .navbar-item {
+
+    .navbar-item, .nav-link {
+        font-size: 0.8rem;
         margin: 0px;
     }
 

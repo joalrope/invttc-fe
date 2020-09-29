@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { VisitorsRouter } from './VisitorsRouter';
 import { UsersRouter } from './UsersRouter';
 import { PrivateRoute } from './PrivateRoute';
@@ -38,7 +38,6 @@ export const AppRouter = () => {
     
     const checking = false;
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    console.log(isLoggedIn);
 
     if (checking) {
         return (
@@ -53,23 +52,19 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <NavBar/>
-                <Switch>
-                    <PublicRoute
-                        path="/"
-                        isAuthenticated= { isLoggedIn }
-                        component={VisitorsRouter}
-                        redirectTo= "/app"
-                    />
-                    <PrivateRoute
-                        exact path="/app"
-                        isAuthenticated= { isLoggedIn }
-                        component={UsersRouter}
-                        redirectTo= "/"
-                    />
-                </Switch>
+                <PublicRoute
+                    path="/"
+                    isAuthenticated= { isLoggedIn }
+                    component={VisitorsRouter}
+                    redirectTo= "/app/sales"
+                />
 
-                {/* {(isLoggedIn) ?  <UsersRouter/> : <VisitorsRouter/> } */}
-
+                <PrivateRoute
+                    path="/app"
+                    isAuthenticated= { isLoggedIn }
+                    component={UsersRouter}
+                    redirectTo= "/"
+                />
             </div>
         </Router>
     )

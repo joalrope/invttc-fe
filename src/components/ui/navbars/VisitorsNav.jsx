@@ -34,10 +34,8 @@ export const VisitorsNav = () => {
                         (isAuth) && <Link to="/quote" className="nav-link"><span className="navbar-item">Nosotros</span></Link>
                     }
                 </li>
-                <Link to="/404"/>
             </ul>
             <AuthButtons/>
-            {/* <VisitorsRouter/> */}
         </div>
     )
 }

@@ -25,10 +25,8 @@ export const UsersNav = () => {
                 <li className="nav-item">
                     <Link to="/app/service" className="nav-link"><span className="navbar-item">Servicio</span></Link>
                 </li>
-                <Link to="/404"/>
             </ul>
             <LogoutButton/>
-            {/* <UsersRouter/> */}
         </div>
     )
 }

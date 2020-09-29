@@ -15,7 +15,7 @@ export const NavBar = () => {
     // const dispatch = u`seDispatch();
 
     // const {name} = useSelector(state => state.auth);
-    const name = localStorage.getItem('name');
+    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
 
     return (
         <nav className="navbar navbar-expand-sm navbar-light navbar-app">
@@ -27,7 +27,7 @@ export const NavBar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            { (name) ? <UsersNav/> : <VisitorsNav/> } 
+            { (isLoggedIn) ? <UsersNav/> : <VisitorsNav/> } 
 
         </nav>
     )

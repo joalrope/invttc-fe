@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { HomePage } from '../components/pages/visitors/HomePage';
 import { RentalPage } from '../components/pages/visitors/RentalPage';
@@ -20,7 +20,7 @@ export const VisitorsRouter = () => {
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/quote" component={QuotePage} />
 
-            <Redirect to='/404' component={ErrorPage}/>
+            <Route component={ErrorPage}/>
         </Switch>
     )
 }
