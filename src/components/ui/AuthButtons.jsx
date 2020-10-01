@@ -1,31 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const AuthButtons = () => {
-
-    const handleShowLogin = () => {
-
-        localStorage.setItem('name', 'Jose Rodriguez')
-        localStorage.setItem('isLoggedIn', true)
-        
-        
-    }
-    
-    const handleShowRegister = () => {
-        
-        localStorage.setItem('role', 0)
-    }
 
 
     return (
         <div className="navbar-buttons">
-            <button className="btn" type="submit" onClick={handleShowLogin}>
+            <Link to="/login" className="btn">
                 <i className='fas fa-sign-in-alt '></i>
                 <span>Ingresar</span>
-            </button>
-            <button className="btn" type="submit" onClick={handleShowRegister}>
-            <i className='fas fa-user-plus '></i>
+            </Link>
+            <Link to="register" className="btn" >
+            <i className='fas fa-user-plus'></i>
                 Registrarse
-            </button>
+            </Link>
         </div>            
     )
 }

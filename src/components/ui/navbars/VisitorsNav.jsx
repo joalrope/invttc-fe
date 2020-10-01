@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 // import { VisitorsRouter } from '../../../routers/VisitorsRouter';
 import { AuthButtons } from '../AuthButtons';
-import './navbar.css';
+import './navbar-styles.scss';
 
 export const VisitorsNav = () => {
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 // import { UsersRouter } from '../../../routers/UsersRouter';
 import { LogoutButton } from '../LogoutButton';
-import './navbar.css';
+import './navbar-styles.scss';
 
 export const UsersNav = () => {
 

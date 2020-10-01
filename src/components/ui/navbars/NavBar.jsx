@@ -7,7 +7,7 @@ import { VisitorsNav } from './VisitorsNav';
 // import { AuthButtons } from '../AuthButtons';
 // import { UsersRouter } from '../../../routers/UsersRouter';
 // import { VisitorsRouter } from '../../../routers/VisitorsRouter';
-import './navbar.css';
+import './navbar-styles.scss';
 
 
 export const NavBar = () => {

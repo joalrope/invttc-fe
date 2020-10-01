@@ -1,8 +1,12 @@
+
+
+
 html, body {
     font-size: 12px;
 }
 
 .navbar-app {
+    height: 15vh;
     margin: 0;
     padding: 0;
     background-color: #f2bd15 !important;
@@ -24,11 +28,11 @@ html, body {
     color: #000 !important;
     border-bottom: 2px solid transparent;
     margin: 0px 20px;
-}
 
-.navbar-item:hover {
-    border-bottom: 2px solid #000;
-    transition: 0.5s;
+    &:hover {
+        border-bottom: 2px solid #000;
+        transition: 0.5s;
+    }
 }
 
 .navbar-user-name {
@@ -50,7 +54,7 @@ html, body {
     flex-direction: row;
 }
 
-.navbar-buttons button{
+.navbar-buttons .btn{
     width: 130px;
     color: #000;
     font-size: 1.3rem;
@@ -60,12 +64,12 @@ html, body {
     margin: 0px 12px;
 }
 
-.navbar-buttons button:hover{
+.navbar-buttons .btn:hover{
     color: #f2bd15;
     background-color: #000;
 }
 
-.navbar-buttons button:focus{
+.navbar-buttons .btn:focus{
     box-shadow: none;
 }
 
@@ -115,7 +119,6 @@ html, body {
         flex-direction: column;
         flex-wrap: wrap;
     }
-
 
     .navbar-items {
         padding: 0px 0px;

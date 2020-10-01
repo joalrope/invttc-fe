@@ -5,7 +5,7 @@ import { UsersRouter } from './UsersRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 import { NavBar } from '../components/ui/navbars/NavBar';
-import '../components/ui/navbars/navbar.css';
+import '../components/ui/navbars/navbar-styles.scss';
 
 
 export const AppRouter = () => {

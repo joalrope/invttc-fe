@@ -7,6 +7,9 @@ import { AboutPage } from '../components/pages/visitors/AboutPage';
 import { ContactPage } from '../components/pages/visitors/ContactPage';
 import { QuotePage } from '../components/pages/visitors/QuotePage';
 import { ErrorPage } from '../components/pages/ErrorPage';
+import { LoginPage } from '../components/auth/LoginPage';
+import { RegisterPage } from '../components/auth/RegisterPage';
+import { ForgotPage } from '../components/auth/ForgotPage';
 
 export const VisitorsRouter = () => {
 
@@ -19,6 +22,9 @@ export const VisitorsRouter = () => {
             <Route exact path="/contact" component={ContactPage} />
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/quote" component={QuotePage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/forgot" component={ForgotPage} />
 
             <Route component={ErrorPage}/>
         </Switch>
