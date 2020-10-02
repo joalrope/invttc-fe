@@ -14,7 +14,31 @@ export const LoginPage = () => {
     }
 
     const handleSubmit = () => {
-        alert('Submit')
+        localStorage.setItem('name', 'Administrador');
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('role', 4);
+        goBack();    
+    }
+    
+    const handleLoginFacebk = () => {
+        localStorage.setItem('name', 'Visitante autorizado');
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('role', 1); 
+        goBack();    
+    }
+    
+    const handleLoginGoogle = () => {
+        localStorage.setItem('name', 'Almacenista');
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('role', 2); 
+        goBack();    
+    }
+    
+    const handleLoginTwittr = () => {
+        localStorage.setItem('name', 'Vendedor');
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('role', 3); 
+        goBack();    
     }
 
 
@@ -51,9 +75,9 @@ export const LoginPage = () => {
                                     <input type="submit" value="Ingresar" className="btn submit-btn"/>
                                 </div>
                                 <div className="d-flex justify-content-end social_icon">
-                                    <span><i className="fab fa-facebook-square"></i></span>
-                                    <span><i className="fab fa-google-plus-square"></i></span>
-                                    <span><i className="fab fa-twitter-square"></i></span>
+                                    <span><i onClick={handleLoginFacebk} className="fab fa-facebook-square"></i></span>
+                                    <span><i onClick={handleLoginGoogle} className="fab fa-google-plus-square"></i></span>
+                                    <span><i onClick={handleLoginTwittr} className="fab fa-twitter-square"></i></span>
                                 </div>
                             </form>
                         </div>

@@ -10,7 +10,6 @@ import { ErrorPage } from '../components/pages/ErrorPage';
 
 export const UsersRouter = () => {
 
-    console.log('UsersRouter');
     
     return (
         <Switch >

@@ -13,7 +13,6 @@ import { ForgotPage } from '../components/auth/ForgotPage';
 
 export const VisitorsRouter = () => {
 
-    console.log('VisitorsRouter');
     
     return (
         <Switch >

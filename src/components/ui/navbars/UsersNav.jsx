@@ -8,7 +8,7 @@ export const UsersNav = () => {
 
 
     return (
-        <div  className="navbar-items collapse navbar-collapse" id="navbarSupportedContent">
+        <div  className="navbar-items collapse navbar-collapse" id="navbarSupportedContent" data-toggle="collapse" data-target="#navbarSupportedContent.show">
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/app/sales" className="nav-link"><span className="navbar-item">Ventas</span></Link>

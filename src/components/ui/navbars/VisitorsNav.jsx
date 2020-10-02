@@ -1,21 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-// import { VisitorsRouter } from '../../../routers/VisitorsRouter';
 import { AuthButtons } from '../AuthButtons';
+import { LogoutButton } from '../LogoutButton';
 import './navbar-styles.scss';
 
 export const VisitorsNav = () => {
 
-    const role = localStorage.getItem('role');
+    const role = Number(localStorage.getItem('role'));
+    const isLoggedIn = JSON.stringify(localStorage.getItem('isLoggedIn'));
     let isAuth = false;
-
-    if (role === '0') {
+    
+    if (isLoggedIn && role === 1) {
         isAuth = true;
     }
-
-
+    
+    
     return (
-        <div className="navbar-items collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="navbar-items collapse navbar-collapse" id="navbarSupportedContent" data-toggle="collapse" data-target="#navbarSupportedContent.show">
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/" className="nav-link"><span className="navbar-item">Inicio</span></Link>
@@ -31,11 +32,12 @@ export const VisitorsNav = () => {
                 </li>
                 <li className="nav-item">
                     {
-                        (isAuth) && <Link to="/quote" className="nav-link"><span className="navbar-item">Nosotros</span></Link>
+                        (isAuth) && <Link to="/quote" className="nav-link"><span className="navbar-item">Cotizacion</span></Link>
                     }
                 </li>
             </ul>
-            <AuthButtons/>
+
+            { (isAuth) ? <LogoutButton/> :  <AuthButtons/> } 
         </div>
     )
 }

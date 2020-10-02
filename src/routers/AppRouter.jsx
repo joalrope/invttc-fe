@@ -9,35 +9,33 @@ import '../components/ui/navbars/navbar-styles.scss';
 
 
 export const AppRouter = () => {
-
-    // const dispatch = useDispatch();
-
-    // const [checking, setChecking] = useState(true);
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    // useEffect(() => {
-        
-    //     firebase.auth().onAuthStateChanged( (user) => {
-            
-    //         if (user?.uid) {
-                
-    //             dispatch(login(user.uid, user.displayName));
-    //             setIsLoggedIn(true);
-
-    //             dispatch(startLoadingNotes(user.uid));
-
-    //         } else {
-    //             setIsLoggedIn(false);
-    //         }
-
-    //         setChecking(false);
-    //     });
-        
-    // }, [dispatch, setChecking, setIsLoggedIn])
-
     
     const checking = false;
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+    const role = Number(localStorage.getItem('role'));
+    let isUser = false;
+    let redirectTo = "/";
+
+    if (isLoggedIn && role >= 2) {
+        isUser = true;
+        
+        switch (role) {
+            case 2:
+                redirectTo = "/app/inventory";
+                break;
+            
+            case 3:
+                redirectTo = "/app/sales";
+                break;
+            
+            case 4:
+                redirectTo = "/app/admin";
+                break;
+
+            default:
+                break;
+        }
+    }
 
     if (checking) {
         return (
@@ -45,8 +43,6 @@ export const AppRouter = () => {
         )
     }
 
-    // const name = localStorage.getItem('name');
-    console.log('AppRouter')
 
     return (
         <Router>
@@ -54,14 +50,14 @@ export const AppRouter = () => {
                 <NavBar/>
                 <PublicRoute
                     path="/"
-                    isAuthenticated= { isLoggedIn }
+                    isAuthenticated= { isUser }
                     component={VisitorsRouter}
-                    redirectTo= "/app/sales"
+                    redirectTo= {redirectTo}
                 />
 
                 <PrivateRoute
                     path="/app"
-                    isAuthenticated= { isLoggedIn }
+                    isAuthenticated= { isUser }
                     component={UsersRouter}
                     redirectTo= "/"
                 />

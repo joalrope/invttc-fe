@@ -10,9 +10,6 @@ export const PublicRoute = ({
     ...rest
 }) => {
 
-    console.log('PublicRoute');
-
-
     return (
         <Route {...rest}
             component={(props) => (

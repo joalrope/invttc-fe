@@ -21,8 +21,8 @@
     font-family: 'Numans', sans-serif;
     position: absolute;
     top: 0;
-    height: 350px;
-    width: 350px;
+    max-height: 550px;
+    max-width: 350px;
     margin-top: 25vh;
     background-color: rgba(0,0,0,0.5) !important;
 }
@@ -31,8 +31,8 @@
     font-family: 'Numans', sans-serif;
     position: absolute;
     top: 0;
-    height: 390px;
-    width: 350px;
+    max-height: 650px;
+    max-width: 350px;
     margin-top: 25vh;
     background-color: rgba(0,0,0,0.5) !important;
 }
@@ -133,4 +133,9 @@ input:focus{
 
 .close:focus {
     outline: none;
+}
+
+@media screen and (max-width: 300px) {
+
+
 }
