@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const SalesPage = () => {
+export const ProductInfo = () => {
     return (
         <div>
-            <h1>Ventas</h1>
+            <h5>Detalle de Producto</h5>
         </div>
     )
 }
