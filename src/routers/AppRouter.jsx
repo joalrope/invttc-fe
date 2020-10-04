@@ -7,12 +7,15 @@ import { PublicRoute } from './PublicRoute';
 import { NavBar } from '../components/ui/navbars/NavBar';
 import '../components/ui/navbars/navbar-styles.scss';
 
+localStorage.setItem('role', 0);
+localStorage.setItem('isLoggedIn', false);
+localStorage.setItem('name', '');
 
 export const AppRouter = () => {
     
     const checking = false;
+    const role = Number(localStorage.getItem('role'))
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    const role = Number(localStorage.getItem('role'));
     let isUser = false;
     let redirectTo = "/";
 
@@ -20,6 +23,11 @@ export const AppRouter = () => {
         isUser = true;
         
         switch (role) {
+
+            case 0:
+            case 1:
+                redirectTo = "/"
+                break;
             case 2:
                 redirectTo = "/app/inventory";
                 break;

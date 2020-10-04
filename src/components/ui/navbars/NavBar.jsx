@@ -1,13 +1,13 @@
 import React from 'react';
-import { UsersNav } from './UsersNav';
-import { VisitorsNav } from './VisitorsNav';
+import { AuthButtons } from '../AuthButtons';
+import { GetItems } from '../GetItems';
+import { LogoutButton } from '../LogoutButton';
 import './navbar-styles.scss';
 
+const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+console.log(isLoggedIn);
 
 export const NavBar = () => {
-
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    const role = Number(localStorage.getItem('role'));
 
 
     return (
@@ -20,8 +20,12 @@ export const NavBar = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            { (isLoggedIn && role >= 2) ? <UsersNav/> : <VisitorsNav/> } 
-
+            <div className="navbar-items collapse navbar-collapse" id="navbarSupportedContent" data-toggle="collapse" data-target="#navbarSupportedContent.show">
+                <ul className="navbar-nav">
+                    <GetItems/>
+                </ul>
+                { (isLoggedIn) ? <LogoutButton/> :  <AuthButtons/> }
+            </div>
         </nav>
     )
 }

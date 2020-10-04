@@ -11,6 +11,8 @@ import { LoginPage } from '../components/auth/LoginPage';
 import { RegisterPage } from '../components/auth/RegisterPage';
 import { ForgotPage } from '../components/auth/ForgotPage';
 
+
+
 export const VisitorsRouter = () => {
 
     

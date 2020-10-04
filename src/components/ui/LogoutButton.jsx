@@ -7,11 +7,12 @@ export const LogoutButton = () => {
         
         localStorage.setItem('isLoggedIn', false)
         localStorage.setItem('name', '')
-        localStorage.setItem('role', '-1')
+        localStorage.setItem('role', '0')
         
 
     }
     const name = localStorage.getItem('name');
+    console.log('--------')
 
 
     return (
