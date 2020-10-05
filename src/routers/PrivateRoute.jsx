@@ -9,8 +9,8 @@ export const PrivateRoute = ({
     redirectTo,
     ...rest
 }) => {
-
-
+    console.log(isAuthenticated);
+    console.log('Private Route');
     return (
         <Route {...rest}
             component={(props) => (

@@ -1,8 +1,8 @@
 import React from 'react';
-import { AuthButtons } from '../AuthButtons';
-import { GetItems } from '../GetItems';
-import { LogoutButton } from '../LogoutButton';
-import './navbar-styles.scss';
+import { AuthButtons } from './AuthButtons';
+import { LogoutButton } from './LogoutButton';
+import { GetItems } from './GetItems';
+import '../../assets/css/navbar.scss';
 
 const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
 console.log(isLoggedIn);

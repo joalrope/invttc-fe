@@ -9,7 +9,8 @@ export const PublicRoute = ({
     redirectTo,
     ...rest
 }) => {
-
+    console.log(isAuthenticated);
+    console.log('Public Route');
     return (
         <Route {...rest}
             component={(props) => (

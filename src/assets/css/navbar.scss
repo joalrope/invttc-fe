@@ -5,7 +5,7 @@ html, body {
 .navbar-app {
     margin: 0px;
     padding: 0px;
-    background-color: #f2bd15 !important;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
 #navbarSupportedContent{
@@ -24,12 +24,12 @@ html, body {
 .navbar-item {
     font-size: 1.5rem;
     text-align: center;
-    color: #000 !important;
+    color: #f2bd15 !important;
     border-bottom: 2px solid transparent;
     margin: 0px 20px;
 
     &:hover {
-        border-bottom: 2px solid #000;
+        border-bottom: 2px solid #f2bd15;
         transition: 0.5s;
     }
 }
@@ -39,6 +39,7 @@ html, body {
     font-size: 1.2rem;
     font-weight: bolder;
     line-height: 3rem;
+    color: #f2bd15;
 }
 
 .navbar-items {
@@ -55,17 +56,17 @@ html, body {
 
 .navbar-buttons .btn{
     width: 130px;
-    color: #000;
+    color: #f2bd15;
     font-size: 1.3rem;
-    border: 1px solid #000;
+    border: 1px solid #f2bd15;
     border-radius: 6px;
     text-align: center;
     margin: 0px 12px;
 }
 
 .navbar-buttons .btn:hover{
-    color: #f2bd15;
-    background-color: #000;
+    color: #000;
+    background-color: #f2bd15;
 }
 
 .navbar-buttons .btn:focus{
@@ -80,7 +81,7 @@ html, body {
 }
 
 .nav-link:focus {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(242, 190, 21, 0.25);
     border-radius: 5px;
 }
 

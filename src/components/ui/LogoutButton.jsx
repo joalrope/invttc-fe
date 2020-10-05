@@ -12,9 +12,8 @@ export const LogoutButton = () => {
 
     }
     const name = localStorage.getItem('name');
-    console.log('--------')
 
-
+    
     return (
         <div className="navbar-buttons">
             <nav className="navbar-user-name">

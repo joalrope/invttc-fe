@@ -1,8 +1,8 @@
 import React from 'react';
-import { ClientInfo } from '../../../sales/ClientInfo';
-import { ProductInfo } from '../../../sales/ProductInfo';
-import { SearchCode } from '../../../sales/SearchCode';
-import './sales-styles.scss';
+import { ClientInfo } from '../sales/ClientInfo';
+import { ProductInfo } from '../sales/ProductInfo';
+import { SearchCode } from '../sales/SearchCode';
+import '../../assets/css/sales.scss';
 
 export const SalesPage = () => {
     return (

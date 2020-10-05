@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 // import Swal from 'sweetalert2';
 // import { startHideRegister, startRegister, startShowLogin } from '../../actions/auth';
 // import { useForm } from '../../hooks/userForm';
-import './auth-styles.scss';
+import '../../assets/css/auth.scss';
 
 export const RegisterPage = () => {
 

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const AdminPage = () => {
+export const ReportPage = () => {
     return (
         <div>
-            <h1>Administrativo</h1>
+            <h1>Reportes</h1>
         </div>
     )
 }

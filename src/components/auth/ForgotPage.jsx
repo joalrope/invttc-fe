@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './auth-styles.scss';
+import '../../assets/css/auth.scss';
 
 
 export const ForgotPage = () => {
