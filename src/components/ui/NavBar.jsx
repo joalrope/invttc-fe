@@ -5,7 +5,6 @@ import { GetItems } from './GetItems';
 import '../../assets/css/navbar.scss';
 
 const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-console.log(isLoggedIn);
 
 export const NavBar = () => {
 

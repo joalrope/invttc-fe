@@ -1,42 +1,51 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { VisitorsRouter } from './VisitorsRouter';
-import { UsersRouter } from './UsersRouter';
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRoute';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import { VisitorsRouter } from './VisitorsRouter';
+// import { UsersRouter } from './UsersRouter';
+// import { PrivateRoute } from './PrivateRoute';
+// import { PublicRoute } from './PublicRoute';
 import { NavBar } from '../components/ui/NavBar';
 import '../assets/css/index.scss';
-
+import {items} from '../assets/data/navbarJson';
+import {ErrorPage} from '../components/pages/ErrorPage';
+import { startChecking } from '../actions/auth';
 
 export const AppRouter = () => {
-    
+
+    const dispatch = useDispatch();
     const checking = false;
-    const role = Number(localStorage.getItem('role'))
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    let redirectTo = "/";
+    const role = Number(localStorage.getItem('role'));
+    // const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+    // let redirectTo = "/";
 
         
-    switch (role) {
+    // switch (role) {
 
-        case 0:
-        case 1:
-            redirectTo = "/"
-            break;
-        case 2:
-            redirectTo = "/app/inventory";
-            break;
+    //     case 0:
+    //     case 1:
+    //         redirectTo = "/"
+    //         break;
+    //     case 2:
+    //         redirectTo = "/app/inventory";
+    //         break;
         
-        case 3:
-            redirectTo = "/app/sales";
-            break;
+    //     case 3:
+    //         redirectTo = "/app/sales";
+    //         break;
         
-        case 4:
-            redirectTo = "/app/admin/reports";
-            break;
+    //     case 4:
+    //         redirectTo = "/app/admin/reports";
+    //         break;
 
-        default:
-            break;
-    }
+    //     default:
+    //         break;
+    // }
+
+
+    useEffect(() => {
+        dispatch(startChecking());
+    }, [dispatch])
 
     if (checking) {
         return (
@@ -49,19 +58,17 @@ export const AppRouter = () => {
         <Router>
             <div className="app-router">
                 <NavBar/>
-                <PublicRoute
-                    path="/"
-                    isAuthenticated= { isLoggedIn }
-                    component={VisitorsRouter}
-                    redirectTo= {redirectTo}
-                />
-
-                <PrivateRoute
-                    path="/app"
-                    isAuthenticated= { isLoggedIn }
-                    component={UsersRouter}
-                    redirectTo= "/"
-                />
+    
+                <Switch>
+                    {items.filter(item => item.role === role || item.role === 0 || item.role === 99).map(filtreredRole => (
+                        <Route
+                            key = {filtreredRole.id}
+                            component = {filtreredRole.component}
+                            exact path = {filtreredRole.to}
+                        />))
+                    }
+                    <Route component={ErrorPage}/>
+                </Switch>
             </div>
         </Router>
     )

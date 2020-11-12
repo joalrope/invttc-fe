@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const inventoryPage = () => {
+export const InventoryPage = () => {
     return (
         <div>
             <h1>Inventario</h1>

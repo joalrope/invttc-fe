@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { DashboardPage } from '../components/pages/DashboardPage';
-import { inventoryPage } from '../components/pages/inventoryPage';
 import { ServicePage } from '../components/pages/ServicePage';
 import { ErrorPage } from '../components/pages/ErrorPage';
 import { SalesPage } from '../components/pages/SalesPage';
@@ -30,14 +29,12 @@ export const UsersRouter = () => {
             <Route exact path="/app/login" component={LoginPage} />
             <Route exact path="/app/register" component={RegisterPage} />
             <Route exact path="/app/forgot" component={ForgotPage} />
-            <Route exact path='/app/inventory' component={inventoryPage} />
             <Route exact path='/app/inventory/quote' component={QuotePage} />
             <Route exact path='/app/inventary/prods-in' component={ProductsPage} />
             <Route exact path='/app/inventary/prods-out' component={ProductsPage} />
             <Route exact path='/app/inventory/quote' component={QuotePage} />
             <Route exact path='/app/sales' component={SalesPage} />
             <Route exact path='/app/sales/quote' component={QuotePage} />
-            <Route exact path='/app/admin/inventary' component={inventoryPage} />
             <Route exact path='/app/admin/inventary/prods-in' component={ProductsPage} />
             <Route exact path='/app/admin/inventary/prods-out' component={ProductsPage} />
             <Route exact path='/app/admin/sales' component={SalesPage} />

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { startHideLogin, startLogin, startShowPassForgot, startShowRegister } from '../../actions/auth';
 
 import '../../assets/css/auth.scss';
+import { useForm } from '../../hooks/userForm';
 
 
 
@@ -13,32 +16,47 @@ export const LoginPage = () => {
         (history.length>=1) ? history.goBack() : history.push("/");
     }
 
-    const handleSubmit = () => {
-        localStorage.setItem('name', 'Administrador');
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('role', 4);
-        goBack();    
-    }
+    const dispatch = useDispatch();
     
+    const [formValues, handleInputChange] = useForm({
+        Email: '',
+        Password: ''
+    });
+    
+    const {Email, Password} = formValues;
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(startLogin(Email, Password));
+        // if (localStorage.getItem('isLoggedIn')) {
+        //     dispatch(startHideLogin());
+        // }
+    }
+
+    const handleHideLogin = () => {
+        dispatch(startHideLogin());
+    }
+
+    const handleShowRegister = () => {
+        dispatch(startShowRegister());
+        handleHideLogin();
+    }
+
+    const handleShowPasswordForgot = () => {
+        dispatch(startShowPassForgot());
+        handleHideLogin();
+    }
+
     const handleLoginFacebk = () => {
-        localStorage.setItem('name', 'Visitante autorizado');
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('role', 1); 
-        goBack();    
+
     }
-    
+
     const handleLoginGoogle = () => {
-        localStorage.setItem('name', 'Almacenista');
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('role', 2); 
-        goBack();    
+
     }
-    
+
     const handleLoginTwittr = () => {
-        localStorage.setItem('name', 'Vendedor');
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('role', 3); 
-        goBack();    
+        
     }
 
 
@@ -60,13 +78,27 @@ export const LoginPage = () => {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" className="form-control" placeholder="Nombre de usuario"/>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Correo"
+                                        name="Email"
+                                        value={Email}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                                 <div className="input-group form-group">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text"><i className="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" className="form-control" placeholder="password"/>
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        placeholder="password"
+                                        name="Password"
+                                        value={Password}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                                 <div className="row align-items-center remember">
                                     <input type="checkbox"/>Recordarme
@@ -82,10 +114,10 @@ export const LoginPage = () => {
                             </form>
                         </div>
                         <div className="card-footer">
-                            <div className="d-flex justify-content-end links">
+                            <div className="d-flex justify-content-end links" onClick={handleShowRegister}>
                                 ¿No tiene una cuenta?<Link to="/register">Registrese</Link>
                             </div>
-                            <div className="d-flex justify-content-end links">
+                            <div className="d-flex justify-content-end links" onClick={handleShowPasswordForgot}>
                                 <Link to="/forgot">Olvidó su contraseña?</Link>
                             </div>
                         </div>
