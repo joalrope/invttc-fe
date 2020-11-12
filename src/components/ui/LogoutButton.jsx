@@ -4,11 +4,11 @@ export const LogoutButton = () => {
 
     const handleLogout = () => {
         // dispatch(startLogout());
-        
+
+        localStorage.clear();
         localStorage.setItem('isLoggedIn', false)
-        localStorage.setItem('name', '')
-        localStorage.setItem('role', '0')
-        
+        localStorage.setItem('role', 'basic')
+        console.log('saliendo');
 
     }
     const name = localStorage.getItem('name');

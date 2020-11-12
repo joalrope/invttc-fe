@@ -4,11 +4,10 @@ const initialState = {
     checking: true,
     loginVisible: false,
     RegisterVisible: false,
-    PassForgotVisible: false
-
-    // uid: null,
-    // name: null
-
+    PassForgotVisible: false,
+    uid: null,
+    name: null,
+    role: 'basic'
 }
 export const authReducer = ( state = initialState, action ) => {
 

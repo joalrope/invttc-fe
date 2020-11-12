@@ -9,7 +9,7 @@ export const startLogin = (email, password) => {
     return async (dispatch) => {
             
         const resp = await fetchWithoutToken('/auth', {email, password}, 'POST');
-        const {ok, msg, token, uid, name} = await resp.json();
+        const {ok, msg, token, uid, name, role} = await resp.json();
 
         if (ok) {
             
@@ -20,6 +20,7 @@ export const startLogin = (email, password) => {
             
             localStorage.setItem('isLoggedIn', true);
             localStorage.setItem('name', name);
+            localStorage.setItem('role', role);
             localStorage.setItem('token', token);
             localStorage.setItem('token-init-date', new Date().getTime());
 
@@ -35,11 +36,12 @@ export const startRegister = (name, email, password) => {
     return async (dispatch) => {
         
         const resp = await fetchWithoutToken('/auth/new', {name, email, password}, 'POST');
-        const {ok, msg, token, uid, name: userName} = await resp.json();
+        const {ok, msg, token, uid, name: userName, role} = await resp.json();
 
 
         if (ok) {
             localStorage.setItem('token', token);
+            localStorage.setItem('role', role);
             localStorage.setItem('token-init-date', new Date().getTime());
 
             dispatch(login({
@@ -67,10 +69,11 @@ export const startChecking = () => {
         if ('token' in localStorage) {
         
             const resp = await fetchWithToken('/auth/renew');
-            const {ok, token, uid, name} = await resp.json();
+            const {ok, token, uid, name, role} = await resp.json();
     
             if (ok) {
                 localStorage.setItem('token', token);
+                localStorage.setItem('role', role);
                 localStorage.setItem('token-init-date', new Date().getTime());
     
                 dispatch(login({
@@ -117,6 +120,8 @@ export const startShowPassForgot = () => {
 
 
 export const startHideLogin = () => {
+
+    
     
 }
 

@@ -28,9 +28,7 @@ export const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(startLogin(Email, Password));
-        // if (localStorage.getItem('isLoggedIn')) {
-        //     dispatch(startHideLogin());
-        // }
+        goBack();
     }
 
     const handleHideLogin = () => {

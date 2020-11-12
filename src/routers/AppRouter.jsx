@@ -15,7 +15,7 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
     const checking = false;
-    const role = Number(localStorage.getItem('role'));
+    const role = localStorage.getItem('role');
     // const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
     // let redirectTo = "/";
 
@@ -60,8 +60,8 @@ export const AppRouter = () => {
                 <NavBar/>
     
                 <Switch>
-                    {items.filter(item => item.role === role || item.role === 0 || item.role === 99).map(filtreredRole => (
-                        <Route
+                    {items.filter(item => item.role === role || item.role === 'all').map(filtreredRole => (
+                        <Route 
                             key = {filtreredRole.id}
                             component = {filtreredRole.component}
                             exact path = {filtreredRole.to}
