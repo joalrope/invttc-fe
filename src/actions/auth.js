@@ -15,12 +15,11 @@ export const startLogin = (email, password) => {
             
             dispatch(login({
                 uid,
-                name
+                name,
+                role,
+                isLoggedIn: true
             }));
             
-            localStorage.setItem('isLoggedIn', true);
-            localStorage.setItem('name', name);
-            localStorage.setItem('role', role);
             localStorage.setItem('token', token);
             localStorage.setItem('token-init-date', new Date().getTime());
 
@@ -46,7 +45,8 @@ export const startRegister = (name, email, password) => {
 
             dispatch(login({
                 uid,
-                userName
+                userName,
+                role
             }));
 
         } else {
@@ -73,12 +73,17 @@ export const startChecking = () => {
     
             if (ok) {
                 localStorage.setItem('token', token);
-                localStorage.setItem('role', role);
                 localStorage.setItem('token-init-date', new Date().getTime());
+
+                let isLoggedIn;
+
+                (uid) ? isLoggedIn = true : isLoggedIn = false
     
                 dispatch(login({
                     uid,
-                    name
+                    name,
+                    role,
+                    isLoggedIn
                 }));
     
             } else {

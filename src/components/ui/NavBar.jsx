@@ -1,14 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { AuthButtons } from './AuthButtons';
 import { LogoutButton } from './LogoutButton';
 import { GetItems } from './GetItems';
 import '../../assets/css/navbar.scss';
 
-const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-console.log(isLoggedIn);
-
 export const NavBar = () => {
-
+    const {isLoggedIn} = useSelector(state => state.auth);
 
     return (
         <nav className="navbar navbar-expand-sm navbar-light navbar-app">
@@ -24,7 +22,7 @@ export const NavBar = () => {
                 <ul className="navbar-nav">
                     <GetItems/>
                 </ul>
-                { (isLoggedIn) ? <LogoutButton/> :  <AuthButtons/> }
+                { (isLoggedIn ) ? <LogoutButton/> :  <AuthButtons/> }
             </div>
         </nav>
     )

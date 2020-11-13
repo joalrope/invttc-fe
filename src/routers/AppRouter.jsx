@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { VisitorsRouter } from './VisitorsRouter';
 // import { UsersRouter } from './UsersRouter';
@@ -15,37 +15,12 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
     const checking = false;
-    const role = localStorage.getItem('role');
-    // const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    // let redirectTo = "/";
-
-        
-    // switch (role) {
-
-    //     case 0:
-    //     case 1:
-    //         redirectTo = "/"
-    //         break;
-    //     case 2:
-    //         redirectTo = "/app/inventory";
-    //         break;
-        
-    //     case 3:
-    //         redirectTo = "/app/sales";
-    //         break;
-        
-    //     case 4:
-    //         redirectTo = "/app/admin/reports";
-    //         break;
-
-    //     default:
-    //         break;
-    // }
+    const {role} = useSelector(state => state.auth);
 
 
     useEffect(() => {
         dispatch(startChecking());
-    }, [dispatch])
+    }, [dispatch, role])
 
     if (checking) {
         return (
@@ -60,7 +35,7 @@ export const AppRouter = () => {
                 <NavBar/>
     
                 <Switch>
-                    {items.filter(item => item.role === role || item.role === 'all').map(filtreredRole => (
+                    {items.filter(item => item.roles.includes(role) || item.roles === 'all').map(filtreredRole => (
                         <Route 
                             key = {filtreredRole.id}
                             component = {filtreredRole.component}

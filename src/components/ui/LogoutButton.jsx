@@ -1,17 +1,14 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { startLogout } from '../../actions/auth';
 
 export const LogoutButton = () => {
 
+    const dispatch = useDispatch();
+    const {name} = useSelector(state => state.auth);  
     const handleLogout = () => {
-        // dispatch(startLogout());
-
-        localStorage.clear();
-        localStorage.setItem('isLoggedIn', false)
-        localStorage.setItem('role', 'basic')
-        console.log('saliendo');
-
+        dispatch(startLogout());
     }
-    const name = localStorage.getItem('name');
 
     
     return (

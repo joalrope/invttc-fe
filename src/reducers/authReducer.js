@@ -2,12 +2,10 @@ import { types } from '../types/types';
 
 const initialState = {
     checking: true,
-    loginVisible: false,
-    RegisterVisible: false,
-    PassForgotVisible: false,
     uid: null,
     name: null,
-    role: 'basic'
+    role: 'basic',
+    isLoggedIn: false
 }
 export const authReducer = ( state = initialState, action ) => {
 
@@ -17,6 +15,8 @@ export const authReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 ...action.payload,
+                role: action.payload.role,
+                isLoggedIn: action.payload.isLoggedIn,
                 checking: false
             }
 
@@ -28,7 +28,7 @@ export const authReducer = ( state = initialState, action ) => {
 
         case types.authlogout:
             return {
-                state: undefined,
+                state: initialState,
              }
 
         case types.authShowLogin:
