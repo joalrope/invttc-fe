@@ -19,7 +19,7 @@ export const GetItems = () => {
 
             {(isLoggedIn) &&
                 <li className="nav-item dropdown">
-                    <Link className="dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <Link className="dropdown-toggle web-item" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Web
                     </Link>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">

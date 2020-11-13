@@ -31,6 +31,7 @@ export const startLogin = (email, password) => {
 
 export const startRegister = (name, email, password) => {
 
+
     return async (dispatch) => {
         
         const resp = await fetchWithoutToken('/auth/new', {name, email, password}, 'POST');

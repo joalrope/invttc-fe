@@ -5,9 +5,9 @@ const arAll = 'all';    // Todos
 const arInve = ['storer', 'storer-chief', 'admin', 'developer' ];           // Inventario
 const arProd = ['storer', 'storer-chief', 'admin', 'developer' ];           // Productos
 const arQuot = ['storer', 'storer-chief', 'seller', 'admin', 'developer' ]; // Cotizacion
-const arSell = ['storer', 'storer-chief', 'admin', 'developer' ];           // Ventas
+const arSell = ['storer-chief', 'seller', 'admin', 'developer' ];           // Ventas
 const arRepo = ['admin', 'owner', 'developer' ];                            // Reportes
-const arDash = ['admin', 'owner', 'developer' ];                            // Panel
+const arDash = ['owner', 'developer' ];                                     // Panel
 
 
 export const items = [
@@ -20,9 +20,9 @@ export const items = [
         {id: 70,    title: '',              to: '/forgot',          roles: arAll,   component: pages.ForgotPage     },
         {id: 80,    title: 'Inventario',    to: '/app/inventory',   roles: arInve,  component: pages.InventoryPage  },
         {id: 90,    title: 'Cargar',        to: '/app/prods-in',    roles: arProd,  component: pages.ProductsPage   },
-        {id: 100,    title: 'Descargar',     to: '/app/prods-out',   roles: arProd,  component: pages.ProductsPage   },
-        {id: 110,   title: 'Cotización',    to: '/app/quote',       roles: arQuot,  component: pages.QuotePage      },
-        {id: 120,   title: 'Ventas',        to: '/app/sales',       roles: arSell,  component: pages.SalesPage      },
+        {id: 100,   title: 'Descargar',     to: '/app/prods-out',   roles: arProd,  component: pages.ProductsPage   },
+        {id: 110,   title: 'Ventas',        to: '/app/sales',       roles: arSell,  component: pages.SalesPage      },
+        {id: 120,   title: 'Cotización',    to: '/app/quote',       roles: arQuot,  component: pages.QuotePage      },
         {id: 130,   title: 'Reportes',      to: '/app/reports',     roles: arRepo,  component: pages.ReportPage     },
         {id: 140,   title: 'Panel',         to: '/app/dashboard',   roles: arDash,  component: pages.DashboardPage  }
 ]

@@ -1,26 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import { VisitorsRouter } from './VisitorsRouter';
-// import { UsersRouter } from './UsersRouter';
-// import { PrivateRoute } from './PrivateRoute';
-// import { PublicRoute } from './PublicRoute';
-import { NavBar } from '../components/ui/NavBar';
-import '../assets/css/index.scss';
-import {items} from '../assets/data/navbarJson';
 import {ErrorPage} from '../components/pages/ErrorPage';
-import { startChecking } from '../actions/auth';
+import { NavBar } from '../components/ui/NavBar';
+import {items} from '../assets/data/navbarJson';
+import '../assets/css/index.scss';
 
 export const AppRouter = () => {
 
-    const dispatch = useDispatch();
     const checking = false;
     const {role} = useSelector(state => state.auth);
-
-
-    useEffect(() => {
-        dispatch(startChecking());
-    }, [dispatch])
 
 
     if (checking) {

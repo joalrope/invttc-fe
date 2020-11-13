@@ -11,9 +11,14 @@ export const SearchCode = () => {
 
     const {Codigo} = formValues;
 
-    // useEffect(() => {
-    //     handleCodeChange(Codigo)
-    // }, [Codigo)
+    const handleCodeChange = (code) => {
+        console.log(code);
+
+    }
+
+    useEffect(() => {
+        handleCodeChange(Codigo)
+    }, [Codigo])
 
     return (
         <div className="input-group form-group input-code">
@@ -27,14 +32,6 @@ export const SearchCode = () => {
                 name="Codigo"
                 value={Codigo}
                 onChange={handleInputChange}
-            />
-            <input
-                type="text"
-                className="form-control"
-                placeholder="Código"
-                style={{display: "none"}}
-                value={Codigo}
-                onChange={handleCodeChange}
             />
         </div>
     )

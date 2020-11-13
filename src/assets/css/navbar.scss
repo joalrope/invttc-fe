@@ -11,6 +11,12 @@ html, body {
 #navbarSupportedContent{
     z-index: 999;
 }
+
+.web-item {
+    position: relative;
+    top: 7px;
+}
+
 .navbar-toggler {
     position: fixed;
     right: 10px;
