@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { startHideLogin, startLogin, startShowPassForgot, startShowRegister } from '../../actions/auth';
+import { startLogin } from '../../actions/auth';
 
 import '../../assets/css/auth.scss';
 import { useForm } from '../../hooks/userForm';
@@ -31,18 +31,14 @@ export const LoginPage = () => {
         goBack();
     }
 
-    const handleHideLogin = () => {
-        dispatch(startHideLogin());
-    }
-
     const handleShowRegister = () => {
-        dispatch(startShowRegister());
-        handleHideLogin();
+        history.push('/register');
+        goBack();
     }
 
     const handleShowPasswordForgot = () => {
-        dispatch(startShowPassForgot());
-        handleHideLogin();
+        history.push('/forgot');
+        goBack();
     }
 
     const handleLoginFacebk = () => {

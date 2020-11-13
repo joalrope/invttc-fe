@@ -1,12 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { startLogout } from '../../actions/auth';
 
 export const LogoutButton = () => {
 
     const dispatch = useDispatch();
     const {name} = useSelector(state => state.auth);  
+    const history = useHistory();
+
     const handleLogout = () => {
+        history.push('/');
         dispatch(startLogout());
     }
 

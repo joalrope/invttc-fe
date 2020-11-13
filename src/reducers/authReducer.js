@@ -28,7 +28,12 @@ export const authReducer = ( state = initialState, action ) => {
 
         case types.authlogout:
             return {
-                state: initialState,
+                ...state,
+                checking: true,
+                uid: null,
+                name: null,
+                role: 'basic',
+                isLoggedIn: false
              }
 
         case types.authShowLogin:

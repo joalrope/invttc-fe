@@ -11,7 +11,7 @@ export const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-sm navbar-light navbar-app">
             <div className="navbar-brand navbar-logo">
-                <img src="/logo.png" height="80" alt="logo de TractoCenter"/>
+                <img src="/logo.png" height="60" alt="logo de TractoCenter"/>
             </div>
         
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">

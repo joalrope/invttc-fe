@@ -20,7 +20,8 @@ export const AppRouter = () => {
 
     useEffect(() => {
         dispatch(startChecking());
-    }, [dispatch, role])
+    }, [dispatch])
+
 
     if (checking) {
         return (

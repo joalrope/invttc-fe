@@ -12,7 +12,6 @@ import {QuotePage} from '../pages/QuotePage';
 import {RegisterPage} from '../auth/RegisterPage';
 import {ReportPage} from '../pages/ReportPage';
 import {SalesPage} from '../pages/SalesPage';
-import {ServicePage} from '../pages/ServicePage';
 
 export default {
     AboutPage,
@@ -28,6 +27,5 @@ export default {
     QuotePage,
     RegisterPage,
     ReportPage,
-    SalesPage,
-    ServicePage
+    SalesPage
 }
