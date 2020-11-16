@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { authReducer } from './authReducer';
 import { uiReducer } from './uiReducer';
-import { calendarReducer } from './calendarReducer';
+import { productReducer } from './productReducer';
 
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
-    calendar: calendarReducer,
+    product: productReducer,
     auth: authReducer,
 });

@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 import { types } from '../types/types';
-import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch"
+import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 
 
 export const startLogin = (email, password) => { 

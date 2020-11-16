@@ -11,7 +11,6 @@ export const LogoutButton = () => {
 
     const handleLogout = () => {
         history.push('/');
-         .clear();
         dispatch(startLogout());
     }
 

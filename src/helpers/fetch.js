@@ -26,21 +26,19 @@ const fetchWithToken = (endpoint, data, method = 'GET', header) => {
     
     const url = `${baseUrl}${endpoint}`;
     const token = sessionStorage.token;
-    const headers = {'x-token': token, ...header};
+    const getHeaders = {'x-token': token, ...header};
+    const postHeaders = {'content-type': 'application/json', 'x-token': token, ...header};
 
     
     if (method === 'GET') {
         return fetch(url, {
             method,
-            headers
+            headers: getHeaders
         });
     } else {
         return fetch(url, {
             method,
-            headers: {
-                'content-type': 'application/json',
-                'x-token': token
-            },
+            headers: postHeaders,
             body: JSON.stringify(data),
         });
     }

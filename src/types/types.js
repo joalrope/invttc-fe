@@ -19,14 +19,12 @@ export const types = {
     uiFinishLoading: '[UI] Finish loading',
 
 
-    eventSetActive: '[event] Set active',
-    eventStartAddNew: '[event Start add new',
-    eventAddNew: '[event] Add New',
-    eventClearActiveEvent: '[event] Clear active event',
-    eventUpdated: '[event] Event updated',
-    eventDeleted: '[event] Event deleted',
-    eventLoaded: '[event] Loaded events',
-    eventLogout: '[event] Lougout event',
-
+    productSetActive: '[product] Set active',
+    productStartAddNew: '[product] Start add new',
+    productAddNew: '[product] Add New',
+    productClearActivepPoduct: '[product] Clear active product',
+    productUpdated: '[product] product updated',
+    productDeleted: '[product] product deleted',
+    productLoaded: '[product] Loaded products',
 
 }

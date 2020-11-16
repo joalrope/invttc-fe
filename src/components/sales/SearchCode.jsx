@@ -1,20 +1,21 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { findProductByCode } from '../../helpers/find-product';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { findProductByCode } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
+import { ListProducts } from './ListProducts';
 
 
 export const SearchCode = () => {
 
-    const [formValues, handleInputChange] = useForm({
-        Code: '',
-    });
-
+    const {products} = useSelector(state => state.product)
+    const dispatch = useDispatch();
+    const [formValues, handleInputChange] = useForm({Code: ''});
     const {Code} = formValues;
-
+    
     useEffect(() => {
-        findProductByCode(Code)
-    }, [Code])
+        dispatch(findProductByCode(Code));
+    }, [dispatch, Code])
+
 
     return (
         <div className="input-group form-group input-code">
@@ -29,6 +30,12 @@ export const SearchCode = () => {
                 value={Code}
                 onChange={handleInputChange}
             />
+            {
+                products.map(product => (
+                    <ListProducts key={product.id } {...product}/>
+                ))
+
+            }
         </div>
     )
 }
