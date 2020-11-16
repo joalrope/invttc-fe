@@ -18,9 +18,8 @@ export const startLogin = (email, password) => {
                 role,
                 isLoggedIn: true
             }));
-            
-            localStorage.setItem('token', token);
-            localStorage.setItem('token-init-date', new Date().getTime());
+
+            sessionStorage.token = token;
 
         } else {
             Swal.fire('Error', msg, 'error');
@@ -39,8 +38,8 @@ export const startRegister = (name, email, password) => {
 
 
         if (ok) {
-            localStorage.setItem('token', token);
-            localStorage.setItem('token-init-date', new Date().getTime());
+            sessionStorage.token = token;
+            sessionStorage.token_init_date = new Date().getTime();
 
             dispatch(login({
                 uid,
@@ -65,14 +64,14 @@ export const startChecking = () => {
     
     return async (dispatch) => {
         
-        if ('token' in localStorage) {
+        if ('token' in sessionStorage ) {
         
             const resp = await fetchWithToken('/auth/renew');
             const {ok, token, uid, name, role} = await resp.json();
     
             if (ok) {
-                localStorage.setItem('token', token);
-                localStorage.setItem('token-init-date', new Date().getTime());
+                sessionStorage.token = token;
+                sessionStorage.token_init_date = new Date().getTime();
 
                 let isLoggedIn;
 

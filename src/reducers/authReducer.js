@@ -1,11 +1,16 @@
-import { types } from '../types/types';
+import {types} from '../types/types';
+import {parseJwt} from '../helpers/parse-jwt';
+
+
+const {uid, name, role} = parseJwt();
+const isLoggedIn = (uid && name && role) ? true : false
 
 const initialState = {
     checking: true,
-    uid: null,
-    name: null,
-    role: 'basic',
-    isLoggedIn: false
+    uid: null || uid,
+    name: null || name,
+    role: role || 'basic',
+    isLoggedIn
 }
 export const authReducer = ( state = initialState, action ) => {
 
@@ -15,8 +20,6 @@ export const authReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 ...action.payload,
-                role: action.payload.role,
-                isLoggedIn: action.payload.isLoggedIn,
                 checking: false
             }
 

@@ -4,7 +4,7 @@ const arAll = 'all';    // Todos
 
 const arInve = ['storer', 'storer-chief', 'admin', 'developer' ];           // Inventario
 const arProd = ['storer', 'storer-chief', 'admin', 'developer' ];           // Productos
-const arQuot = ['storer', 'storer-chief', 'seller', 'admin', 'developer' ]; // Cotizacion
+const arQuot = ['freelance', 'storer', 'storer-chief', 'seller', 'admin', 'owner', 'developer' ]; // Cotizacion
 const arSell = ['storer-chief', 'seller', 'admin', 'developer' ];           // Ventas
 const arRepo = ['admin', 'owner', 'developer' ];                            // Reportes
 const arDash = ['owner', 'developer' ];                                     // Panel

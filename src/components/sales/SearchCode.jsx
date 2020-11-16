@@ -1,24 +1,20 @@
 import React from 'react'
 import { useEffect } from 'react';
+import { findProductByCode } from '../../helpers/find-product';
 import { useForm } from '../../hooks/userForm';
 
 
 export const SearchCode = () => {
 
     const [formValues, handleInputChange] = useForm({
-        Codigo: '',
+        Code: '',
     });
 
-    const {Codigo} = formValues;
-
-    const handleCodeChange = (code) => {
-        console.log(code);
-
-    }
+    const {Code} = formValues;
 
     useEffect(() => {
-        handleCodeChange(Codigo)
-    }, [Codigo])
+        findProductByCode(Code)
+    }, [Code])
 
     return (
         <div className="input-group form-group input-code">
@@ -29,8 +25,8 @@ export const SearchCode = () => {
                 type="text"
                 className="form-control"
                 placeholder="Código"
-                name="Codigo"
-                value={Codigo}
+                name="Code"
+                value={Code}
                 onChange={handleInputChange}
             />
         </div>

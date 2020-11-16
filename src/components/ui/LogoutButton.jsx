@@ -11,7 +11,7 @@ export const LogoutButton = () => {
 
     const handleLogout = () => {
         history.push('/');
-        localStorage.clear();
+         .clear();
         dispatch(startLogout());
     }
 

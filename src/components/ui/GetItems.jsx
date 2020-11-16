@@ -24,7 +24,7 @@ export const GetItems = () => {
                     </Link>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                         {items.filter(item => item.roles === 'all').map(filtreredRole => (
-                            <Link to={filtreredRole.to} key={filtreredRole.id} className="dropdown-item">{filtreredRole.title}</Link>
+                            (filtreredRole.title) && <Link to={filtreredRole.to} key={filtreredRole.id} className="dropdown-item">{filtreredRole.title}</Link>
                         ))}
                     </div>
                 </li> 

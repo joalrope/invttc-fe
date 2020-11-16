@@ -22,17 +22,17 @@ const fetchWithoutToken = (endpoint, data, method = 'GET') => {
 }
 
 
-const fetchWithToken = (endpoint, data, method = 'GET') => {
+const fetchWithToken = (endpoint, data, method = 'GET', header) => {
     
     const url = `${baseUrl}${endpoint}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.token;
+    const headers = {'x-token': token, ...header};
 
+    
     if (method === 'GET') {
         return fetch(url, {
             method,
-            headers: {
-                'x-token': token
-            }
+            headers
         });
     } else {
         return fetch(url, {
