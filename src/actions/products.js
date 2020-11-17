@@ -7,11 +7,16 @@ export const findProductByCode = (code) => {
     return async (dispatch) => {
         
         try {
-            const resp = await fetchWithToken(`/products/code/${code}`);
-            const body = await resp.json();
+
+            if (code.length > 1) {
+                const resp = await fetchWithToken(`/products/code/${code}`);
+                const body = await resp.json();
         
-            if (body.ok) {
-                dispatch(setProductsLoaded(body.result));
+                if (body.ok) {
+                    dispatch(setProductsLoaded(body.result));
+                }
+            } else {
+                dispatch(setProductsLoaded([]));
             }
             
         } catch (error) {

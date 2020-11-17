@@ -2,13 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { startRegister } from '../../actions/auth';
-// import { useDispatch } from 'react-redux';
-// import Swal from 'sweetalert2';
-// import { startHideRegister, startRegister, startShowLogin } from '../../actions/auth';
-// import { useForm } from '../../hooks/userForm';
-import '../../assets/css/auth.scss';
 import { useForm } from '../../hooks/userForm';
+import { startRegister } from '../../actions/auth';
+import '../../assets/css/auth.scss';
 
 export const RegisterPage = () => {
 
