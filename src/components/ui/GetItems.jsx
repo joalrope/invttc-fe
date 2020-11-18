@@ -10,7 +10,7 @@ export const GetItems = () => {
 
 
     return (
-        <div className="navbar-nav">
+        <>
             {!isLoggedIn && items.filter(item => item.roles === 'all').map(filtreredRole => (
                 <li key={filtreredRole.id} className="nav-item">
                     {(filtreredRole.title !== '') && <Link to={filtreredRole.to} className="nav-link"><span className="navbar-item">{filtreredRole.title}</span></Link>}
@@ -24,7 +24,7 @@ export const GetItems = () => {
                     </Link>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                         {items.filter(item => item.roles === 'all').map(filtreredRole => (
-                            (filtreredRole.title) && <Link to={filtreredRole.to} key={filtreredRole.id} className="dropdown-item">{filtreredRole.title}</Link>
+                            (filtreredRole.title) && <Link to={filtreredRole.to} key={filtreredRole.id} className="dropdown-item"><span className="navbar-item">{filtreredRole.title}</span></Link>
                         ))}
                     </div>
                 </li> 
@@ -35,7 +35,7 @@ export const GetItems = () => {
                         <Link to={filtreredRole.to} className="nav-link"><span className="navbar-item">{filtreredRole.title}</span></Link>
                     </li>
             ))}
-        </div>
+        </>
        
 
 

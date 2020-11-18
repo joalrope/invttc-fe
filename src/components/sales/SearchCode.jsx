@@ -1,46 +1,19 @@
 import React, { useEffect } from 'react'
-import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
+import DataTable from 'react-bs-datatable';
 import { findProductByCode } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
 
-const customStyles = {
-    title: {
-      style: {
-        fontSize: "1px",
-        fontColor: "red",
-        fontWeight: "10"
-      }
-    },
-    rows: {
-      style: {
-        minHeight: "20px", // override the row height
-        
-    }
-},
-headCells: {
-    style: {
-        fontSize: "12px",
-        fontWeight: "300",
-    }
-},
-cells: {
-    style: {
-        fontSize: "12px",
-        cursor: "pointer"
-      }
-    }
-  };
 
 
-const columns = [
+const headers = [
     {
-      name: "Código",
-      selector: "code",
+        title: "Código",
+        prop: "code",
     },
     {
-      name: "Descripción",
-      selector: "title",
+        title: "Producto",
+        prop: "title"
     }
   ];
 
@@ -51,6 +24,9 @@ export const SearchCode = () => {
     const [formValues, handleInputChange] = useForm({Code: ''});
     const {Code} = formValues;
 
+    const handleRowClick = (row) => {
+        alert(`You clicked on the row ${JSON.stringify(row)}`);
+    } 
 
 
     useEffect(() => {
@@ -59,29 +35,34 @@ export const SearchCode = () => {
 
     console.log(products.length)
     return (
-        <div className="input-group form-group input-code">
+        <>
+    
+        <div className="input-group form-group group-input-search-code">
             <div className="input-group-prepend">
                 <span className="input-group-text"><i className="fas fa-search-dollar"></i></span>
             </div>
             <input
                 type="text"
-                className="form-control"
+                className="form-control input-search-code"
                 placeholder="Código"
                 name="Code"
+                autoComplete="off"
                 value={Code}
                 onChange={handleInputChange}
             />
-            {
-                (products.length > 0) && 
-                    (<div className="table-container">
-                        <DataTable
-                            columns={columns}
-                            data={products}
-                            customStyles={customStyles}
-                        />
-                    </div>)
-            }
+           
         </div>
+        {
+            (products.length > 0) && 
+                (<div className="input-search-code">
+                    <DataTable
+                        tableHeaders={headers}
+                        tableBody={products}
+                        onRowClick={handleRowClick}
+                    />
+                </div>)
+            }
+        </>
 
     )
 }

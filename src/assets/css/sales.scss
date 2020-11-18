@@ -1,11 +1,27 @@
 
-
-.input-code {
-    width: 15vw;
-}
-
 .table-container {
     padding: 5px;
     border: 1.5px solid hsla(0, 0%, 0%, 0.192);
     width: 800px;
+}
+
+.input-search-code {
+    width: 15vw;
+}
+
+
+.table td, .table th {
+    padding: 0px;
+    cursor: pointer;
+}
+
+.group-input-search-code {
+    margin: 0px;
+}
+
+
+@media screen and (max-width: 575px){
+    .input-search-code {
+        width: 100vw;        
+    }
 }
