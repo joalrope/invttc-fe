@@ -62,7 +62,6 @@ export const eventStartUpdate = (event) => {
 
             } else {
                 Swal.fire('Advertencia', body.msg, 'warning');
-                console.log(body.msg);
             }
             
         } catch (error) {

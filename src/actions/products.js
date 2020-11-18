@@ -27,6 +27,32 @@ export const findProductByCode = (code) => {
 }
 
 
+export const findProductById = (id) => {
+
+    
+    return async (dispatch) => {
+
+        try {
+            const resp = await fetchWithToken(`/products/${id}`);
+            const body = await resp.json();
+
+            if (body.ok) {
+                dispatch(productSetActive(body.result));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+}
+
+
+export const productSetActive = (product) => ({
+    type: types.productSetActive,
+    payload: product
+});
+
+
 const setProductsLoaded = (products) => ({
     type: types.productLoaded,
     payload: products

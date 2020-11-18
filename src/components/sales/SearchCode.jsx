@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import DataTable from 'react-bs-datatable';
-import { findProductByCode } from '../../actions/products';
+import { findProductByCode, findProductById } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
-
 
 
 const headers = [
     {
-        title: "Código",
         prop: "code",
     },
     {
-        title: "Producto",
         prop: "title"
     }
   ];
+
 
 export const SearchCode = () => {
 
@@ -23,17 +21,37 @@ export const SearchCode = () => {
     const dispatch = useDispatch();
     const [formValues, handleInputChange] = useForm({Code: ''});
     const {Code} = formValues;
+    const [isTableVisible, setisTableVisible] = useState(true)
+
 
     const handleRowClick = (row) => {
-        alert(`You clicked on the row ${JSON.stringify(row)}`);
+        const {id} = JSON.parse(JSON.stringify(row));
+        dispatch(findProductById(id));        
     } 
+    
+    const handleInputBlur = () => {
+        // setisTableVisible(false);
+        // reset();
+    }
 
+    const handleOnKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            findProductByCode(Code);
+        
+            // dispatch(findProductById(id));
+        }
+    }
+    
+    const handleInputFocus = () => {
+        setisTableVisible(true);
+    }
 
     useEffect(() => {
-        dispatch(findProductByCode(Code));
+        dispatch(findProductByCode(Code.toUpperCase()));
     }, [dispatch, Code])
 
-    console.log(products.length)
+
+
     return (
         <>
     
@@ -49,11 +67,14 @@ export const SearchCode = () => {
                 autoComplete="off"
                 value={Code}
                 onChange={handleInputChange}
+                onBlur={handleInputBlur}
+                onFocus={handleInputFocus}
+                onKeyPress={handleOnKeyPress}
             />
            
         </div>
         {
-            (products.length > 0) && 
+            (products.length > 0 && isTableVisible) && 
                 (<div className="input-search-code">
                     <DataTable
                         tableHeaders={headers}
