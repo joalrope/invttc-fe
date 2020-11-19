@@ -4,47 +4,52 @@ import DataTable from 'react-bs-datatable';
 import { findProductByCode, findProductById } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
 
-
-const headers = [
-    {
-        prop: "code",
-    },
-    {
-        prop: "title"
-    }
-  ];
+const headers = [{prop: "code"}, {prop: "title"}];
 
 
 export const SearchCode = () => {
 
     const {products} = useSelector(state => state.product)
+    const {activeProduct} = useSelector(state => state.product);
     const dispatch = useDispatch();
-    const [formValues, handleInputChange] = useForm({Code: ''});
+    const [formValues, handleInputChange, reset] = useForm({Code: ''});
     const {Code} = formValues;
     const [isTableVisible, setisTableVisible] = useState(true)
 
 
     const handleRowClick = (row) => {
         const {id} = JSON.parse(JSON.stringify(row));
-        dispatch(findProductById(id));        
+        dispatch(findProductById(id));
+        setisTableVisible(false);
+        if(!!activeProduct) {
+            reset();
+        }
     } 
     
-    const handleInputBlur = () => {
-        // setisTableVisible(false);
-        // reset();
-    }
 
     const handleOnKeyPress = (e) => {
+
         if (e.key === 'Enter') {
-            findProductByCode(Code);
-        
-            // dispatch(findProductById(id));
+            dispatch(findProductByCode(Code));
+
+            const {id} = products[0];
+
+            if (!!id) {
+                dispatch(findProductById(id));
+                setisTableVisible(false);
+                if(!!activeProduct) {
+                    reset();
+                }
+            }
+            
         }
     }
     
+
     const handleInputFocus = () => {
         setisTableVisible(true);
     }
+
 
     useEffect(() => {
         dispatch(findProductByCode(Code.toUpperCase()));
@@ -67,7 +72,6 @@ export const SearchCode = () => {
                 autoComplete="off"
                 value={Code}
                 onChange={handleInputChange}
-                onBlur={handleInputBlur}
                 onFocus={handleInputFocus}
                 onKeyPress={handleOnKeyPress}
             />
@@ -82,7 +86,7 @@ export const SearchCode = () => {
                         onRowClick={handleRowClick}
                     />
                 </div>)
-            }
+        }
         </>
 
     )
