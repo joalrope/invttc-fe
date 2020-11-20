@@ -18,7 +18,18 @@ const headers = [
 export const ProductInfo = () => {
 
     const {activeProduct} = useSelector(state => state.product);
-    const {code, title, category, replacement, measurement, status } = activeProduct || [];
+    
+    if (activeProduct === null) {
+        return <></>
+    }
+    const {code, title, category, replacement, measurement, status, info } = activeProduct || [];
+
+    const reo = info.map(item => {
+
+        return item.length;
+    })
+
+    console.log(reo);
 
     const rowSpan = 2;
 
@@ -30,7 +41,7 @@ export const ProductInfo = () => {
                     <h5>Detalle de Producto</h5>
                     <table className="info-product-table" >
                         <thead>
-                            <tr style={{width:'100%', border: '1px solid grey', borderCollapse: 'collapse', backgroundColor: '#f2bd15'}}>
+                            <tr>
                                 {
                                     headers.map( header => (
                                         <th key={header.id}>{header.title}</th>
@@ -40,7 +51,7 @@ export const ProductInfo = () => {
                         </thead>
 
                         <tbody>
-                            <tr style={{width:'100%', border: '1px solid grey', borderCollapse: 'collapse', }}>
+                            <tr>
                                 <td rowSpan={rowSpan}>{code}</td>
                                 <td rowSpan={rowSpan}>{title}</td>
                                 <td rowSpan={rowSpan}>{category}</td>
@@ -54,22 +65,16 @@ export const ProductInfo = () => {
                                 <td rowSpan={rowSpan}>{measurement}</td>
                             </tr>
                             {
-                                (!!activeProduct.info[1]) && <>
-                                    <tr style={{width:'100%', border: '1px solid grey', borderCollapse: 'collapse', }}>
-                                        {/* <td>{activeProduct.code}</td> */}
-                                        {/* <td>{activeProduct.title}</td>
-                                        <td>{activeProduct.category}</td> */}
+                                (!!activeProduct.info[1]) && 
+                                    (
+                                    <tr>
                                         <td>{activeProduct.info[1].trademark}</td>
                                         <td>{activeProduct.info[1].loc_qty[0].location} </td>
                                         <td>{activeProduct.info[1].loc_qty[0].qty} </td>
                                         <td>{activeProduct.info[1].costPrice.toFixed(2)}</td>
                                         <td>{activeProduct.info[1].salePrice.toFixed(2)}</td>
-                                        {/* <td>{activeProduct.info[0].status}</td>
-                                        <td>{activeProduct.info[0].replacement}</td>
-                                        <td>{activeProduct.info[0].measurement}</td> */}
                                     </tr>
-                                    
-                                </>
+                                    )
                             }
                         </tbody>
                     </table>

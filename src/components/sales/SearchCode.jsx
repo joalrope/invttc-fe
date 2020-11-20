@@ -28,18 +28,20 @@ export const SearchCode = () => {
     const handleOnKeyPress = (e) => {
 
         if (e.key === 'Enter') {
-            dispatch(findProductByCode(Code));
-
-            const {id} = products[0];
-
-            if (!!id) {
-                dispatch(findProductById(id));
-                setisTableVisible(false);
-                if(!!activeProduct) {
-                    reset();
-                }
-            }
             
+            dispatch(findProductByCode(Code));
+            
+            if (!!products[0]) {
+                const {id} = products[0];
+                
+                if (!!id) {
+                    dispatch(findProductById(id));
+                    setisTableVisible(false);
+                    if(!!activeProduct) {
+                        reset();
+                    }
+                }    
+            }
         }
     }
     

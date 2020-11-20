@@ -16,22 +16,33 @@
     width: 15vw;
     border: 1px solid grey;
     border-collapse: collapse;
-
-    &td {
+    
+    &tr {
         border: 1px solid grey;
-        padding: 5px 20px;    }
+        
+        &td {
+            border: 1px solid grey;
+            padding: 5px 20px;           
+        }
+    }
+
+    
 }
 
 .info-product-table {
     width:100%;
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color: rgba(128, 128, 128, 0.33);
-
-    &tr {
-        border: 1px solid black;
+    
+    & thead tr th {
+        text-align: center;
+        background-color: #f2bd15;
+        border: 1px solid rgba(0, 0, 0, 0.75);
     }
-
+    
+    & tbody tr td{
+        border: 1px solid rgba(0, 0, 0, 0.75);;
+        background-color: rgba(128, 128, 128, 0.15);
+        padding-left: 10px;
+    }
 }
 
 
