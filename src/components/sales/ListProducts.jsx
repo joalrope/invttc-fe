@@ -1,33 +1,25 @@
 import React from 'react';
-import DataTable from "react-data-table-component";
 import { useSelector } from 'react-redux';
 
-import '../../assets/css/listproducts.scss'
 
 
-
-const columns = [
-    {
-      name: "Código",
-      selector: "code",
-    },
-    {
-      name: "Titulo",
-      selector: "title",
-    }
-  ];
-
-
-export const ListProducts= () => {
+export const ListProducts = ({onClick}) => {
 
     const {products} = useSelector(state => state.product);
+
     
     return (
-        <div className="product-container">
-            <DataTable
-                columns={columns}
-                data={products}
-            />
-        </div>
+        <table className="found-products-table">
+            <tbody>
+                {
+                    products.map(product => (
+                        <tr key={product.id} onClick={() => onClick(product)}>
+                            <td>{product.code}</td>
+                            <td>{product.title}</td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
     )
 }

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import DataTable from 'react-bs-datatable';
 import { findProductByCode, findProductById } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
-
-const headers = [{prop: "code"}, {prop: "title"}];
+import { ListProducts } from './ListProducts';
 
 
 export const SearchCode = () => {
@@ -17,8 +15,8 @@ export const SearchCode = () => {
     const [isTableVisible, setisTableVisible] = useState(true)
 
 
-    const handleRowClick = (row) => {
-        const {id} = JSON.parse(JSON.stringify(row));
+    function handleClick(rowData) {
+        const {id} = JSON.parse(JSON.stringify(rowData));
         dispatch(findProductById(id));
         setisTableVisible(false);
         if(!!activeProduct) {
@@ -80,10 +78,8 @@ export const SearchCode = () => {
         {
             (products.length > 0 && isTableVisible) && 
                 (<div className="input-search-code">
-                    <DataTable
-                        tableHeaders={headers}
-                        tableBody={products}
-                        onRowClick={handleRowClick}
+                    <ListProducts
+                        onClick={handleClick}
                     />
                 </div>)
         }
