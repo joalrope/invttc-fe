@@ -1,14 +1,16 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import {useSelector} from 'react-redux'
-import {json2Tabular} from '../../helpers/jsonTab/json2Tabular'
+// import {useSelector} from 'react-redux'
+// import {json2Tabular} from '../../helpers/jsonTab/json2Tabular'
 // import {colData} from '../../assets/data/columns'
+import {productTable} from '../../assets/data/productTable'
 
 export const ProductInfo = () => {
 
-    const {activeProduct: selectedProduct} = useSelector(state => state.product);
-    const data = json2Tabular(selectedProduct, 'portrait')
-    
+    // const {activeProduct: selectedProduct} = useSelector(state => state.product);
+    // const data = json2Tabular(selectedProduct, 'portrait')
+    const data = productTable
+
     if (data === null) {
       console.log('null')
         return (<></>)
@@ -23,22 +25,24 @@ export const ProductInfo = () => {
                 <table className="portrait-table" >
                   <thead>
                     <tr>
-                      {
-                        data.forEach(element => {
-
-                          element.forEach(item => {
-                            return (<th>{item}</th>)
-                            
-                          })
-                            
-                        })
-                          
-                      }
+                    {
+                      Object.keys(data[0]).map(value => {
+                        return (<th key={value}>{value}</th> )
+                      })
+                    }
                     </tr>
                   </thead>
-
-
-                  
+                  <tbody>
+                      {
+                        data.map((value, label) => (
+                          <tr key={label}>
+                            {Object.values(value).map(cell => (
+                              <td key={cell} rowSpan={cell[1]}>{cell[0]}</td>
+                            ))}
+                          </tr>
+                        ))
+                      }
+                  </tbody>
                 </table>
               </div>
             
