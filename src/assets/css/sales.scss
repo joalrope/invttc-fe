@@ -29,20 +29,37 @@
     
 }
 
+.landscape-table {
+  width:100%;
+  
+  & thead tr th {
+    text-align: center;
+    background-color: #f2bd15;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+  }
+  
+  & tbody tr td{
+    border: 1px solid rgba(0, 0, 0, 0.75);;
+    background-color: rgba(128, 128, 128, 0.15);
+    padding: 0 10px;
+  }
+}
+
 .portrait-table {
-    width:100%;
-    
-    & thead tr th {
-        text-align: center;
-        background-color: #f2bd15;
-        border: 1px solid rgba(0, 0, 0, 0.75);
-    }
-    
-    & tbody tr td{
-        border: 1px solid rgba(0, 0, 0, 0.75);;
-        background-color: rgba(128, 128, 128, 0.15);
-        padding-left: 10px;
-    }
+  width: 100%;
+
+  & tr th {
+    text-align: center;
+    background-color: #f2bd15;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+  }
+
+  & tr td{
+    border: 1px solid rgba(0, 0, 0, 0.75);;
+    background-color: rgba(128, 128, 128, 0.15);
+    padding: 0 10px;
+  }
+
 }
 
 

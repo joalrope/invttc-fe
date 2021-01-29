@@ -1,51 +1,39 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-// import {useSelector} from 'react-redux'
-// import {json2Tabular} from '../../helpers/jsonTab/json2Tabular'
-// import {colData} from '../../assets/data/columns'
-import {productTable} from '../../assets/data/productTable'
+import {useSelector} from 'react-redux'
+import {jsonToTabular} from '../../helpers/jsonTab/json-to-tabular'
+import { LandscapeTable } from './LandscapeTable'
+import { PortraitTable } from './PortraitTable'
+
 
 export const ProductInfo = () => {
-
-    // const {activeProduct: selectedProduct} = useSelector(state => state.product);
-    // const data = json2Tabular(selectedProduct, 'portrait')
-    const data = productTable
-
-    if (data === null) {
-      console.log('null')
-        return (<></>)
-    }
+  const {activeProduct} = useSelector(state => state.product);
+  let data
+  let mode = 'portrait'
 
 
-    return (
-        <div className="mt-5">
-            
-              <div>
-                <h5>Detalle de Producto</h5>
-                <table className="portrait-table" >
-                  <thead>
-                    <tr>
-                    {
-                      Object.keys(data[0]).map(value => {
-                        return (<th key={value}>{value}</th> )
-                      })
-                    }
-                    </tr>
-                  </thead>
-                  <tbody>
-                      {
-                        data.map((value, label) => (
-                          <tr key={label}>
-                            {Object.values(value).map(cell => (
-                              <td key={cell} rowSpan={cell[1]}>{cell[0]}</td>
-                            ))}
-                          </tr>
-                        ))
-                      }
-                  </tbody>
-                </table>
-              </div>
-            
-        </div>
-    )
+  // const mql = window.matchMedia('(max-width: 600px)')
+
+  // const changeSize = (e) => {
+  //   if (e.matches) { 
+  //     mode = 'portrait'
+  //   } else {
+  //     mode = 'landscape'
+  //   }  
+  // }
+  // mql.addEventListener('change', changeSize)
+  // changeSize(mql)
+  
+  data = jsonToTabular(activeProduct, mode);
+
+  if (data === null) {
+      return (<></>)
+  }
+
+  return (
+      <div className="mt-5">
+        <h5>Detalle de Producto</h5>
+        {(mode === 'portrait') ? <PortraitTable data={data}/> : <LandscapeTable data={data}/>}      
+      </div>
+  )
 }

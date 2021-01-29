@@ -1,7 +1,7 @@
 
 
 const columns = [
-  { name: "id",           type: "noShow", title: "id",            width: "10%",  aling: "left"   },
+  { name: "id",           type: "noShow", title: "id",            width: "10%", aling: "left"   },
   { name: "code",         type: "string", title: "Código",        width: "1%",  aling: "left"   },
   { name: "category",     type: "string", title: "Categoría",     width: "1%",  aling: "left"   },
   { name: "title",        type: "string", title: "Decripción",    width: "1%",  aling: "left"   },
@@ -18,4 +18,10 @@ const columns = [
 ];
 
 
-export const colData = (key) => columns.find( col => col.name === key );
+export const colData = (key) => {
+ try {
+   return columns.find( col => col.name === key );
+ } catch (error) {
+   return 'S/D'
+ }
+}

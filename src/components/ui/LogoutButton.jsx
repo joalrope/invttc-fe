@@ -10,11 +10,12 @@ export const LogoutButton = () => {
     const history = useHistory();
 
     const handleLogout = () => {
-        history.push('/');
-        dispatch(startLogout());
+      sessionStorage.clear()
+      history.push('/');
+      dispatch(startLogout());
     }
 
-    
+
     return (
         <div className="navbar-buttons">
             <nav className="navbar-user-name">
