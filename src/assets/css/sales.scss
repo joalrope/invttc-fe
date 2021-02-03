@@ -24,9 +24,7 @@
             border: 1px solid grey;
             padding: 5px 20px;           
         }
-    }
-
-    
+    }  
 }
 
 .landscape-table {
@@ -36,6 +34,7 @@
     text-align: center;
     background-color: #f2bd15;
     border: 1px solid rgba(0, 0, 0, 0.75);
+    padding: 0 10px;
   }
   
   & tbody tr td{
@@ -46,14 +45,14 @@
 }
 
 .portrait-table {
-  width: 100%;
-
   & tr th {
     text-align: center;
     background-color: #f2bd15;
     border: 1px solid rgba(0, 0, 0, 0.75);
+    border-collapse: collapse;
+    padding: 0 10px;
   }
-
+  
   & tr td{
     border: 1px solid rgba(0, 0, 0, 0.75);;
     background-color: rgba(128, 128, 128, 0.15);

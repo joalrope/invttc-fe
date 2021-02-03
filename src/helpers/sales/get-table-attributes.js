@@ -1,4 +1,5 @@
 import {colData} from '../../assets/data/columns'
+import {parseJwt} from '../parse-jwt'
 
 
 export const headDisplay = (id) => colData(id).title
@@ -12,11 +13,12 @@ export const cellDisplay = (value, id) =>{
 
 export const cellAlign = (id) => colData(id).aling
 
-export const handleClick = (item) => {
-  console.log(item)
-}
+export const valDisplay = (key) => {
+  const {role} = parseJwt();
+  
+  if (typeof colData(key).visible === 'boolean') {
+    return colData(key).visible
+  }
 
-export const valDisplay = (id) => {
-    if (colData(id).type === 'noShow') return false
-    return true
+  return (colData(key).visible.includes(role)) ? true : false
 }

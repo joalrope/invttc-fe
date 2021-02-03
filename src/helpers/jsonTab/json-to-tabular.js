@@ -30,7 +30,7 @@ const toPortrait = (json) => {
 }
 
 const toLandscape = (json) => {
-  const result =[]
+  const result ={}
 
   Object.entries(json).map((entry) => {
     const jsonWithEmpty = pushEmptyItem(entry[1])
@@ -38,7 +38,7 @@ const toLandscape = (json) => {
     return jsonWithEmpty.forEach((value, id) => {
       if (value[0] && value[1]) {
         if (!result[id]) result[id] = {};
-        return result[id][value[2]] = {'value': value[1], 'span': value[0]};
+          result[id][value[2]] = {'value': value[1], 'span': value[0]};
       }
     })
   })
