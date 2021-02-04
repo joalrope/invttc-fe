@@ -1,46 +1,56 @@
 
 .table-container {
-    padding: 5px;
-    border: 1.5px solid hsla(0, 0%, 0%, 0.192);
-    width: 800px;
+  padding: 5px;
+  border: 1.5px solid hsla(0, 0%, 0%, 0.192);
+  width: 800px;
 }
 
 .input-search-code {
-    width: 15vw;
+  width: 50vw;
 }
 
 
-.found-products-table{
-    padding: 0px;
-    cursor: pointer;
-    width: 15vw;
-    border: 1px solid grey;
-    border-collapse: collapse;
-    
-    &tr {
-        border: 1px solid grey;
-        
-        &td {
-            border: 1px solid grey;
-            padding: 5px 20px;           
-        }
-    }  
-}
-
-.landscape-table {
-  width:100%;
+.found-products-table {
+  cursor: pointer;
+  max-width: 50vw;
+  border: 1px solid #ced4da;
+  border-collapse: collapse;
   
-  & thead tr th {
+  & thead tr th{
     text-align: center;
     background-color: #f2bd15;
-    border: 1px solid rgba(0, 0, 0, 0.75);
-    padding: 0 10px;
+    border: 1px solid #ced4da;
+    padding: 1px 20px;           
+  } 
+
+  & tbody tr td{
+    border: 1px solid #ced4da;
+    padding: 3px 20px;           
+  }  
+}
+
+.landscape-table, .products-for-sale-table {
+  width:100%;
+  
+  & thead {
+    & tr { 
+      & th {
+        text-align: center;
+        background-color: #f2bd15;
+        border: 1px solid #94979a;
+        padding: 1px 10px;
+      }
+    }
   }
   
-  & tbody tr td{
-    border: 1px solid rgba(0, 0, 0, 0.75);;
-    background-color: rgba(128, 128, 128, 0.15);
-    padding: 0 10px;
+  & tbody { 
+    & tr {
+      & td {
+        border: 1px solid #94979a;
+        background-color: #eff4f7;
+        padding: 3px 10px;
+      }
+    }
   }
 }
 
@@ -64,6 +74,6 @@
 
 @media screen and (max-width: 575px){
     .input-search-code {
-        width: 100vw;        
+        max-width: 100vw;        
     }
 }

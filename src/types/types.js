@@ -22,9 +22,10 @@ export const types = {
     productSetActive: '[product] Set active',
     productStartAddNew: '[product] Start add new',
     productAddNew: '[product] Add New',
-    productClearActivepPoduct: '[product] Clear active product',
+    productClearActivePoduct: '[product] Clear active product',
     productUpdated: '[product] product updated',
     productDeleted: '[product] product deleted',
     productLoaded: '[product] Loaded products',
+    productAddedForSale: '[product] added for sale',
 
 }

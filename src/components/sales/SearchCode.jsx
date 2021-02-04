@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { findProductByCode, findProductById } from '../../actions/products';
 import { useForm } from '../../hooks/userForm';
-import { ListProducts } from './ListProducts';
+import { ListProductsFound } from './ListProductsFound';
 
 
 export const SearchCode = () => {
@@ -48,6 +48,7 @@ export const SearchCode = () => {
 
   return (
     <>
+    <h3>Buscar Producto</h3>
       <div className="input-group form-group group-input-search-code">
         <div className="input-group-prepend">
           <span className="input-group-text"><i className="fas fa-search-dollar"></i></span>
@@ -67,7 +68,7 @@ export const SearchCode = () => {
       </div>
       {
         (products.length > 0 && isTableVisible) && (<div className="input-search-code"> 
-                                                      <ListProducts onClick={handleClick}/>
+                                                      <ListProductsFound onClick={handleClick}/>
                                                     </div>)
       }
     </>

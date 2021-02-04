@@ -11,6 +11,8 @@ export const cellDisplay = (value, id) =>{
   return value
 }
 
+export const cellClass = (id) => colData(id).class
+
 export const cellAlign = (id) => colData(id).aling
 
 export const valDisplay = (key) => {

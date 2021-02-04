@@ -4,46 +4,49 @@ import { types } from '../types/types';
 
 export const findProductByCode = (code) => {
     
-    return async (dispatch) => {
-        
-        try {
+  return async (dispatch) => {
 
-            if (code.length > 1) {
-                const resp = await fetchWithToken(`/products/code/${code}`);
-                const body = await resp.json();
-        
-                if (body.ok) {
-                    dispatch(setProductsLoaded(body.result));
-                }
-            } else {
-                dispatch(setProductsLoaded([]));
-            }
-            
-        } catch (error) {
-            console.log(error);
+    try {
+
+      if (code.length > 1) {
+        const resp = await fetchWithToken(`/products/code/${code}`);
+        const body = await resp.json();
+
+        if (body.ok) {
+          dispatch(setProductsLoaded(body.result));
         }
+      } else {
+          dispatch(setProductsLoaded([]));
+      }
+        
+    } catch (error) {
+      console.log(error);
     }
+  }
     
 }
+
+export const clearPoductStore = () => ({
+  type: types.productClearActivePoduct
+})
 
 
 export const findProductById = (id) => {
 
-    
-    return async (dispatch) => {
+  return async (dispatch) => {
 
-        try {
-            const resp = await fetchWithToken(`/products/${id}`);
-            const body = await resp.json();
+    try {
+      const resp = await fetchWithToken(`/products/${id}`);
+      const body = await resp.json();
 
-            if (body.ok) {
-                dispatch(productSetActive(body.result));
-            }
-        } catch (error) {
-            console.log(error);
-        }
-
+      if (body.ok) {
+        dispatch(productSetActive(body.result));
+      }
+    } catch (error) {
+      console.log(error);
     }
+
+  }
 }
 
 
@@ -56,4 +59,9 @@ export const productSetActive = (product) => ({
 const setProductsLoaded = (products) => ({
     type: types.productLoaded,
     payload: products
+})
+
+export const addProductForSale = (product) => ({
+  type: types.productAddedForSale,
+  payload: product
 })
