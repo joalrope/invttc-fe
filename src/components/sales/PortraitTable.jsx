@@ -5,17 +5,23 @@ import {cellAlign, cellClass, cellDisplay, headDisplay, valDisplay} from '../../
 
 
 export const PortraitTable = ({data}) => {
-  let {id, code} = data
-  code = code[0].value
-  id = id[0].value
+  const {id: prodId, code: prodCode, title: prodTitle, salePrice: prodSalePrice} = data
+  const [{value: id}] = prodId
+  const [{value: code}] = prodCode
+  const [{value: title}] = prodTitle
+  const [{value: salePrice}] = prodSalePrice
+
 
   const dispatch = useDispatch()
 
-  const handleClick = (field, code, trademark) => {
-    if (field === 'trademark') console.log(id, field, code, trademark)
-    const qty = 1
-    const salePrice = 10.75 
-    dispatch(addProductForSale({id, code, qty, trademark, salePrice}))
+  const handleClick = (field, trademark) => {
+    if (field === 'trademark') {
+    
+      console.log(field, trademark)
+      const qty = 1
+      const subTotal = qty * salePrice
+      dispatch(addProductForSale({id, code, title, trademark, qty, salePrice, subTotal}))
+    }
   }
 
   
@@ -23,22 +29,23 @@ export const PortraitTable = ({data}) => {
       <table className="portrait-table" >
         <tbody>
           {
-            Object.entries(data).map((entry) => (   
-              <tr key={entry[0]}> 
+            Object.entries(data).map(([key, value]) => (   
+              <tr key={key}> 
                 {
-                  (valDisplay(entry[0])) && <th key={entry[0]}>
-                                              {headDisplay(entry[0])}
+                  console.log(key, value)
+                  (valDisplay(key)) && <th key={key}>
+                                              {headDisplay(key)}
                                             </th>
                 }
                 {
-                  Object.values(entry[1]).map(item => (            
-                    (valDisplay(entry[0])) && <td key={entry[0]+item.value}
-                                                  colSpan={item.span}
-                                                  align={cellAlign(entry[0])}
-                                                  className={cellClass(entry[0])}
-                                                  onClick={() => handleClick(entry[0], code, item.value)}
+                  Object.values(value).map(({value, span}) => (            
+                    (valDisplay(key)) && <td key={key+value}
+                                                  colSpan={span}
+                                                  align={cellAlign(key)}
+                                                  className={cellClass(key)}
+                                                  onClick={() => handleClick(key, value)}
                                               >
-                                                {cellDisplay(item.value, entry[0])}
+                                                {cellDisplay(value, key)}
                                               </td>
                   ))
                 }

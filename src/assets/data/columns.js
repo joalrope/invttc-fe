@@ -16,6 +16,7 @@ const columns = [
   { name: "salePrice",    visible: true,  type: "number", title: "Precio Venta",  class: "celldata", width: "1%",  aling: "right"  },
   { name: "location",     visible: true,  type: "string", title: "Locación",      class: "celldata", width: "1%",  aling: "left"   },
   { name: "qty",          visible: true,  type: "number", title: "Cantidad",      class: "celldata", width: "1%",  aling: "right"  },
+  { name: "total",        visible: true,  type: "number", title: "Total",         class: "celldata", width: "1%",  aling: "right"  },
 ];
 
 

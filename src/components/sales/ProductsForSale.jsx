@@ -1,44 +1,45 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { cellAlign, cellDisplay, headDisplay } from '../../helpers/sales/get-table-attributes';
 
-export const ProductsForSale = () => {
+export const ProductsForSale = ({products}) => {
+  const [headData] =  products
 
-  const state = useSelector(state => state.state)
-
-  console.log(state)
+  // const total = Object.values(products).map(({total}) => {
+  //   return total+=
+  // })
+  
   return (
     <div>
       <table className="products-for-sale-table mt-5" >
         <thead>
           <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th>Marca</th>
-            <th>Cantidad</th>
-            <th>Costo</th>
-            <th>Sub-Total</th>
+            {
+              Object.keys(headData).map((key) => (
+                <th key={key}>{headDisplay(key)}</th>
+              ))
+            }
           </tr>
         </thead>
         <tbody>
           {
-            // Object.entries(data).map((value) => (
-            //   <tr key={value[0]}>
-            //     {
-            //       Object.entries(value[1]).map(item => (
-            //         (valDisplay(item[0])) && <td key={item[0]+value[0]}
-            //                                      rowSpan={item[1].span}
-            //                                      align={cellAlign(item[0])}
-            //                                      className={cellClass(item[0])}
-            //                                      onClick={() => handleClick(item[0], code, item[1].value)}
-            //                                   >
-            //                                     {cellDisplay(item[1].value, item[0])}
-            //                                   </td>
-            //       ))
-            //     }
-            //   </tr>
-            // ))
+            Object.entries(products).map(([id, value]) => (
+              <tr key={id}>
+                {
+                  Object.entries(value).map(([key, value]) => (
+                    <td key={key+id}
+                        align={cellAlign(key)}
+                    >
+                      {cellDisplay(value, key)}
+                    </td>
+                  ))
+                }
+              </tr>
+            ))
           }
         </tbody>
+        <tfoot>
+
+        </tfoot>
       </table>
     </div>
   )

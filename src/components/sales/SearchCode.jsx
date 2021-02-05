@@ -48,7 +48,7 @@ export const SearchCode = () => {
 
   return (
     <>
-    <h3>Buscar Producto</h3>
+    <h5>Buscar Producto</h5>
       <div className="input-group form-group group-input-search-code">
         <div className="input-group-prepend">
           <span className="input-group-text"><i className="fas fa-search-dollar"></i></span>
