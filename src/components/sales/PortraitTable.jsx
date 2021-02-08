@@ -1,27 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProductForSale } from '../../actions/products';
-import {cellAlign, cellClass, cellDisplay, headDisplay, valDisplay} from '../../helpers/sales/get-table-attributes';
+import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
+import {getCellAlign, getCellClass, getCellValue, getTitleHeader, isCellVisible} from '../../helpers/sales/get-table-attributes';
 
 
 export const PortraitTable = ({data}) => {
-  const {id: prodId, code: prodCode, title: prodTitle, salePrice: prodSalePrice} = data
-  const [{value: id}] = prodId
-  const [{value: code}] = prodCode
-  const [{value: title}] = prodTitle
-  const [{value: salePrice}] = prodSalePrice
-
-
   const dispatch = useDispatch()
+  const {activeProduct} = useSelector(state => state.product)
 
-  const handleClick = (field, trademark) => {
-    if (field === 'trademark') {
-    
-      console.log(field, trademark)
-      const qty = 1
-      const subTotal = qty * salePrice
-      dispatch(addProductForSale({id, code, title, trademark, qty, salePrice, subTotal}))
-    }
+
+  const handleClick = (key, brand) => {
+    const selectedProduct = getSelectedProduct(key, brand, activeProduct)
+    dispatch(addProductForSale(selectedProduct))
   }
 
   
@@ -32,20 +23,19 @@ export const PortraitTable = ({data}) => {
             Object.entries(data).map(([key, value]) => (   
               <tr key={key}> 
                 {
-                  console.log(key, value)
-                  (valDisplay(key)) && <th key={key}>
-                                              {headDisplay(key)}
+                  (isCellVisible(key)) && <th key={key}>
+                                              {getTitleHeader(key)}
                                             </th>
                 }
                 {
                   Object.values(value).map(({value, span}) => (            
-                    (valDisplay(key)) && <td key={key+value}
+                    (isCellVisible(key)) && <td key={key+value}
                                                   colSpan={span}
-                                                  align={cellAlign(key)}
-                                                  className={cellClass(key)}
+                                                  align={getCellAlign(key)}
+                                                  className={getCellClass(key)}
                                                   onClick={() => handleClick(key, value)}
                                               >
-                                                {cellDisplay(value, key)}
+                                                {getCellValue(value, key)}
                                               </td>
                   ))
                 }

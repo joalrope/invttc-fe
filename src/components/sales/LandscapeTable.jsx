@@ -1,21 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductForSale } from '../../actions/products'
-import {cellAlign, cellClass, cellDisplay, headDisplay, valDisplay} from '../../helpers/sales/get-table-attributes'
+import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale'
+import {getCellAlign, getCellClass, getCellValue, getTitleHeader, isCellVisible} from '../../helpers/sales/get-table-attributes'
 
 export const LandscapeTable = ({data}) => {
   const dispatch = useDispatch();
   const {activeProduct} = useSelector(state => state.product)
   
-  const handleClick = (id, brand) => {
-    if (id === 'trademark') {
-      const {code, title, info} = activeProduct
-      const [{salePrice}] = info.filter(({trademark}) => trademark === brand)
-      const qty = 1
-      const total = qty * salePrice
-      const selectedProduct = {code, title, trademark: brand, qty, salePrice, total}
-      dispatch(addProductForSale(selectedProduct))
-    }
+  const handleClick = (key, brand) => {
+    const selectedProduct = getSelectedProduct(key, brand, activeProduct)
+    dispatch(addProductForSale(selectedProduct))
   }
 
   return (
@@ -25,7 +20,7 @@ export const LandscapeTable = ({data}) => {
           <tr>
           {
             Object.keys(data[0]).map(value => (
-              (valDisplay(value)) &&  <th key={value}>{headDisplay(value)}</th> 
+              (isCellVisible(value)) &&  <th key={value}>{getTitleHeader(value)}</th> 
             ))
           }
           </tr>
@@ -36,13 +31,13 @@ export const LandscapeTable = ({data}) => {
               <tr key={key}>
                 {
                   Object.entries(value).map( ([id, {value, span}]) => (
-                    (valDisplay(id)) && <td key={id+key}
+                    (isCellVisible(id)) && <td key={id+key}
                                             rowSpan={span}
-                                            align={cellAlign(id)}
-                                            className={cellClass(id)}
+                                            align={getCellAlign(id)}
+                                            className={getCellClass(id)}
                                             onClick={() => handleClick(id, value)}
                                         >
-                                          {cellDisplay(value, id)}
+                                          {getCellValue(value, id)}
                                         </td>
                   ))
                 }
