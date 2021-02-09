@@ -7,14 +7,15 @@ import '../../assets/css/sales.scss';
 import { useSelector } from 'react-redux';
 
 export const SalesPage = () => {
+  const {activeProduct} = useSelector(state => state.product);
   const {productsForSale} = useSelector(state => state.product);
- 
+  console.log(productsForSale)
 
   return (
     <div className="container mt-5">
       <ClientInfo/>
       <SearchCode/>
-      <ProductInfo/>
+      {(activeProduct !== null) && <ProductInfo product={activeProduct}/>}
       {(productsForSale.length > 0) && <ProductsForSale products={productsForSale}/>}
     </div>
   )

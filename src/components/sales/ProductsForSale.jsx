@@ -1,8 +1,12 @@
 import React from 'react'
-import { getCellAlign, getCellValue, getTitleHeader } from '../../helpers/sales/get-table-attributes';
+import { TableAttrib } from '../../helpers/sales/table-attrib-class'
+import { columns } from '../../assets/data/products-for-sale-table'
 
 export const ProductsForSale = ({products}) => {
   const [headData] =  products
+
+  const attrib = new TableAttrib(columns)
+  
 
   // const total = Object.values(products).map(({total}) => {
   //   return total+=
@@ -15,7 +19,7 @@ export const ProductsForSale = ({products}) => {
           <tr>
             {
               Object.keys(headData).map((key) => (
-                <th key={key}>{getTitleHeader(key)}</th>
+                <th key={key}>{attrib.getTitleHeader(key)}</th>
               ))
             }
           </tr>
@@ -27,9 +31,10 @@ export const ProductsForSale = ({products}) => {
                 {
                   Object.entries(value).map(([key, value]) => (
                     <td key={key+id}
-                        align={getCellAlign(key)}
+                        align={attrib.getCellAlign(key)}
                     >
-                      {getCellValue(value, key)}
+                      {(attrib.isCellEditable(key)) ? <input type="number" name={key} id=""/> :attrib.getCellValue(key, value)}
+                      {/* {attrib.getCellValue(key, value)} */}
                     </td>
                   ))
                 }

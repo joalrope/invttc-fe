@@ -1,21 +1,18 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import {useSelector} from 'react-redux'
 import {jsonToTabular} from '../../helpers/jsonTab/json-to-tabular'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { LandscapeTable } from './LandscapeTable'
 import { PortraitTable } from './PortraitTable'
 
 
-export const ProductInfo = () => {
+export const ProductInfo = (product) => {
   const size = useWindowSize();
-  const {activeProduct} = useSelector(state => state.product);
-  let data
   let mode
 
   mode = (size.width <= 775) ? 'portrait' : 'landscape'
 
-  data = jsonToTabular(activeProduct, mode);
+  const data = jsonToTabular(product, mode);
 
   if (data === null) {
       return (<></>)

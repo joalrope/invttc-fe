@@ -2,11 +2,16 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductForSale } from '../../actions/products'
 import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale'
-import {getCellAlign, getCellClass, getCellValue, getTitleHeader, isCellVisible} from '../../helpers/sales/get-table-attributes'
+import {TableAttrib} from '../../helpers/sales/table-attrib-class'
+import {columns} from '../../assets/data/json-to-html-table'
+import {parseJwt} from '../../helpers/parse-jwt'
 
 export const LandscapeTable = ({data}) => {
   const dispatch = useDispatch();
   const {activeProduct} = useSelector(state => state.product)
+  const role = parseJwt()
+
+  const attrib = new TableAttrib(columns)
   
   const handleClick = (key, brand) => {
     const selectedProduct = getSelectedProduct(key, brand, activeProduct)
@@ -20,7 +25,7 @@ export const LandscapeTable = ({data}) => {
           <tr>
           {
             Object.keys(data[0]).map(value => (
-              (isCellVisible(value)) &&  <th key={value}>{getTitleHeader(value)}</th> 
+              (attrib.isCellVisible(value)) &&  <th key={value}>{attrib.getTitleHeader(value)}</th> 
             ))
           }
           </tr>
@@ -31,13 +36,13 @@ export const LandscapeTable = ({data}) => {
               <tr key={key}>
                 {
                   Object.entries(value).map( ([id, {value, span}]) => (
-                    (isCellVisible(id)) && <td key={id+key}
+                    (attrib.isCellVisible(id, role)) && <td key={id+key}
                                             rowSpan={span}
-                                            align={getCellAlign(id)}
-                                            className={getCellClass(id)}
+                                            align={attrib.getCellAlign(id)}
+                                            className={attrib.getCellClass(id)}
                                             onClick={() => handleClick(id, value)}
                                         >
-                                          {getCellValue(value, id)}
+                                          {attrib.getCellValue(id, value)}
                                         </td>
                   ))
                 }

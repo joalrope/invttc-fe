@@ -1,7 +1,7 @@
 
 const auth = ['storer-chief', 'admin', 'owner']
 
-const columns = [
+export const columns = [
   { name: "id",           visible: false, type: "string", title: "id",            class: "celldata", width: "10%", aling: "left"   },
   { name: "code",         visible: true,  type: "string", title: "Código",        class: "celldata", width: "1%",  aling: "left"   },
   { name: "category",     visible: true,  type: "string", title: "Categoría",     class: "celldata", width: "1%",  aling: "left"   },
@@ -18,12 +18,3 @@ const columns = [
   { name: "qty",          visible: true,  type: "number", title: "Cantidad",      class: "celldata", width: "1%",  aling: "right"  },
   { name: "total",        visible: true,  type: "number", title: "Total",         class: "celldata", width: "1%",  aling: "right"  },
 ];
-
-
-export const colData = (key) => {
- try {
-   return columns.find( col => col.name === key );
- } catch (e) {
-   return e
- }
-}
