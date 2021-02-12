@@ -4,13 +4,20 @@ import { columns } from '../../assets/data/products-for-sale-table'
 
 export const ProductsForSale = ({products}) => {
   const [headData] =  products
-
   const attrib = new TableAttrib(columns)
+  let subTotal = 0;
+  const tax = 0.15
+  const coin = 'Bs.'
   
+  
+  Object.values(products).map(({total}) => {
+    if (total > 0) subTotal += total
+    return subTotal
+  })
+  
+  const totalTax = subTotal * tax;
+  const gralTotal = subTotal + totalTax
 
-  // const total = Object.values(products).map(({total}) => {
-  //   return total+=
-  // })
   
   return (
     <div>
@@ -31,10 +38,9 @@ export const ProductsForSale = ({products}) => {
                 {
                   Object.entries(value).map(([key, value]) => (
                     <td key={key+id}
-                        align={attrib.getCellAlign(key)}
+                        className={attrib.getCellAlign(key)}
                     >
-                      {(attrib.isCellEditable(key)) ? <input type="number" name={key} id=""/> :attrib.getCellValue(key, value)}
-                      {/* {attrib.getCellValue(key, value)} */}
+                      {attrib.getCellValue(key, value)}
                     </td>
                   ))
                 }
@@ -43,6 +49,27 @@ export const ProductsForSale = ({products}) => {
           }
         </tbody>
         <tfoot>
+          <tr>
+            <td colSpan={4}></td>
+            <th className="text-right">SUB-TOTAL:</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', subTotal)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={4}></td>
+            <th className="text-right">IMPUESTO:</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', totalTax)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={4}></td>
+            <th className="text-right">TOTAL VENTA ({coin}):</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', gralTotal)}
+            </th>
+          </tr>
 
         </tfoot>
       </table>

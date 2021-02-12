@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 export const SalesPage = () => {
   const {activeProduct} = useSelector(state => state.product);
   const {productsForSale} = useSelector(state => state.product);
-  console.log(productsForSale)
 
   return (
     <div className="container mt-5">

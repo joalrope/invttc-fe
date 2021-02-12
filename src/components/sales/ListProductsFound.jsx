@@ -10,12 +10,12 @@ export const ListProductsFound = ({onClick}) => {
   
   return (
     <table className="found-products-table">
-      <thead>
+      {/* <thead>
         <tr>
           <th>Código</th>
           <th>Descripción</th>
         </tr>
-      </thead>
+      </thead> */}
       <tbody>
         {
           products.map(product => (

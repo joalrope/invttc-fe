@@ -5,52 +5,46 @@ import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 
 export const startLogin = (email, password) => { 
 
-    return async (dispatch) => {
-            
-        const resp = await fetchWithoutToken('/auth', {email, password}, 'POST');
-        const {ok, msg, token, uid, name, role} = await resp.json();
+  return async (dispatch) => {       
+    const {ok, msg, token, uid, name, role} = await fetchWithoutToken('/auth', {email, password}, 'POST');
 
-        if (ok) {
-            
-            dispatch(login({
-                uid,
-                name,
-                role,
-                isLoggedIn: true
-            }));
+    if (ok) {   
+      dispatch(login({
+        uid,
+        name,
+        role,
+        isLoggedIn: true
+      }));
 
-            sessionStorage.token = token;
+      sessionStorage.token = token;
 
-        } else {
-            Swal.fire('Error', msg, 'error');
-        }
+    } else {
+      Swal.fire('Error', msg, 'error');
     }
+  }
 }
 
 
 export const startRegister = (name, email, password) => {
 
 
-    return async (dispatch) => {
-        
-        const resp = await fetchWithoutToken('/auth/new', {name, email, password}, 'POST');
-        const {ok, msg, token, uid, name: userName, role} = await resp.json();
+  return async (dispatch) => {
+    const {ok, msg, token, uid, name: userName, role} = await fetchWithoutToken('/auth/new', {name, email, password}, 'POST');
 
+    if (ok) {
+      sessionStorage.token = token;
+      sessionStorage.token_init_date = new Date().getTime();
 
-        if (ok) {
-            sessionStorage.token = token;
-            sessionStorage.token_init_date = new Date().getTime();
+      dispatch(login({
+        uid,
+        userName,
+        role
+      }));
 
-            dispatch(login({
-                uid,
-                userName,
-                role
-            }));
-
-        } else {
-            Swal.fire('Error', msg, 'error');
-        }
+    } else {
+        Swal.fire('Error', msg, 'error');
     }
+  }
 }
 
 
@@ -62,61 +56,60 @@ export const startPassRecovery = (email) => {
 
 export const startChecking = () => {
     
-    return async (dispatch) => {
-        
-        if ('token' in sessionStorage ) {
-        
-            const resp = await fetchWithToken('/auth/renew');
-            const {ok, token, uid, name, role} = await resp.json();
+  return async (dispatch) => {
+      
+    if ('token' in sessionStorage ) {
     
-            if (ok) {
-                sessionStorage.token = token;
-                sessionStorage.token_init_date = new Date().getTime();
+      const {ok, token, uid, name, role} = await fetchWithToken('/auth/renew');
 
-                let isLoggedIn;
+      if (ok) {
+        sessionStorage.token = token;
+        sessionStorage.token_init_date = new Date().getTime();
 
-                (uid) ? isLoggedIn = true : isLoggedIn = false
-    
-                dispatch(login({
-                    uid,
-                    name,
-                    role,
-                    isLoggedIn
-                }));
-    
-            } else {
-                dispatch(checkingFinish());
-            }
-        }
+        const isLoggedIn = (uid) ? true : false
+
+        // (uid) ? isLoggedIn = true : isLoggedIn = false
+
+        dispatch(login({
+          uid,
+          name,
+          role,
+          isLoggedIn
+        }));
+
+      } else {
+        dispatch(checkingFinish());
+      }
     }
+  }
 }
 
 
 export const startLogout = () => {
-    return (dispatch) =>{
-        dispatch(logout());
-    }
+  return (dispatch) =>{
+    dispatch(logout());
+  }
 }
 
 
 export const startShowLogin = () => {
-    return (dispatch) => {
-        dispatch(showLoginForm(true));
-    }
+  return (dispatch) => {
+    dispatch(showLoginForm(true));
+  }
 }
 
 
 export const startShowRegister = () => {
-    return (dispatch) => {
-        dispatch(showRegisterForm(true));
-    }
+  return (dispatch) => {
+    dispatch(showRegisterForm(true));
+  }
 }
 
 
 export const startShowPassForgot = () => {
-    return (dispatch) => {
-        dispatch(showPassForgotForm(true));
-    }
+  return (dispatch) => {
+    dispatch(showPassForgotForm(true));
+  }
 }
 
 
@@ -128,45 +121,45 @@ export const startHideLogin = () => {
 
 
 export const startHideRegister = () => {
-    return (dispatch) => {
-        dispatch(showRegisterForm(false));
-    }
+  return (dispatch) => {
+    dispatch(showRegisterForm(false));
+  }
 }
 
 
 export const startHidePassForgot = () => {
-    return (dispatch) => {
-        dispatch(showPassForgotForm(false));
-    }
+  return (dispatch) => {
+    dispatch(showPassForgotForm(false));
+  }
 }
 
 
 const login = (user) => ({
-    type: types.authlogin,
-    payload: user
+  type: types.authlogin,
+  payload: user
 })
 
 
 const checkingFinish = () => ({
-    type: types.authcheckingFinish
+  type: types.authcheckingFinish
 })
 
 
 const logout = () => ({
-    type: types.authlogout
+  type: types.authlogout
 })
 
 const showLoginForm = (valVisible) => ({
-    type: types.authShowLogin,
-    payload: valVisible
+  type: types.authShowLogin,
+  payload: valVisible
 })
 
 const showRegisterForm = (valVisible) => ({
-    type: types.authShowRegister,
-    payload: valVisible
+  type: types.authShowRegister,
+  payload: valVisible
 })
 
 const showPassForgotForm = (valVisible) => ({
-    type: types.authShowPassForgot,
-    payload: valVisible
+  type: types.authShowPassForgot,
+  payload: valVisible
 })

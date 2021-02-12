@@ -14,8 +14,10 @@ export const LandscapeTable = ({data}) => {
   const attrib = new TableAttrib(columns)
   
   const handleClick = (key, brand) => {
-    const selectedProduct = getSelectedProduct(key, brand, activeProduct)
-    dispatch(addProductForSale(selectedProduct))
+    if (key === 'trademark') {
+      const selectedProduct = getSelectedProduct(brand, activeProduct)
+      dispatch(addProductForSale(selectedProduct))
+    }
   }
 
   return (

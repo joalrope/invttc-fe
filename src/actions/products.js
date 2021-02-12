@@ -9,11 +9,10 @@ export const findProductByCode = (code) => {
     try {
 
       if (code.length > 1) {
-        const resp = await fetchWithToken(`/products/code/${code}`);
-        const body = await resp.json();
+        const {ok, result} = await fetchWithToken(`/products/code/${code}`);
 
-        if (body.ok) {
-          dispatch(setProductsLoaded(body.result));
+        if (ok) {
+          dispatch(setProductsLoaded(result));
         }
       } else {
           dispatch(setProductsLoaded([]));
@@ -26,21 +25,16 @@ export const findProductByCode = (code) => {
     
 }
 
-export const clearPoductStore = () => ({
-  type: types.productClearActivePoduct
-})
-
 
 export const findProductById = (id) => {
 
   return async (dispatch) => {
 
     try {
-      const resp = await fetchWithToken(`/products/${id}`);
-      const body = await resp.json();
+      const {ok, result} = await fetchWithToken(`/products/${id}`);
 
-      if (body.ok) {
-        dispatch(productSetActive(body.result));
+      if (ok) {
+        dispatch(productSetActive(result));
       }
     } catch (error) {
       console.log(error);
@@ -64,4 +58,8 @@ const setProductsLoaded = (products) => ({
 export const addProductForSale = (product) => ({
   type: types.productAddedForSale,
   payload: product
+})
+
+export const clearPoductStore = () => ({
+  type: types.productClearActivePoduct
 })

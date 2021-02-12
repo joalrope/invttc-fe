@@ -26,7 +26,7 @@ export const LogoutButton = () => {
 
       <button className="btn" onClick={handleLogout}>
         <i className='fas fa-sign-out-alt '></i>
-        <span> Salir</span>
+        <span>Salir</span>
       </button>
     </div>
   )
