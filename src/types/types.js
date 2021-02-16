@@ -27,5 +27,6 @@ export const types = {
     productDeleted: '[product] product deleted',
     productLoaded: '[product] Loaded products',
     productAddedForSale: '[product] added for sale',
+    productSetQtyForSale: '[product] set qty for sale'
 
 }

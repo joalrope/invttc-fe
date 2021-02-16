@@ -1,11 +1,12 @@
 
 export const columns = [
-  { name: "code",         title: "Código",        type: "string", class: "celldata", aling: "text-left",   editable: false },
-  { name: "title",        title: "Decripción",    type: "string", class: "celldata", aling: "text-left",   editable: false },
-  { name: "trademark",    title: "Marca",         type: "string", class: "pointer",  aling: "text-center", editable: false },
-  { name: "salePrice",    title: "Precio Venta",  type: "number", class: "celldata", aling: "text-right",  editable: false },
-  { name: "qty",          title: "Cantidad",      type: "number", class: "celldata", aling: "text-right",  editable: true  },
-  { name: "total",        title: "Total Item",    type: "number", class: "celldata", aling: "text-right",  editable: false },
-  { name: "subTotal",     title: "SUB-TOTAL",     type: "string", class: "celldata", aling: "text-right",  editable: false },
-  { name: "saleTotal",    title: "TOTAL VENTA",   type: "string", class: "celldata", aling: "text-right",  editable: false }
+  { name: "id",           title: "id",            type: "string", visible: false, editable: false,  class: "text-left"            },
+  { name: "code",         title: "Código",        type: "string", visible: true,  editable: false,  class: "text-left"            },
+  { name: "title",        title: "Decripción",    type: "string", visible: true,  editable: false,  class: "text-left"            },
+  { name: "trademark",    title: "Marca",         type: "string", visible: true,  editable: false,  class: "text-center"          },
+  { name: "salePrice",    title: "Precio Venta",  type: "number", visible: true,  editable: false,  class: "bold text-right"           },
+  { name: "qty",          title: "Cantidad",      type: "number", visible: true,  editable: true,   class: "bold input-qty text-right pointer"  },
+  { name: "total",        title: "Total Item",    type: "number", visible: true,  editable: false,  class: "bold text-right",           },
+  { name: "subTotal",     title: "SUB-TOTAL",     type: "string", visible: true,  editable: false,  class: "text-right",           },
+  { name: "saleTotal",    title: "TOTAL VENTA",   type: "string", visible: true,  editable: false,  class: "text-right",           }
 ];

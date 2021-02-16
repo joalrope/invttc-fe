@@ -22,7 +22,10 @@ export class TableAttrib {
     if (this.colData(id) === undefined) return (`${id} no existe`)
 
     if (this.colData(id).type === 'number' ) {
-      return parseFloat(value).toFixed(2)
+
+      return value.toLocaleString("es-ES", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+      // return new Intl.NumberFormat("es-es").format(fixedNumber)
+      // return parseFloat(value).toFixed(2)
     }
     return value
   }

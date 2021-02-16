@@ -63,3 +63,8 @@ export const addProductForSale = (product) => ({
 export const clearPoductStore = () => ({
   type: types.productClearActivePoduct
 })
+
+export const setQtyForSale = (data) => ({
+  type: types.productSetQtyForSale,
+  payload: data
+})

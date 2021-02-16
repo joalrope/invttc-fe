@@ -1,3 +1,4 @@
+@import './components//variables';
 @import url('https://fonts.googleapis.com/css?family=Numans');
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
 
@@ -24,7 +25,7 @@
   max-height: 550px;
   max-width: 350px;
   margin-top: 25vh;
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color: $form-bg !important;
 }
 
 .register{
@@ -34,7 +35,7 @@
   max-height: 650px;
   max-width: 350px;
   margin-top: 25vh;
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color: $form-bg !important;
 }
 
 .forgot{
@@ -44,13 +45,15 @@
   height: 170px;
   width: 500px;
   margin-top: 25vh;
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color:$form-bg !important;
 }
 
-.card-header h3{
-  font-family: 'Play', sans-serif;
-  color: white;
-  font-size: 30px;
+.card-header {
+  h3 {
+    font-family: 'Play', sans-serif;
+    color: $white;
+    font-size: 30px;
+  }
 }
 
 .card-footer{
@@ -65,20 +68,24 @@
 .social_icon span{
   font-size: 30px;
   margin-left: 10px;
-  color: #FFC312;
+  color: $primary;
   transition: 0.3s;
 }
 
 .social_icon span:hover{
-  color: white;
+  color: $white;
   cursor: pointer;
   transition: 0.3s;
 }
 
+.form-group {
+  margin-top: 5px;
+}
+
 .input-group-prepend span{
   width: 50px;
-  background-color: #FFC312;
-  color: black;
+  background-color: $primary;
+  color: $black;
   border:0 !important;
 }
 
@@ -88,7 +95,7 @@ input:focus{
 }
 
 .remember{
-  color: white;
+  color: $white;
   font-size: 14px;
 }
 
@@ -100,30 +107,30 @@ input:focus{
 }
 
 .submit-btn{
-  color: black;
-  background-color: #FFC312;
+  color: $black;
+  background-color: $primary;
   width: 100px;
   transition: 0.3s;
 }
 
 .submit-btn:hover{
-  color: black;
-  background-color: white;
+  color: $black;
+  background-color: $white;
   transition: 0.3s;
 }
 
 .links{
-  color: white;
+  color: $white;
 }
 
 .links a{
-  color: #FFC312;
+  color: $primary;
   margin-left: 4px;
   text-decoration: none;
 }
 
 .links a:hover{
-  color: #e4ae0cc1;
+  color: $primary;
 }
 
 .close {
@@ -133,9 +140,4 @@ input:focus{
 
 .close:focus {
   outline: none;
-}
-
-@media screen and (max-width: 300px) {
-
-
 }

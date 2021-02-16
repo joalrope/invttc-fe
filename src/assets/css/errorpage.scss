@@ -1,3 +1,4 @@
+@import './components//variables';
 /*======================
     404 page
 =======================*/
@@ -5,7 +6,7 @@
 
 .page_404 {
   padding:40px 0;
-  background:#f2bd15;
+  background: $primary;
   font-family: 'Arvo', serif;
 }
 
@@ -36,9 +37,9 @@
 }
 			 
 .link_404 {			 
-	color: #fff!important;
+	color: $white !important;
   padding: 10px 20px;
-  background: #39ac31;
+  background: $black;
   margin: 20px 0;
   display: inline-block;
 }

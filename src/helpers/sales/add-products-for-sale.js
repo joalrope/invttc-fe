@@ -1,3 +1,4 @@
+import { objectId } from "../object-id-generator"
 
 export const getSelectedProduct = (brand, activeProduct) => {
 
@@ -7,6 +8,7 @@ export const getSelectedProduct = (brand, activeProduct) => {
   const total = qty * salePrice
   
   return {
+    id: objectId(),
     code,
     title,
     trademark: brand,

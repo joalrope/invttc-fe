@@ -29,8 +29,7 @@ export const productReducer = ( state = initialState, action ) => {
     case types.productClearActivePoduct:
       return {
         ...state,
-        products: [],
-        activeProduct: null
+        ...initialState
       }
 
     case types.productAddedForSale:
@@ -40,6 +39,13 @@ export const productReducer = ( state = initialState, action ) => {
           ...state.productsForSale,
           action.payload
         ]
+      }
+
+    case types.productSetQtyForSale:
+      return {
+        ...state,
+          productsForSale: action.payload
+          
       }
 
     default:

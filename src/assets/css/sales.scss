@@ -1,7 +1,8 @@
+ @import './components//variables';
 
 .table-container {
   padding: 5px;
-  border: 1.5px solid hsla(0, 0%, 0%, 0.192);
+  border: 1.5px solid $tbl-border;
   width: 800px;
 }
 
@@ -13,6 +14,15 @@
   margin-bottom: 0px;
 }
 
+.input-qty {
+  background-color: rgb(246, 234, 162);
+  outline: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .fade-in {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -20,95 +30,79 @@
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  }
+}
+
   @-webkit-keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
   }
+  
   @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
   } 
 
 
 .found-products-table {
   position: absolute;
-  background-color: #eff4f7;
+  background-color: $bg-tbl-tb-cell;
   cursor: pointer;
   max-width: 50vw;
-  border: 1px solid #ced4da;
+  border: 1px solid $tbl-border;
   border-collapse: collapse;
   
-  & thead tr th{
+  thead tr th { 
     text-align: center;
-    background-color: #f2bd15;
-    border: 1px solid #ced4da;
-    padding: 1px 20px;           
+    background-color: $bg-tbl-header;
+    border: 1px solid $tbl-border;
+    padding: 1px 20px;
   } 
 
-  & tbody tr td{
-    border: 1px solid #ced4da;
-    padding: 3px 20px;           
+  tbody tr td{
+    border: 1px solid $tbl-border;
+    padding: 3px 20px;    
   }  
 }
 
 .landscape-table, .products-for-sale-table {
   width:100%;
   
-  & thead {
-    & tr { 
-      & th {
-        text-align: center;
-        background-color: #f2bd15;
-        border: 1px solid #94979a;
-        padding: 1px 10px;
-      }
-    }
+  thead tr th {
+    text-align: center;
+    background-color: $bg-tbl-header;
+    border: 1px solid $tbl-border;
+    padding: 1px 10px;
   }
-  
-  & tbody { 
-    & tr {
-      & td {
-        border: 1px solid #94979a;
-        background-color: #eff4f7;
-        padding: 3px 10px;
-      }
-    }
+    
+  tbody tr td {
+    border: 1px solid $tbl-border;
+    background-color: $bg-tbl-tb-cell;
+    padding: 3px 10px;
   }
 
-  & tfoot { 
-
-    & tr {
-      & th {
-        border: 1px solid #94979a;
-        background-color: #e0e7eb;
-        padding: 3px 10px;
-      }
-    }
+  tfoot tr th {
+    border: 1px solid $tbl-border;
+    background-color: $bg-tbl-tf-cell;
+    padding: 3px 10px;
   }
-
-
-
-
 }
 
 .portrait-table {
-  & tr th {
+  tr th {
     text-align: center;
-    background-color: #f2bd15;
-    border: 1px solid rgba(0, 0, 0, 0.75);
+    background-color: $bg-tbl-header;
+    border: 1px solid $tbl-border;
     border-collapse: collapse;
     padding: 0 10px;
   }
   
-  & tr td{
-    border: 1px solid rgba(0, 0, 0, 0.75);;
-    background-color: rgba(128, 128, 128, 0.15);
+  tr td{
+    border: 1px solid $tbl-border;;
+    background-color: $bg-tbl-tb-cell;
     padding: 0 10px;
   }
 
 }
-
 
 @media screen and (max-width: 575px){
     .input-search-code {
