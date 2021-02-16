@@ -49,13 +49,13 @@ export const SearchCode = () => {
   return (
     <>
     <h5>Buscar Producto</h5>
-      <div className="input-group form-group group-input-search-code">
+      <div className="input-group form-group group-input-search-code input-search-code">
         <div className="input-group-prepend">
           <span className="input-group-text"><i className="fas fa-search-dollar"></i></span>
         </div>
         <input
           type="text"
-          className="form-control input-search-code"
+          className="form-control"
           placeholder="Código"
           name="Code"
           autoComplete="off"

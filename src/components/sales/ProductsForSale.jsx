@@ -1,28 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { TableAttrib } from '../../helpers/sales/table-attrib-class'
 import { columns } from '../../assets/data/products-for-sale-table'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { replaceItemProdForSale } from '../../helpers/sales/sales-utils'
 import { setQtyForSale } from '../../actions/products'
 
 export const ProductsForSale = ({products}) => {
+  const dispatch = useDispatch()
+  const [qty, setQty] = useState(null);
+  const [onEditMode, setOnEditMode] = useState({status: false, rowKey: null});
   const [headData] =  products
   const attrib = new TableAttrib(columns)
   const tax = 0.15
   const coin = 'Bs.'
   let subTotal = 0;
-
-  const dispatch = useDispatch()
-
-  const [qty, setQty] = useState(null);
-  const [onEditMode, setOnEditMode] = useState({
-    status: false,
-    rowKey: null
-  });
   
-  const prod = useSelector(state => state.product.productsForSale)
-  const selectedIndex = (id) => prod.findIndex(item => item.id === id)
   const {productsForSale} = useSelector(state => state.product)
+  const selectedIndex = (id) => productsForSale.findIndex(item => item.id === id)
 
   const onEdit = (key, id, currentQty) => {
     if (key === 'qty'){
@@ -30,55 +24,44 @@ export const ProductsForSale = ({products}) => {
         status: true,
         rowKey: id
       })
-      setQty(currentQty);
+
+      setQty(Number(currentQty));
     } else {
-      const index = selectedIndex(id)
-      const prodForSaleSel = productsForSale[index]
-      prodForSaleSel['qty'] = qty
-      prodForSaleSel['total'] = qty * Number(prodForSaleSel['salePrice'])
+      if (onEditMode.status) {
+        const index = selectedIndex(id)
+        const prodForSaleSel = productsForSale[index]
 
-      const product = productsForSale.map(item => {
-        if (item.id === id) {
-          console.log(item.id, id, prodForSaleSel)
-          return prodForSaleSel
-        } 
-        console.log(item.id, id, item)
-        return item
-      } )
+        prodForSaleSel['qty'] = Number(qty)
+        prodForSaleSel['total'] = Number(qty) * Number(prodForSaleSel['salePrice'])
+        const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
 
-      console.log(product)
-
-      // product.push(prodForSaleSel)
-
-
-      dispatch(setQtyForSale(product))
-      onCancel()
+        dispatch(setQtyForSale(products))
+        onCancel()
+      }
     }
   }
   
   const onCancel = () => {
-    // reset the inEditMode state value
     setOnEditMode({
       status: false,
       rowKey: null
     })
-    // reset the unit price state value
+
     setQty(null);
   }
   
   const handleKeyPress = (id, value, key) => {
     if (key === 'Enter') {
-      setQty(value)
+      setQty(Number(value))
+      onEdit('id', id, Number(value))
     }
   }
-  
-  
+    
   Object.values(products).map(({total}) => {
     if (total > 0) subTotal += total
     return subTotal
   })
-  
-  
+    
   const totalTax = subTotal * tax;
   const gralTotal = subTotal + totalTax
   
@@ -106,6 +89,9 @@ export const ProductsForSale = ({products}) => {
                      onEditMode.rowKey === values.id &&
                      attrib.isCellEditable(key))
                     ? attrib.isCellVisible(key) && <input type="number" key={values.id} 
+                                                          // ref={inputQtyRef}
+                                                          autoFocus={true}
+                                                          onBlur={() => onEdit('id', values.id, value)}
                                                           className="input-qty"
                                                           value={qty}
                                                           onChange={(e) => setQty(e.target.value)}

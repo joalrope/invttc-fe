@@ -1,4 +1,5 @@
  @import './components//variables';
+$inputs-width: 25vw;
 
 .table-container {
   padding: 5px;
@@ -6,8 +7,8 @@
   width: 800px;
 }
 
-.input-search-code {
-  width: 50vw;
+.input-search-code, .input-searh-client {
+  width: $inputs-width;
 }
 
 .input-group {
@@ -15,8 +16,13 @@
 }
 
 .input-qty {
+  position: relative;
+  text-align: right;
   background-color: rgb(246, 234, 162);
-  outline: none;
+  outline-color: $primary;
+  margin: 1px;
+  width: 66px;
+  height: 1.8rem;
 }
 
 .bold {
@@ -47,7 +53,7 @@
   position: absolute;
   background-color: $bg-tbl-tb-cell;
   cursor: pointer;
-  max-width: 50vw;
+  width: $inputs-width;
   border: 1px solid $tbl-border;
   border-collapse: collapse;
   
@@ -65,7 +71,6 @@
 }
 
 .landscape-table, .products-for-sale-table {
-  width:100%;
   
   thead tr th {
     text-align: center;
