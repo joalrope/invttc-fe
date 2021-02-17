@@ -1,21 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 
-
-export const ListProductsFound = ({onClick}) => {
-
-  const {products} = useSelector(state => state.product);
-
+export const ListProductsFound = ({products, onClick}) => {
   
   return (
     <table className="found-products-table">
-      {/* <thead>
+      <thead>
         <tr>
           <th>Código</th>
           <th>Descripción</th>
         </tr>
-      </thead> */}
+      </thead>
       <tbody>
         {
           products.map(product => (

@@ -2,10 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
-import { addProductForSale, setQtyForSale } from '../../actions/products';
+import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import {TableAttrib} from '../../helpers/sales/table-attrib-class'
 import {columns} from '../../assets/data/json-to-html-table'
+
 
 export const PortraitTable = ({data}) => {
   const dispatch = useDispatch()
@@ -49,7 +50,7 @@ export const PortraitTable = ({data}) => {
 
             const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
 
-            dispatch(setQtyForSale(products))  
+            dispatch(setProductsForSale(products))  
           }
         })
       } else {
@@ -60,32 +61,33 @@ export const PortraitTable = ({data}) => {
 
  
   return (
-      <table className="portrait-table" >
-        <tbody>
-          {
-            Object.entries(data).map(([key, value]) => (   
-              <tr key={key}> 
-                {
-                  (attrib.isCellVisible(key)) && <th key={key}>
-                                              {attrib.getTitleHeader(key)}
-                                            </th>
-                }
-                {
-                  Object.values(value).map(({value, span}) => (            
-                    (attrib.isCellVisible(key)) && <td key={key+value}
-                                                  colSpan={span}
-                                                  align={attrib.getCellAlign(key)}
-                                                  className={attrib.getCellClass(key)}
-                                                  onClick={() => handleClick(key, value)}
-                                              >
-                                                {attrib.getCellValue(key, value)}
-                                              </td>
-                  ))
-                }
-              </tr>  
-            ))
-          }
-        </tbody>
-      </table>
+    <table className="portrait-table" >
+      <tbody>
+        {
+          Object.entries(data).map(([key, value]) => (   
+            <tr key={key}> 
+              {
+                (attrib.isCellVisible(key)) && <th key={key}>
+                                            {attrib.getTitleHeader(key)}
+                                          </th>
+              }
+              {
+                Object.values(value).map(({value, span}) => (            
+                  (attrib.isCellVisible(key)) && <td key={key+value}
+                                                colSpan={span}
+                                                align={attrib.getCellAlign(key)}
+                                                className={attrib.getCellClass(key)}
+                                                onClick={() => handleClick(key, value)}
+                                            >
+                                              {attrib.getCellValue(key, value)}
+                                            </td>
+                ))
+              }
+            </tr>  
+          ))
+        }
+
+      </tbody>
+    </table>
   )
 }

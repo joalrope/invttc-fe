@@ -20,6 +20,7 @@ export const types = {
 
 
     productSetActive: '[product] Set active',
+    productClearActive: '[product] Clear active',
     productStartAddNew: '[product] Start add new',
     productAddNew: '[product] Add New',
     productClearActivePoduct: '[product] Clear active product',
@@ -27,6 +28,6 @@ export const types = {
     productDeleted: '[product] product deleted',
     productLoaded: '[product] Loaded products',
     productAddedForSale: '[product] added for sale',
-    productSetQtyForSale: '[product] set qty for sale'
+    productSetProductsForSale: '[product] set products for sale'
 
 }

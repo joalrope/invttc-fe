@@ -43,10 +43,13 @@ export const findProductById = (id) => {
   }
 }
 
-
 export const productSetActive = (product) => ({
     type: types.productSetActive,
     payload: product
+});
+
+export const productClearActive = () => ({
+  type: types.productClearActive,
 });
 
 
@@ -64,7 +67,7 @@ export const clearPoductStore = () => ({
   type: types.productClearActivePoduct
 })
 
-export const setQtyForSale = (data) => ({
-  type: types.productSetQtyForSale,
+export const setProductsForSale = (data) => ({
+  type: types.productSetProductsForSale,
   payload: data
 })

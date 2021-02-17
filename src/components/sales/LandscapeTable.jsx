@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale'
-import { addProductForSale, setQtyForSale } from '../../actions/products'
+import { addProductForSale, setProductsForSale } from '../../actions/products'
 import {TableAttrib} from '../../helpers/sales/table-attrib-class'
 import {columns} from '../../assets/data/json-to-html-table'
 import {parseJwt} from '../../helpers/parse-jwt'
@@ -15,7 +15,7 @@ export const LandscapeTable = ({data}) => {
   const role = parseJwt()
 
   const selectedIndex = (code, trademark) => productsForSale.findIndex(item =>  item.code === code &&
-                                                                                item.trademark === trademark )
+                                                                                item.trademark === trademark )                                                                             
 
   const handleClick = (key, brand) => {
     
@@ -51,7 +51,7 @@ export const LandscapeTable = ({data}) => {
 
               const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
 
-              dispatch(setQtyForSale(products))  
+              dispatch(setProductsForSale(products))  
             }
           })
       } else {

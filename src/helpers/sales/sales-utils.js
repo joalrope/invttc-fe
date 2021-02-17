@@ -5,3 +5,8 @@ export const replaceItemProdForSale = (item, array) => {
     return product
   })
 }
+
+
+export const deleteItemProdForSale = (id, array) => { 
+  return array.filter(product => product.id !== id)
+}

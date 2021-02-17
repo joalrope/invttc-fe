@@ -26,6 +26,12 @@ export const productReducer = ( state = initialState, action ) => {
         }
       }
 
+    case types.productClearActive:
+      return {
+        ...state,
+        activeProduct: null
+      }
+
     case types.productClearActivePoduct:
       return {
         ...state,
@@ -41,7 +47,7 @@ export const productReducer = ( state = initialState, action ) => {
         ]
       }
 
-    case types.productSetQtyForSale:
+    case types.productSetProductsForSale:
       return {
         ...state,
           productsForSale: action.payload

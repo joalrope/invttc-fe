@@ -68,7 +68,7 @@ export const SearchCode = () => {
       </div>
       {
         (products.length > 0 && isTableVisible) && (<div className="input-search-code"> 
-                                                      <ListProductsFound onClick={handleClick}/>
+                                                      <ListProductsFound products={products} onClick={handleClick}/>
                                                     </div>)
       }
     </>

@@ -4,7 +4,7 @@ export const ClientInfo = () => {
     return (
         <div>
             <h5>Seleccionar del Cliente</h5>
-            <div className="input-group form-group input-searh-client">
+            <div className="input-group form-group input-search-client">
                 <div className="input-group-prepend">
                     <span className="input-group-text">Nombre Razón Social:</span>
                 </div>
