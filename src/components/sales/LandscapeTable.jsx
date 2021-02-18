@@ -7,6 +7,7 @@ import {TableAttrib} from '../../helpers/sales/table-attrib-class'
 import {columns} from '../../assets/data/json-to-html-table'
 import {parseJwt} from '../../helpers/parse-jwt'
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils'
+import { ActionButtom } from '../generics/ActionButtom'
 
 export const LandscapeTable = ({data}) => {
   const dispatch = useDispatch();
@@ -60,6 +61,14 @@ export const LandscapeTable = ({data}) => {
     }
   }
 
+  const handleSelectBtnClick = (row) => {
+    
+    const pos = (activeProduct.info.hasOwnProperty(`${row}`)) ? row : 0
+    const brand = activeProduct.info[pos].trademark 
+
+    handleClick('trademark', brand)
+  }
+
   return (
     <div>
       <table className="landscape-table" >
@@ -74,10 +83,10 @@ export const LandscapeTable = ({data}) => {
         </thead>
         <tbody>
           {
-            Object.entries(data).map(([key, value]) => (
+            Object.entries(data).map(([key, values]) => (
               <tr key={key}>
                 {
-                  Object.entries(value).map( ([id, {value, span}]) => (
+                  Object.entries(values).map( ([id, {value, span}]) => (
                     (attrib.isCellVisible(id, role)) && <td key={id+key}
                                             rowSpan={span}
                                             align={attrib.getCellAlign(id)}
@@ -88,6 +97,8 @@ export const LandscapeTable = ({data}) => {
                                         </td>
                   ))
                 }
+                 {(values.hasOwnProperty('trademark')) &&
+                <ActionButtom type={'select'} row={key} handleClick={handleSelectBtnClick} />}
               </tr>
             ))
           }

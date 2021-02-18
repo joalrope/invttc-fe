@@ -1,4 +1,6 @@
+import { template } from '../assets/data/json-to-html-table';
 import { fetchWithToken } from '../helpers/fetch';
+import { jsonSort } from '../helpers/json-sort';
 import { types } from '../types/types';
 
 
@@ -32,9 +34,11 @@ export const findProductById = (id) => {
 
     try {
       const {ok, result} = await fetchWithToken(`/products/${id}`);
+      
+      const product = jsonSort(result, template)
 
       if (ok) {
-        dispatch(productSetActive(result));
+        dispatch(productSetActive(product));
       }
     } catch (error) {
       console.log(error);

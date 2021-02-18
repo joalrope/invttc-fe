@@ -4,17 +4,37 @@ export const ActionButtom = ({type, row, handleClick}) => {
 
   let icon;
   let brColor;
+  
 
   switch (type) {
     case 'delete':
       icon = 'fa fa-backspace'
-      brColor = 'red'
+      brColor = '#dc3545'
       break;
 
     case 'edit':
       icon = 'fa fa-edit'
-      brColor = '#f2bd15'
+      brColor = '#ffc107'
       break;
+
+    case 'select':
+      icon = 'fas fa-check-square'
+      brColor = '#28a745'
+      break;
+
+    case 'up':
+      icon = 'fas fa-sort-up'
+      brColor = '#28a745'
+      break;
+    
+    case 'down':
+      icon = 'fas fa-sort-down'
+      brColor = '#28a745'
+      break;
+    
+    
+
+    
   
     default:
       break;

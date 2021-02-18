@@ -1,5 +1,6 @@
 
 const auth = ['storer-chief', 'admin', 'owner']
+export const template = ['code', 'title', 'info', 'category', 'replacement', 'measurement', 'status' ]
 
 export const columns = [
   { name: "id",           visible: false, type: "string", title: "id",            class: "celldata", width: "10%", aling: "left"   },

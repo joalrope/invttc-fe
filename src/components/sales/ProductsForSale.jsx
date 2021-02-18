@@ -4,7 +4,7 @@ import { TableAttrib } from '../../helpers/sales/table-attrib-class'
 import { columns } from '../../assets/data/products-for-sale-table'
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../helpers/sales/sales-utils'
 import { setProductsForSale } from '../../actions/products'
-import { ActionButtom } from '../buttons/ActionButtom'
+import { ActionButtom } from '../generics/ActionButtom'
 
 export const ProductsForSale = ({products}) => {
   const dispatch = useDispatch()
@@ -25,14 +25,14 @@ export const ProductsForSale = ({products}) => {
         rowKey: id
       })
 
-      setQty(Number(currentQty));
+      setQty(currentQty);
     } else {
       if (onEditMode.status) {
         const index = selectedIndex(id)
         const prodForSaleSel = productsForSale[index]
 
-        prodForSaleSel['qty'] = Number(qty)
-        prodForSaleSel['total'] = Number(qty) * Number(prodForSaleSel['salePrice'])
+        prodForSaleSel['qty'] = qty
+        prodForSaleSel['total'] = qty * prodForSaleSel['salePrice']
         const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
 
         dispatch(setProductsForSale(products))
@@ -52,8 +52,8 @@ export const ProductsForSale = ({products}) => {
   
   const handleKeyPress = (id, value, key) => {
     if (key === 'Enter') {
-      setQty(Number(value))
-      onEdit('id', id, Number(value))
+      setQty(value)
+      onEdit('id', id, value)
     }
   }
 
@@ -71,13 +71,29 @@ export const ProductsForSale = ({products}) => {
     dispatch(setProductsForSale(products))
   }
   
-  const handleEditBtnClick = (rowId) => {
+
+  const handleUpBtnClick = (rowId) => {
     const index = selectedIndex(rowId)
     const selection = productsForSale[index]
-    const currentQty = Number(selection['qty'])
+    selection['qty']++
+    selection['total'] = selection['qty']  * selection['salePrice']
+    const products = replaceItemProdForSale(selection, productsForSale)
 
-    onEdit('qty', rowId, currentQty)
+    dispatch(setProductsForSale(products))
   }
+  
+  const handleDownBtnClick = (rowId) => {
+    const index = selectedIndex(rowId)
+    const selection = productsForSale[index]
+    selection['qty']--
+    if (selection['qty'] < 1) selection['qty'] = 1
+    selection['total'] = selection['qty']  * selection['salePrice']
+    const products = replaceItemProdForSale(selection, productsForSale)
+
+    dispatch(setProductsForSale(products))
+  }
+
+  const handleFocus = (e) => e.target.select()
   
 
   return (
@@ -102,25 +118,26 @@ export const ProductsForSale = ({products}) => {
                     (onEditMode.status && 
                      onEditMode.rowKey === values.id &&
                      attrib.isCellEditable(key))
-                      ? attrib.isCellVisible(key) && <input type="number" key={values.id} 
-                                                            min={"1"}
+                      ? attrib.isCellVisible(key) && <input key={values.id} 
                                                             autoFocus={true}
-                                                            onBlur={() => onEdit('id', values.id, value)}
+                                                            onBlur={() => onEdit('id', values.id, Number(value))}
                                                             className="input-qty"
+                                                            onFocus={handleFocus}
                                                             value={qty}
-                                                            onChange={(e) => setQty(e.target.value)}
-                                                            onKeyPress={(e) => handleKeyPress(values.id, e.target.value, e.key)}
+                                                            onChange={(e) => setQty(Number(e.target.value))}
+                                                            onKeyPress={(e) => handleKeyPress(values.id, Number(e.target.value), e.key)}
                         />
                       : attrib.isCellVisible(key) && 
                         <td key={key}
                             className={attrib.getCellClass(key)}
-                            onClick={() => onEdit(key, values.id, value)}
+                            onClick={() => onEdit(key, values.id, Number(value))}
                         >
                             {attrib.getCellValue(key, value)}
                         </td>
                   ))
                 }
-                <ActionButtom type='edit' row={values.id} handleClick={handleEditBtnClick} />
+                <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
+                <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
                 <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
               </tr>
             ))

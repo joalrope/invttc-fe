@@ -47,7 +47,7 @@ export const SearchCode = () => {
 
 
   return (
-    <>
+    <div className="mt-3">
     <h5>Buscar Producto</h5>
       <div className="input-group form-group group-input-search-code input-search-code">
         <div className="input-group-prepend">
@@ -71,6 +71,6 @@ export const SearchCode = () => {
                                                       <ListProductsFound products={products} onClick={handleClick}/>
                                                     </div>)
       }
-    </>
+    </div>
   )
 }
