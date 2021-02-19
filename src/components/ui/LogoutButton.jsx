@@ -12,9 +12,9 @@ export const LogoutButton = () => {
 
   const handleLogout = () => {
     sessionStorage.clear()
-    history.push('/');
     dispatch(clearPoductStore())
     dispatch(startLogout());
+    history.push('/');
   }
 
 

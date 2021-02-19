@@ -9,7 +9,7 @@ export const getJsonEntries = (json) => {
 
   Object.values(jsonEntries).map((entry) => {
     entry.map((item, id) => {
-      if (entry.length === id + 1) {
+      if (maxLen > entry.length && entry.length === id + 1) {
         item[0] = maxLen
       }
       if (item.length === 3) item.push(i)
@@ -58,11 +58,13 @@ const pushItem = (item) => {
 
 const getSpan = (data) => {
   let span = 1;
-
   if (typeof data === 'object') {
     Object.keys(data).map((key) => {
       if (typeof data[key] === 'object') {
         span = data[key].length;
+      }
+      if (Array.isArray(data[key])) {
+        span = 1
       }
       return null
     })

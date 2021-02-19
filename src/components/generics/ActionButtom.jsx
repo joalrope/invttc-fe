@@ -18,17 +18,17 @@ export const ActionButtom = ({type, row, handleClick}) => {
       break;
 
     case 'select':
-      icon = 'fas fa-check-square'
+      icon = 'fas fa-cart-plus'
       brColor = '#28a745'
       break;
 
     case 'up':
-      icon = 'fas fa-sort-up'
+      icon = 'fas fa-chevron-up'
       brColor = '#28a745'
       break;
     
     case 'down':
-      icon = 'fas fa-sort-down'
+      icon = 'fas fa-chevron-down'
       brColor = '#28a745'
       break;
     
