@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { InvoicePdfComponent } from '../reports/InvoicePdfComponent'
 
 export const ReportPage = () => {
+
     return (
         <div>
-            <h1>Reportes</h1>
+            <InvoicePdfComponent/>
         </div>
     )
 }

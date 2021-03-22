@@ -1,0 +1,283 @@
+
+
+
+.invoice-container {
+  /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
+  color: black;
+  width: 30%; 
+  margin: 1rem;
+  font-size: 0.5rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.invoice-header {
+  border: 1 px solid black;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-header {
+  flex: 1 1 75%;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.right-header {
+  flex: 1 25%;
+
+}
+
+.address p {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.client-data {
+  border: 1px solid black;
+  font-weight: bolder;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.row-client {
+  display: flex;
+  flex-direction: row;
+  padding: 0.2rem 0;
+}
+
+.to-fill {
+  border-bottom: 1px solid black;
+  flex: 1 1 20%;
+  padding-left: 0.5rem;
+  line-height: 0.5rem;
+}
+
+// .client-name {
+//   font-size: 0.5rem;
+// }
+
+.address {
+  height: 1rem;
+}
+
+.row-info {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  margin-bottom: 0.1rem;
+  flex: 1 1 50%;
+  padding: 0.15rem;
+}
+
+.descrip-order {
+  flex-direction: row;
+  flex: 1 1 35%;
+  padding: 0.1rem;
+  text-align: left;
+}
+
+.to-fill-order {
+  flex-direction: row;
+  flex: 1 1 65%;
+}
+
+.descrip-phones {
+  flex-direction: row;
+  flex: 1 1 20%;
+  padding: 0.1rem;
+}
+
+.to-fill-phones {
+  flex-direction: row;
+  flex: 1 1 80%;
+}
+
+.descrip-rif, .descrip-nit {
+  flex-direction: row;
+  flex: 1 1 5%;
+  padding: 0.1rem;
+}
+
+.to-fill-rif, .to-fill-nit {
+  flex-direction: row;
+  flex: 1 1 95%;
+}
+
+.descrip-date {
+  flex-direction: row;
+  flex: 1 1 6%;
+  padding: 0.1rem;
+  text-align: left;
+}
+
+.to-fill-date {
+  flex-direction: row;
+  flex: 1 1 94%;
+}
+
+.to-fill-order,
+.to-fill-phones,
+.to-fill-rif,
+.to-fill-nit,
+.to-fill-date {
+  text-align: left;
+  line-height: 0.66rem;
+  padding-left: 0.1rem;
+}
+
+.control-number-frame {
+  display: flex;
+  flex-direction: column;
+  font-weight: bolder;
+  border: 1px solid black;
+  padding: 0.1rem;
+}
+
+.delivery-note, .quote {
+  display: flex;
+  flex-direction: row;
+}
+
+.delivery-sqr, .quote-sqr {
+  flex: 1 1 6%;
+  border: 1px solid black;
+  margin: 0.1rem;
+  height: 10px;
+  width: 100px;
+  line-height: 0.66rem;
+}
+
+.isSelected {
+  background-color: black;
+}
+
+.delivery-descrip, .quote-descrip {
+  flex: 1 1 94%;
+  margin: 0.1;
+  text-align: left;
+  padding-left: 0.3rem;
+  line-height: 1rem;
+}
+
+.control-number-counter {
+  padding: 0.1rem;
+}
+.centered {
+  display: flex;
+  justify-content: center;  
+}
+
+.control-number-descrip {
+  text-align: right;
+  margin-right: 2px;
+  font-weight: bolder;
+}
+
+.control-number-code {
+  text-align: left;
+  margin-left: 2px;
+  font-weight: bolder;
+  color: red;
+  line-height: 1rem;
+}
+
+.products-for-sale-table {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.products-for-sale-table thead tr th,
+.products-for-sale-table tbody tr td {
+  padding: 4px 10px;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.invoice-footer {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  margin-top: 5px;
+}
+
+.left-invoice-signature, .right-invoice-signature {
+  flex: 1 1 30%;
+  margin-right: 15px;
+  border-bottom: 1px solid black;
+}
+
+.row-sign {
+  display: flex;
+  flex-direction: row;
+}
+
+.descrip-sign {
+  flex: 1 1 52%;;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  padding: 3px 3px;
+}
+
+.to-fill-sign {
+  flex: 1 1 48%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.invoive-summary {
+  flex: 1 1 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gral-total {
+  border-bottom: 1px solid black;
+}
+
+
+.row-summ {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.descrip-summ {
+  flex: 1 1 50%;
+  font-weight: bolder;
+  padding: 3px 12px;
+  text-align: right;
+}
+
+.to-fill-summ {
+  flex: 1 1 45%;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  font-weight: bolder;
+  padding: 0px 10px;
+  text-align: right;
+}
+
+
+
+
+
+
+
+

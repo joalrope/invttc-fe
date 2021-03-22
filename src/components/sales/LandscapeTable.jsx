@@ -1,30 +1,27 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Swal from 'sweetalert2'
-import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale'
-import { addProductForSale, setProductsForSale } from '../../actions/products'
-import {TableAttrib} from '../../helpers/sales/table-attrib-class'
-import {columns} from '../../assets/data/json-to-html-table'
-import {parseJwt} from '../../helpers/parse-jwt'
-import { replaceItemProdForSale } from '../../helpers/sales/sales-utils'
-import { ActionButtom } from '../generics/ActionButtom'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import { addProductForSale, setProductsForSale } from '../../actions/products';
+import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
+import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
+import { ActionButtom } from '../generics/ActionButtom';
+import { TableAttrib } from '../../classes/table-attrib-class';
+import { parseJwt } from '../../helpers/parse-jwt';
+import { columns } from '../../assets/data/json-to-html-table';
 
 export const LandscapeTable = ({data}) => {
   const dispatch = useDispatch();
-  const {activeProduct, productsForSale} = useSelector(state => state.product)
-  const attrib = new TableAttrib(columns)
-  const role = parseJwt()
+  const {activeProduct, productsForSale} = useSelector(state => state.product);
+  const attrib = new TableAttrib(columns);
+  const role = parseJwt();
 
-  const selectedIndex = (code, trademark) => productsForSale.findIndex(item =>  item.code === code &&
-                                                                                item.trademark === trademark )                                                                             
+  const selectedIndex = (code, trademark) => productsForSale.findIndex(item =>  item.code === code && item.trademark === trademark );                                                                           
 
   const handleClick = (key, brand) => {
-    
     if (key === 'trademark') {
-      const selectedProduct = getSelectedProduct(brand, activeProduct)
-      const {code, trademark} = selectedProduct
-      const isLoadedProduct = productsForSale.some(product => product.code === code &&
-                                                              product.trademark === trademark)
+      const selectedProduct = getSelectedProduct(brand, activeProduct);
+      const {code, trademark} = selectedProduct;
+      const isLoadedProduct = productsForSale.some(product => product.code === code && product.trademark === trademark);
 
       if (isLoadedProduct) {
         Swal.fire({
@@ -36,37 +33,36 @@ export const LandscapeTable = ({data}) => {
             denyButtonText: '<i class="fa fa-thumbs-down"></i> No!',
           }).then((result) => {
             if (result.isConfirmed) {              
-              const index = selectedIndex(code, trademark)
-              const prodForSaleSel = productsForSale[index]
-              let qtyLoaded 
+              const index = selectedIndex(code, trademark);
+              const prodForSaleSel = productsForSale[index];
+              let qtyLoaded;
 
               productsForSale.some(product => {
                 if (product.code === code && product.trademark === trademark) {
-                  qtyLoaded = Number(product.qty)
+                  qtyLoaded = Number(product.qty);
                 }
                 return null
               })
 
-              prodForSaleSel['qty'] = Number(qtyLoaded) + 1
-              prodForSaleSel['total'] = Number( prodForSaleSel['qty']) * Number(prodForSaleSel['salePrice'])
+              prodForSaleSel['qty'] = Number(qtyLoaded) + 1;
+              prodForSaleSel['total'] = Number( prodForSaleSel['qty']) * Number(prodForSaleSel['salePrice']);
 
-              const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
+              const products = replaceItemProdForSale(prodForSaleSel, productsForSale);
 
-              dispatch(setProductsForSale(products))  
+              dispatch(setProductsForSale(products));
             }
           })
       } else {
-        dispatch(addProductForSale(selectedProduct))
+        dispatch(addProductForSale(selectedProduct));
       }
     }
   }
 
   const handleSelectBtnClick = (row) => {
-    
-    const pos = (activeProduct.info.hasOwnProperty(`${row}`)) ? row : 0
-    const brand = activeProduct.info[pos].trademark 
+    const pos = (activeProduct.info.hasOwnProperty(`${row}`)) ? row : 0;
+    const brand = activeProduct.info[pos].trademark;
 
-    handleClick('trademark', brand)
+    handleClick('trademark', brand);
   }
 
   return (

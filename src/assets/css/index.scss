@@ -33,3 +33,226 @@ code {
 .text-left {
   text-align: left;
 }
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.content-22 {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid #000; */
+  /* background: green; */
+}
+
+.s-2 {
+  color: blue;
+  padding-left: 8rem;
+  font-weight: 900;
+}
+.invoice-table-header-tag {
+  font-size: 22px;
+  text-align: left;
+  font-weight: 800;
+}
+
+.invoice-table-row-content {
+  font-size: 18px;
+  text-align: left;
+  font-weight: 500;
+}
+
+// table {
+//   border-collapse: collapse;
+//   border-bottom: 1px solid black;
+//   border-right: 1px solid black;
+// }
+// th {
+//   background: #ccc;
+// }
+
+// th,
+// td {
+//   border-left: 1px solid black;
+//   border-top: 1px solid black;
+//   padding: 8px;
+// }
+
+// tr:nth-child(even) {
+//   background: #efefef;
+// }
+
+// tr:hover {
+//   background: #d1d1d1;
+// }
+
+/*  common css*/
+/* common css */
+.dib {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pr2 {
+  padding-right: 0.5rem;
+}
+
+.pl2 {
+  padding-left: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-5 {
+  margin-top: 1.5rem;
+}
+
+.mt-6 {
+  margin-top: 2rem;
+}
+
+.mt-8 {
+  margin-top: 4rem;
+}
+
+.mt-10 {
+  margin-top: 5rem;
+}
+
+.mt-12 {
+  margin-top: 6rem;
+}
+
+.mtb-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.mtb-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mtb-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.mtb-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.pr4 {
+  padding-right: 2rem;
+}
+
+.pl4 {
+  padding-left: 2rem;
+}
+
+.pr {
+  position: relative;
+}
+
+.pb2 {
+  padding-bottom: 1rem;
+}
+
+.pb4 {
+  padding-bottom: 2rem;
+}
+
+.pv3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.pv1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.dt {
+  display: table;
+}
+
+.dt-row {
+  display: table-row;
+}
+
+.dtc {
+  display: table-cell;
+}
+
+.v-top {
+  vertical-align: top;
+}
+.v-btm {
+  vertical-align: bottom;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.w4 {
+  width: 8rem;
+}
+.w-90 {
+  width: 90%;
+}
+
+.custom-input-w-80 .bp3-input-group {
+  width: 80%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-grey {
+  color: #ccc;
+}
+
+.z-index-negative-1 {
+  z-index: -1;
+}
+

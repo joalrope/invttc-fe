@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
-import {TableAttrib} from '../../helpers/sales/table-attrib-class'
+import {TableAttrib} from '../../classes/table-attrib-class'
 import {columns} from '../../assets/data/json-to-html-table'
 
 
