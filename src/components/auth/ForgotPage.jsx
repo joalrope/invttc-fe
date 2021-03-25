@@ -9,7 +9,7 @@ export const ForgotPage = () => {
     const history = useHistory();
 
     const goBack = () => {
-        (history.length>=1) ? history.goBack() : history.push("/");
+        (history.length >= 1) ? history.goBack() : history.push("/");
     } 
 
     const handleSubmit = () => {

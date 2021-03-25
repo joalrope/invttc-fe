@@ -67,7 +67,7 @@ export const addProductForSale = (product) => ({
   payload: product
 })
 
-export const clearPoductStore = () => ({
+export const clearActivePoduct = () => ({
   type: types.productClearActivePoduct
 })
 

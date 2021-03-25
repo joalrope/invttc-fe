@@ -1,44 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { TableAttrib } from '../../../classes/table-attrib-class'
 import { columns } from '../../../assets/data/products-for-sale-table';
 
 
-export const InvoiceBody = () => {
-  const attrib = new TableAttrib(columns)
-  const {productsForSale} = useSelector(state => state.product);
-  let clonedProducts = JSON.parse(JSON.stringify(productsForSale));
-  let i = 0
-
-  const products = clonedProducts.map(product => {
-    i++ 
-    return {
-      "id": product.id,
-      "item": `0${i}`,
-      "code": product.code,
-      "title": product.title,
-      "qty": product.qty,
-      "salePrice": product.salePrice,
-      "total": product.total
-    }
-  });
-
-  if (products.length < 11) {
-    i = products.length
-    while (i < 9){
-      i++
-      products[i] = {
-        "id": i,
-        "item": (i < 10) ? `0${i}` : `${i}`,
-        "code": "",
-        "title": "",
-        "qty": "",
-        "salePrice": "",
-        "total": ""
-      } 
-    }
-  } 
-
+export const InvoiceBody = ({products}) => {
+  const attrib = new TableAttrib(columns)  
   
   return (
     <div className="invoice-body">

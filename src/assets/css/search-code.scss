@@ -1,0 +1,15 @@
+@import './partials//variables';
+
+.search-code {
+  width: $inputs-width;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-code-title {
+  text-align: left;
+}
+
+.input-code-span-text {
+  width: 80px !important;
+}

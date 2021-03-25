@@ -8,7 +8,8 @@ export const InvoiceFooter = () => {
   const locale = 'es-Es'
   const digits = 2
   const ivaTax = 0.16
-  const purchaseTotal = Number(productsForSale.reduce((total, {totalItem}) => total + totalItem, 0))
+  const purchaseTotal = productsForSale.reduce((grandTotal, {total}) => Number(grandTotal) + Number(total), 0)
+  console.log(purchaseTotal)
   const ivaTaxAmount = purchaseTotal * ivaTax
   const invoiceTotal = purchaseTotal + ivaTaxAmount
 

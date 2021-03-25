@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../assets/css/list-products-found.scss'
 
 
 export const ListProductsFound = ({products, onClick}) => {

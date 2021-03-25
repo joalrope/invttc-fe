@@ -60,7 +60,7 @@ const fetchWithToken = (endpoint, data, method = 'GET', header) => {
         return resp.json()
       } else {
         sessionStorage.clear();
-        history.push('login');
+        history.push('/login');
         store.dispatch(startLogout());
         return {
           ok: false,

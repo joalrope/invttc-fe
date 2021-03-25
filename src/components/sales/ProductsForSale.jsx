@@ -27,13 +27,13 @@ export const ProductsForSale = ({products}) => {
         status: true,
         rowKey: id
       });
-
+      //TODO: Verificar existencia de qty
       setQty(currentQty);
     } else {
       if (onEditMode.status) {
         const index = selectedIndex(id);
         const prodForSaleSel = productsForSale[index];
-
+        //TODO: obtener el campo editado y actualizar prodForSaleSel['campo editado']
         prodForSaleSel['qty'] = qty;
         prodForSaleSel['total'] = qty * Number(prodForSaleSel['salePrice']);
         const products = replaceItemProdForSale(prodForSaleSel, productsForSale);
@@ -65,7 +65,6 @@ export const ProductsForSale = ({products}) => {
   }, 0);
 
   const totalTax = subTotal * tax;
-  
   const gralTotal = subTotal + totalTax;
 
   const handleDeleteBtnClick = (rowId) => {
@@ -96,83 +95,85 @@ export const ProductsForSale = ({products}) => {
   }
 
   const handleCheckIn = (rowId) => {
-    history.push('reports');
-
-    
+    if (productsForSale.length > 0)
+      history.push('reports');
   } 
 
   const handleFocus = (e) => e.target.select();
   
 
   return (
-    <table className="products-for-sale-table mt-5" >
-      <thead>
-        <tr>
+    <div className="products-for-sale-container mt-5">
+      <h5 className="products-for-sale-title">Productos a Facturar</h5>
+      <table className="products-for-sale-table" >
+        <thead>
+          <tr>
+            {
+              Object.keys(headData).map((key) => (
+                attrib.isCellVisible(key) && <th key={key}>{attrib.getTitleHeader(key)}</th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
           {
-            Object.keys(headData).map((key) => (
-              attrib.isCellVisible(key) && <th key={key}>{attrib.getTitleHeader(key)}</th>
+            Object.values(products).map((values) => (
+              <tr key={values.id}>
+                {
+                  Object.entries(values).map(([key, value]) => (
+                    
+                    (onEditMode.status && 
+                      onEditMode.rowKey === values.id &&
+                      attrib.isCellEditable(key))
+                      ? attrib.isCellVisible(key) && <input key={values.id} 
+                                                            autoFocus={true}
+                                                            onBlur={() => onEdit('id', values.id, Number(value))}
+                                                            onFocus={handleFocus}
+                                                            value={qty}
+                                                            onChange={(e) => setQty(Number(e.target.value))}
+                                                            onKeyPress={(e) => handleKeyPress(values.id, Number(e.target.value), e.key)}
+                        />
+                      : attrib.isCellVisible(key) && 
+                        <td key={key}
+                            className={attrib.getCellClass(key)}
+                            onClick={() => onEdit(key, values.id, Number(value))}
+                        >
+                            {attrib.getCellValue(key, value)}
+                        </td>
+                  ))
+                }
+                <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
+                <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
+                <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
+              </tr>
             ))
           }
-        </tr>
-      </thead>
-      <tbody>
-        {
-          Object.values(products).map((values) => (
-            <tr key={values.id}>
-              {
-                Object.entries(values).map(([key, value]) => (
-                  
-                  (onEditMode.status && 
-                    onEditMode.rowKey === values.id &&
-                    attrib.isCellEditable(key))
-                    ? attrib.isCellVisible(key) && <input key={values.id} 
-                                                          autoFocus={true}
-                                                          onBlur={() => onEdit('id', values.id, Number(value))}
-                                                          onFocus={handleFocus}
-                                                          value={qty}
-                                                          onChange={(e) => setQty(Number(e.target.value))}
-                                                          onKeyPress={(e) => handleKeyPress(values.id, Number(e.target.value), e.key)}
-                      />
-                    : attrib.isCellVisible(key) && 
-                      <td key={key}
-                          className={attrib.getCellClass(key)}
-                          onClick={() => onEdit(key, values.id, Number(value))}
-                      >
-                          {attrib.getCellValue(key, value)}
-                      </td>
-                ))
-              }
-              <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
-              <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
-              <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
-            </tr>
-          ))
-        }
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colSpan={3}></td>
-          <th colSpan= {2} className="text-right">SUB-TOTAL:</th>
-          <th className="text-right">
-            {attrib.getCellValue('total', subTotal)}
-          </th>
-        </tr>
-        <tr>
-          <td colSpan={3}></td>
-          <th colSpan= {2} className="text-right">{`I.V.A. (${tax*100}%):`}</th>
-          <th className="text-right">
-            {attrib.getCellValue('total', totalTax)}
-          </th>
-        </tr>
-        <tr>
-          <td colSpan={3}></td>
-          <th colSpan= {2} className="text-right">TOTAL VENTA ({coin}):</th>
-          <th className="text-right">
-            {attrib.getCellValue('total', gralTotal)}
-          </th>
-          <ActionButtom type='edit' row={5} handleClick={handleCheckIn}/>
-        </tr>
-      </tfoot>
-    </table>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">SUB-TOTAL:</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', subTotal)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">{`I.V.A. (${tax*100}%):`}</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', totalTax)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">TOTAL VENTA ({coin}):</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', gralTotal)}
+            </th>
+            <ActionButtom type='edit' row={5} handleClick={handleCheckIn}/>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   )
 }

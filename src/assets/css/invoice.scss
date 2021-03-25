@@ -1,9 +1,9 @@
-
+@import './partials//variables';
 
 
 .invoice-container {
   /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
-  color: black;
+  color: $text-color;
   width: 30%; 
   margin: 1rem;
   font-size: 0.5rem;

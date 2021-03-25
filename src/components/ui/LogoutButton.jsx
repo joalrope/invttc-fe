@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { startLogout } from '../../actions/auth';
-import { clearPoductStore } from '../../actions/products';
+import { clearActivePoduct } from '../../actions/products';
 
 export const LogoutButton = () => {
 
@@ -12,7 +12,7 @@ export const LogoutButton = () => {
 
   const handleLogout = () => {
     sessionStorage.clear()
-    dispatch(clearPoductStore())
+    dispatch(clearActivePoduct())
     dispatch(startLogout());
     history.push('/');
   }

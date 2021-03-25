@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { findProductByCode, findProductById } from '../../actions/products';
-import { useForm } from '../../hooks/userForm';
 import { ListProductsFound } from './ListProductsFound';
+import { useForm } from '../../hooks/userForm';
+import '../../assets/css/search-code.scss';
 
 
 export const SearchCode = () => {
@@ -47,11 +48,11 @@ export const SearchCode = () => {
 
 
   return (
-    <div className="mt-3">
-    <h5>Buscar Producto</h5>
+    <div className="search-code">
+      <h5 className="search-code-title">Buscar Producto</h5>
       <div className="input-group form-group group-input-search-code input-search-code">
         <div className="input-group-prepend">
-          <span className="input-group-text"><i className="fas fa-search-dollar"></i></span>
+          <span className="input-group-text input-code-span-text"><i className="fas fa-search-dollar">Código</i></span>
         </div>
         <input
           type="text"
