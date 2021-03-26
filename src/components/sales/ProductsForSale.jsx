@@ -6,7 +6,7 @@ import { columns } from '../../assets/data/products-for-sale-table';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../actions/products';
 import { ActionButtom } from '../generics/ActionButtom';
-import '../../assets/css/sales.scss'
+import '../../assets/css/products-for-sale.scss'
 
 export const ProductsForSale = ({products}) => {
   const history = useHistory();
