@@ -9,7 +9,6 @@ export const InvoiceFooter = () => {
   const digits = 2
   const ivaTax = 0.16
   const purchaseTotal = productsForSale.reduce((grandTotal, {total}) => Number(grandTotal) + Number(total), 0)
-  console.log(purchaseTotal)
   const ivaTaxAmount = purchaseTotal * ivaTax
   const invoiceTotal = purchaseTotal + ivaTaxAmount
 

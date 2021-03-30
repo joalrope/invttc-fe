@@ -1,13 +1,13 @@
 
 const auth = ['storer-chief', 'admin', 'owner']
-export const template = ['code', 'title', 'info', 'category', 'replacement', 'measurement', 'status']
+export const template = ['code', 'title', 'details', 'category', 'replacement', 'measurement', 'status']
 
 export const columns = [
   { name: "id",           visible: false, type: "string", title: "id",            class: "celldata",      width: "10%", aling: "left"   },
   { name: "code",         visible: true,  type: "string", title: "Código",        class: "celldata",      width: "1%",  aling: "left"   },
   { name: "category",     visible: true,  type: "string", title: "Categoría",     class: "celldata",      width: "1%",  aling: "left"   },
   { name: "title",        visible: true,  type: "string", title: "Decripción",    class: "celldata",      width: "1%",  aling: "left"   },
-  { name: "info",         visible: true,  type: "string", title: "Detalles",      class: "celldata",      width: "1%",  aling: "center" },
+  { name: "details",      visible: true,  type: "string", title: "Detalles",      class: "celldata",      width: "1%",  aling: "center" },
   { name: "replacement",  visible: true,  type: "string", title: "Equivalencias", class: "celldata",      width: "1%",  aling: "left"   },
   { name: "measurement",  visible: true,  type: "string", title: "Medidas",       class: "celldata",      width: "1%",  aling: "left"   },
   { name: "status",       visible: true,  type: "string", title: "Condición",     class: "celldata",      width: "1%",  aling: "left"   },

@@ -3,10 +3,10 @@ export const product = {
 "code": "0300060",
 "category": "PART",
 "title": "BEARING",
-"info": [
+"details": [
     {
         "trademark": "CAT",
-        "loc_qty": [
+        "stock": [
             {
                 "location": "DEP-03-C4",
                 "qty": 8
@@ -17,7 +17,7 @@ export const product = {
     },
     {
         "trademark": "CTP",
-        "loc_qty": [
+        "stock": [
             {
                 "location": "DEP-23-H2",
                 "qty": 10

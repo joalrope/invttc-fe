@@ -59,8 +59,8 @@ export const LandscapeTable = ({data}) => {
   }
 
   const handleSelectBtnClick = (row) => {
-    const pos = (activeProduct.info.hasOwnProperty(`${row}`)) ? row : 0;
-    const brand = activeProduct.info[pos].trademark;
+    const pos = (activeProduct.details.hasOwnProperty(`${row}`)) ? row : 0;
+    const brand = activeProduct.details[pos].trademark;
 
     handleClick('trademark', brand);
   }
