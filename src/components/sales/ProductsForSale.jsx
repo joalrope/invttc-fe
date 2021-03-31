@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import Swal from 'sweetalert2';
 import { TableAttrib } from '../../classes/table-attrib-class';
 import { columns } from '../../assets/data/products-for-sale-table';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../helpers/sales/sales-utils';
@@ -76,6 +77,15 @@ export const ProductsForSale = ({products}) => {
   const handleUpBtnClick = (rowId) => {
     const index = selectedIndex(rowId);
     const selection = productsForSale[index];
+    const qtyAvailable = selection['qtyAvailable'];
+    if (qtyAvailable === selection['qty']) {
+      Swal.fire({
+        title: 'Por Favor Verifique cantidad disponible',
+        html: `El producto con codigo: <b>${selection['code']}</b> de la marca <b>${selection['trademark']}</b> solo tiene <b>${selection['qtyAvailable']} </b>disponibles`,
+        icon: 'warning',
+        confirmButtonText: '<i class="fa fa-thumbs-up"></i> Entendido!',
+      })
+    }
     selection['qty']++;
     selection['total'] = selection['qty']  * selection['salePrice'];
     const products = replaceItemProdForSale(selection, productsForSale);
