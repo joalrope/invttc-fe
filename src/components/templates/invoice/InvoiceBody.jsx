@@ -1,14 +1,16 @@
 import React from 'react';
 import { TableAttrib } from '../../../classes/table-attrib-class'
 import { columns } from '../../../assets/data/products-for-sale-table';
+import '../../../assets/css/invoice.scss'
 
 
 export const InvoiceBody = ({products}) => {
   const attrib = new TableAttrib(columns)  
   
+  
   return (
     <div className="invoice-body">
-      <table className="products-for-sale-table">
+      <table className="invoiced-products-for-sale-table">
         <thead>
             {
               <tr>
