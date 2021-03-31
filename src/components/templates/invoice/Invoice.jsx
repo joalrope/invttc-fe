@@ -59,8 +59,8 @@ export const  Invoice = () => {
 
   return (
     <div className="invoice-container">
-      <InvoiceHeader customerData={customerData} transactionData={transactionData}/>,
-      <InvoiceBody products={products}/>,
+      <InvoiceHeader customerData={customerData} transactionData={transactionData}/>
+      <InvoiceBody products={products}/>
       <InvoiceFooter/>
     </div>
   );

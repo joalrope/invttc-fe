@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/css/action-button.scss'
 
-export const ActionButtom = ({type, row, handleClick}) => {
+export const ActionButtom = ({type, row, handleClick, title}) => {
 
   let icon;
 
@@ -29,13 +29,15 @@ export const ActionButtom = ({type, row, handleClick}) => {
     default:
       break;
   }
-
+  const rowSpan = (title) ? 3 : 1
 
   return (
-    <td className="td-action-button">
+    [<td rowSpan={rowSpan} className="td-action-button">
       <button className= "action-button" onClick={() => handleClick(row)}>
-        <i className={icon}></i>
+        <i className={icon}>{title}</i>
       </button>
-    </td>
+    </td>,
+    <td></td>,
+    <td></td>]
   )
 }

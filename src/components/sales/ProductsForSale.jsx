@@ -78,19 +78,21 @@ export const ProductsForSale = ({products}) => {
     const index = selectedIndex(rowId);
     const selection = productsForSale[index];
     const qtyAvailable = selection['qtyAvailable'];
-    if (qtyAvailable === selection['qty']) {
+    if (selection['qty'] >= qtyAvailable) {
       Swal.fire({
         title: 'Por Favor Verifique cantidad disponible',
-        html: `El producto con codigo: <b>${selection['code']}</b> de la marca <b>${selection['trademark']}</b> solo tiene <b>${selection['qtyAvailable']} </b>disponibles`,
+        html: `El producto con codigo: <b>${selection['code']}</b> de la marca <b>${selection['trademark']}</b> 
+               solo tiene <b>${selection['qtyAvailable']} </b>disponible${(selection['qtyAvailable']>1)?'s':''}`,
         icon: 'warning',
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Entendido!',
       })
-    }
-    selection['qty']++;
-    selection['total'] = selection['qty']  * selection['salePrice'];
-    const products = replaceItemProdForSale(selection, productsForSale);
+    } else {
+      selection['qty']++;
+      selection['total'] = selection['qty']  * selection['salePrice'];
+      const products = replaceItemProdForSale(selection, productsForSale);
 
-    dispatch(setProductsForSale(products));
+      dispatch(setProductsForSale(products));
+    }
   }
   
   const handleDownBtnClick = (rowId) => {
@@ -180,7 +182,7 @@ export const ProductsForSale = ({products}) => {
             <th className="text-right">
               {attrib.getCellValue('total', gralTotal)}
             </th>
-            <ActionButtom type='edit' row={5} handleClick={handleCheckIn}/>
+            <ActionButtom type='edit' title="Facturar" row={5} handleClick={handleCheckIn}/>
           </tr>
         </tfoot>
       </table>
