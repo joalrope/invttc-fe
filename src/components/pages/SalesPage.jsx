@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { ProductsForSale } from '../sales/ProductsForSale';
 import { SearchClient } from '../sales/SearchClient';
 import { ProductInfo } from '../sales/ProductInfo';
-import { SearchCode } from '../sales/SearchCode';
+import { SearchProduct } from '../sales/SearchProduct';
 import '../../assets/css/sales.scss';
 
 export const SalesPage = () => {
@@ -14,7 +14,7 @@ export const SalesPage = () => {
     <div className="container mt-5">
       <div className="search-container" >
         <SearchClient/>
-        <SearchCode/>
+        <SearchProduct/>
       </div>
       {(activeProduct !== null) && <ProductInfo product={activeProduct}/>}
       {(productsForSale.length > 0) && <ProductsForSale products={productsForSale}/>}

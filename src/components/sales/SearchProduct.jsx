@@ -1,76 +1,74 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { findProductByCode, findProductById, clearProductsLoaded } from '../../actions/products';
 import { ListDataFound } from './ListDataFound';
 import { useForm } from '../../hooks/userForm';
-import { clearCustomersLoaded, findCustomerByCode, findCustomerById } from '../../actions/customers'
 
 const columns = [
   ["id", "id", false],
-  ["code", "RIF", true],
-  ["name", "Nombre", true]
+  ["code", "Código", true],
+  ["title", "Descripción", true]
 ]
 
-export const SearchClient = () => {
+export const SearchProduct = () => {
   const dispatch = useDispatch();
-  const {customers} = useSelector(state => state.customer)
-
-  const {activeCustomer} = useSelector(state => state.customer);
+  const {products} = useSelector(state => state.product)
+  // const {activeProduct} = useSelector(state => state.product);
   const [formValues, handleInputChange, reset] = useForm({Code: ''});
   const {Code} = formValues;
 
 
   const handleClick = (rowData) => {
     const {id} = JSON.parse(JSON.stringify(rowData));
-    dispatch(findCustomerById(id));
-    dispatch(clearCustomersLoaded())
-    console.log(id)
+    dispatch(findProductById(id));
+    dispatch(clearProductsLoaded())
     reset();
   } 
     
 
   const handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {          
-      dispatch(findCustomerByCode(Code));      
+      dispatch(findProductByCode(Code));
       
-      if (!!customers[0]) {
-        const {id} = customers[0]
+      if (!!products[0]) {
+        const {id} = products[0]
         if (!!id) {
-          dispatch(findCustomerById(id));
-          if(!!activeCustomer) reset();
+          dispatch(findProductById(id));
+          reset();
         }    
       }
     }
   }
     
   useEffect(() => {
-    dispatch(findCustomerByCode(Code.toUpperCase()));
+    dispatch(findProductByCode(Code.toUpperCase()));
   }, [dispatch, Code])
 
 
   return (
-    <div className="search-client">
-      <h5 className="search-client-title">Buscar Cliente</h5>
-      <div className="input-group form-group group-input-search-client input-search-client">
+    <div className="search-code">
+      <h5 className="search-code-title">Buscar Producto</h5>
+      <div className="input-group form-group group-input-search-code input-search-code">
         <div className="input-group-prepend">
-          <span className="input-group-text input-client-span-text">RIF ó Nombre</span>
+          <span className="input-group-text input-code-span-text">Código</span>
         </div>
         <input
           type="text"
           className="form-control"
-          placeholder="RIF ó Nombre"
+          placeholder="Código"
           name="Code"
           autoComplete="off"
           value={Code}
           onChange={handleInputChange}
-          //onFocus={handleInputFocus}
+          // onFocus={handleInputFocus}
           onKeyPress={handleOnKeyPress}
         />
           
       </div>
       {
-        (customers.length > 0) && (<div className="input-search-client"> 
+        (products.length > 0) && (<div className="input-search-code"> 
                                     <ListDataFound
-                                      data={customers}
+                                      data={products}
                                       hasHeader={true}
                                       columns={columns}
                                       handleClick={handleClick}

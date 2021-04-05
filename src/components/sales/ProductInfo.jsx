@@ -4,7 +4,6 @@ import {jsonToTabular} from '../../helpers/jsonTab/json-to-tabular'
 import { useWindowSize } from '../../hooks/useWindowSize'
 import { LandscapeTable } from './LandscapeTable'
 import { PortraitTable } from './PortraitTable'
-import '../../assets/css/product-info.scss'
 
 
 export const ProductInfo = (product) => {
@@ -21,9 +20,11 @@ export const ProductInfo = (product) => {
 
 
   return (
-    <div className="list-products-found-title mt-5">
-      <h5>Detalle de Producto</h5>
-        {(mode === 'portrait') ? <PortraitTable data={data}/> : <LandscapeTable key={data} data={data}/>}      
+    <div className="list-product-found-container mt-5">
+      <div className="list-product-found">
+        <h5 className="list-products-found-title">Detalle de Producto</h5>
+          {(mode === 'portrait') ? <PortraitTable data={data}/> : <LandscapeTable key={data} data={data}/>}
+      </div>
     </div>
   )
 }

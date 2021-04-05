@@ -1,5 +1,9 @@
  @import './partials//variables';
-$inputs-width: 25vw;
+
+ .container {
+   justify-content: center;
+ }
+
 
 .table-container {
   padding: 5px;
@@ -10,6 +14,25 @@ $inputs-width: 25vw;
 .search-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.search-code,
+.search-client {
+  text-align: left;
+  width: $inputs-width-big-screen !important;  
+}
+
+.search-client {
+  margin-right: 50px;
+}
+
+.input-client-span-text {
+  width: 100px !important;
+}
+
+.input-code-span-text {
+  width: 100px !important;
 }
 
 .input-group {
@@ -24,6 +47,17 @@ $inputs-width: 25vw;
 .bold {
   font-weight: bold;
 }
+
+.products-for-sale-container,
+.list-product-found-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list-products-found-title {
+  text-align: left;
+}
+
 
 .fade-in {
   -webkit-animation-name: fadeIn;
@@ -84,8 +118,20 @@ $inputs-width: 25vw;
 
 }
 
-@media screen and (max-width: 575px){
-  .input-search-code, .input-search-client {
-        width: 90vw;        
-    }
+@media screen and (max-width: 775px){
+  
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .search-code,
+  .search-client {
+    max-width: $inputs-width-litle-screen !important;
+  }
+
+  .search-client {
+    margin-right: 0;
+  }
 }

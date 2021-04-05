@@ -25,7 +25,7 @@ export const InvoicePdfComponent = () => {
       callback: function(doc) {
         doc.viewerPreferences({"FitWindow":true});
         doc.output('dataurlnewwindow');
-        //history.goBack();
+        history.goBack();
       },
       margin: [20, 20, 20, 20]
     });
@@ -42,6 +42,7 @@ export const InvoicePdfComponent = () => {
   return (productsForSale.length > 0) && (
     <div className="App content-22" id="content-22">
       <Invoice />
+      <div className="separator">--------------------------------------------------------------------------------------------------------------------</div>
       <Invoice />
     </div>
   );

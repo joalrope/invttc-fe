@@ -17,6 +17,12 @@ export const productReducer = ( state = initialState, action ) => {
         ...state,
         products: [...action.payload]
       }
+
+    case types.clearProductsLoaded:
+      return {
+        ...state,
+        products: []
+      }
     
     case types.productSetActive:
       return {
@@ -58,5 +64,4 @@ export const productReducer = ( state = initialState, action ) => {
       return state;
 
   }
-
 }
