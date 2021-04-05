@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
+import '../../../assets/css/invoice.scss'
 
 
 export const InvoiceHeader = ({customerData, transactionData}) => {
@@ -20,26 +21,26 @@ export const InvoiceHeader = ({customerData, transactionData}) => {
         </div>
         <div className="client-data">
           <div className="row-client">
-            <div className="descrip">RAZON SOCIAL:</div>
+            <div className="descrip">Razón Social:</div>
             <div className="to-fill  client-name">{customer.name}</div>
           </div>
-          <div className="row-client address">
-            <div className="descrip">DOMICILIO FISCAL:</div>
+          <div className="row-client">
+            <div className="descrip">Domicilio Fiscal:</div>
             <div className="to-fill">{customer.address}</div>
           </div>
           <div className="row-client">
-            <div className="descrip">CONDICIONES DE PAGO:</div>
+            <div className="descrip">Condiciones de pago:</div>
             <div className="to-fill">{customer.paymentConditions}</div>
           </div>
         </div>
       </div>
       <div className="right-header">
         <div className="row-info">
-          <div className="descrip-order">N° O/DE COMPRA:</div>
+          <div className="descrip-order">N° O/de compra:</div>
           <div className="to-fill-order">{customer.purchaseOrder}</div>
         </div>
         <div className="row-info">
-          <div className="descrip-phones">TELÉFONOS:</div>
+          <div className="descrip-phones">Teléfono:</div>
           <div className="to-fill-phones">{customer.phones}</div>
         </div>
         <div className="row-info">
@@ -51,17 +52,17 @@ export const InvoiceHeader = ({customerData, transactionData}) => {
           <div className="to-fill-nit"></div>
         </div>
         <div className="row-info">
-          <div className="descrip-date">FECHA:</div>
+          <div className="descrip-date">Fecha:</div>
           <div className="to-fill-date">{transaction.date}</div>
         </div>
         <div className="control-number-frame">
           <div className="delivery-note">
             <div className={`delivery-sqr ${(transaction.deliveryMode) && 'isSelected'}`}></div>
-            <div className="delivery-descrip">NOTA DE ERNTREGA</div>
+            <div className="delivery-descrip">Nota de entrega</div>
           </div>
           <div className="quote">
             <div className={`quote-sqr ${!transaction.deliveryMode && 'isSelected'}`}></div>
-            <div className="quote-descrip">COTIZACION</div>
+            <div className="quote-descrip">Cotización</div>
           </div>
           <div className="control-number-counter">
             <div className="centered">

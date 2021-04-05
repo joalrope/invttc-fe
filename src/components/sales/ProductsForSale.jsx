@@ -78,19 +78,21 @@ export const ProductsForSale = ({products}) => {
     const index = selectedIndex(rowId);
     const selection = productsForSale[index];
     const qtyAvailable = selection['qtyAvailable'];
-    if (qtyAvailable === selection['qty']) {
+    if (selection['qty'] >= qtyAvailable) {
       Swal.fire({
         title: 'Por Favor Verifique cantidad disponible',
-        html: `El producto con codigo: <b>${selection['code']}</b> de la marca <b>${selection['trademark']}</b> solo tiene <b>${selection['qtyAvailable']} </b>disponibles`,
+        html: `El producto con codigo: <b>${selection['code']}</b> de la marca <b>${selection['trademark']}</b> 
+               solo tiene <b>${selection['qtyAvailable']} </b>disponible${(selection['qtyAvailable']>1)?'s':''}`,
         icon: 'warning',
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Entendido!',
       })
-    }
-    selection['qty']++;
-    selection['total'] = selection['qty']  * selection['salePrice'];
-    const products = replaceItemProdForSale(selection, productsForSale);
+    } else {
+      selection['qty']++;
+      selection['total'] = selection['qty']  * selection['salePrice'];
+      const products = replaceItemProdForSale(selection, productsForSale);
 
-    dispatch(setProductsForSale(products));
+      dispatch(setProductsForSale(products));
+    }
   }
   
   const handleDownBtnClick = (rowId) => {
@@ -159,6 +161,7 @@ export const ProductsForSale = ({products}) => {
                 </tr>
               ))
             }
+<<<<<<< HEAD
           </tbody>
           <tfoot>
             <tr>
@@ -186,6 +189,69 @@ export const ProductsForSale = ({products}) => {
           </tfoot>
         </table>
       </div>
+=======
+          </tr>
+        </thead>
+        <tbody>
+          {
+            Object.values(products).map((values) => (
+              <tr key={values.id}>
+                {
+                  Object.entries(values).map(([key, value]) => (
+                    
+                    (onEditMode.status && 
+                      onEditMode.rowKey === values.id &&
+                      attrib.isCellEditable(key))
+                      ? attrib.isCellVisible(key) && <input key={values.id} 
+                                                            autoFocus={true}
+                                                            onBlur={() => onEdit('id', values.id, Number(value))}
+                                                            onFocus={handleFocus}
+                                                            value={qty}
+                                                            onChange={(e) => setQty(Number(e.target.value))}
+                                                            onKeyPress={(e) => handleKeyPress(values.id, Number(e.target.value), e.key)}
+                        />
+                      : attrib.isCellVisible(key) && 
+                        <td key={key}
+                            className={attrib.getCellClass(key)}
+                            onClick={() => onEdit(key, values.id, Number(value))}
+                        >
+                            {attrib.getCellValue(key, value)}
+                        </td>
+                  ))
+                }
+                <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
+                <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
+                <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
+              </tr>
+            ))
+          }
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">SUB-TOTAL:</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', subTotal)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">{`I.V.A. (${tax*100}%):`}</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', totalTax)}
+            </th>
+          </tr>
+          <tr>
+            <td colSpan={3}></td>
+            <th colSpan= {2} className="text-right">TOTAL VENTA ({coin}):</th>
+            <th className="text-right">
+              {attrib.getCellValue('total', gralTotal)}
+            </th>
+            <ActionButtom type='edit' title="Facturar" row={5} handleClick={handleCheckIn}/>
+          </tr>
+        </tfoot>
+      </table>
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
     </div>
   )
 }

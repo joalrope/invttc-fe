@@ -2,6 +2,7 @@
 
 
 .invoice-container {
+<<<<<<< HEAD
   background-color: white;
   color: black;
   font-family: Calibri, 'Trebuchet MS', sans-serif; 
@@ -16,6 +17,26 @@
   padding-top: 5pt;
   height: 2pt;
   line-height: 0pt;
+=======
+  /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
+  color: $text-color;
+  width: 430px; 
+  margin-left: 14px;
+  margin-top: 12px;
+  // margin-bottom: 8px;
+  font-size: 6px;
+}
+
+.separator {
+  text-align: left;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.text-left {
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
   text-align: left;
 }
 
@@ -38,7 +59,11 @@
 
 .left-header {
   flex: 1 1 75%;
+<<<<<<< HEAD
   margin-right: 5pt;
+=======
+  margin-right: 5px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
   text-align: left;
 }
 
@@ -47,6 +72,7 @@
 }
 
 .address p {
+<<<<<<< HEAD
   padding: 0;
   margin: 0;
   text-align: center;
@@ -55,6 +81,17 @@
 .client-data {
   border: thin solid black;
   border-radius: 3pt;
+=======
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+}
+
+.client-data {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
   display: flex;
   flex-direction: column;
   margin-top: 5pt;
@@ -70,9 +107,15 @@
 .to-fill {
   border-bottom: thin solid black;
   flex: 1 1 20%;
+<<<<<<< HEAD
   font-weight: bolder;
   line-height: 2pt;
   padding: 2pt;
+=======
+  padding: 2px 10px;
+  line-height: 2px;
+  font-weight: bolder;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .row-info {
@@ -86,15 +129,23 @@
 
 .descrip-order {
   flex-direction: row;
+<<<<<<< HEAD
   flex: 1 1 50%;
+=======
+  flex: 1 1 40%;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
   text-align: left;
   padding-left: 3pt;
 }
 
 .descrip-phones {
   flex-direction: row;
+<<<<<<< HEAD
   flex: 1 1 20%;
   padding-left: 3pt;
+=======
+  flex: 1 1 50%;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .descrip-rif, .descrip-nit {
@@ -136,18 +187,28 @@
 .to-fill-nit,
 .to-fill-date {
   text-align: left;
+<<<<<<< HEAD
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-left: 2pt;
+=======
+  text-overflow: clip;
+  padding-left: 5px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .control-number-frame {
   display: flex;
   flex-direction: column;
   font-weight: bolder;
+<<<<<<< HEAD
   border: thin solid black;
   // padding: 1pt;
+=======
+  border: 1px solid black;
+  padding: 1px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .delivery-note, .quote {
@@ -157,11 +218,19 @@
 
 .delivery-sqr, .quote-sqr {
   flex: 1 1 10%;
+<<<<<<< HEAD
   border: thin solid black;
   margin: 2pt;
   // height: 7pt;
   width: 5pt;
   line-height: 10.56pt;
+=======
+  border: 1px solid black;
+  margin: 1.6px;
+  height: 10px;
+  width: 10px;
+  line-height: 10.56px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .isSelected {
@@ -181,6 +250,7 @@
 .centered {
   display: flex;
   justify-content: center;  
+  border-bottom: 15px;
 }
 
 .control-number-descrip {
@@ -236,8 +306,13 @@
 
 .left-invoice-signature, .right-invoice-signature {
   flex: 1 1 28%;
+<<<<<<< HEAD
   margin-right: 2pt;
   border-bottom: thin solid black;
+=======
+  margin-right: 5px;
+  border-bottom: 1px solid black;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .row-sign {
@@ -246,11 +321,19 @@
 }
 
 .descrip-sign {
+<<<<<<< HEAD
   flex: 1 1 50%;;
   text-align: left;
   border-top: thin solid black;
   border-left: thin solid black;
   padding: 0pt 3pt;
+=======
+  flex: 1 1 33%;;
+  text-align: left;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  padding: 0px 3px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
 }
 
 .to-fill-sign {
@@ -279,7 +362,11 @@
 .descrip-summ {
   flex: 1 1 30%;
   font-weight: bolder;
+<<<<<<< HEAD
   padding: 0pt 3pt;
+=======
+  padding: 0px 12px;
+>>>>>>> a3a144f0332a50f882358e3550b1ec6314003fa2
   text-align: right;
 }
 

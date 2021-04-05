@@ -1,6 +1,7 @@
 /* eslint-disable no-extend-native */
 import React from 'react';
 import { useSelector } from 'react-redux';
+import '../../../assets/css/invoice.scss'
 
 
 export const InvoiceFooter = () => {
@@ -17,29 +18,29 @@ export const InvoiceFooter = () => {
     <div className="invoice-footer">
       <div className="left-invoice-signature">
         <div className="row-sign">
-          <div className="descrip-sign">RECIBIDO (FIRMA)</div>
+          <div className="descrip-sign">Recibido (Firma)</div>
           <div className="to-fill-sign"></div>
         </div>
         <div className="row-sign">
-          <div className="descrip-sign">NOMBRE Y APELLIDO</div>
+          <div className="descrip-sign">Nombre y Apellido</div>
           <div className="to-fill-sign"></div>
         </div>
         <div className="row-sign">
-          <div className="descrip-sign">CEDULA:</div>
+          <div className="descrip-sign">Cedula:</div>
           <div className="to-fill-sign"></div>
         </div>
       </div>
       <div className="right-invoice-signature">
         <div className="row-sign">
-          <div className="descrip-sign">RECIBIDO (FIRMA)</div>
+          <div className="descrip-sign">Recibido (Firma)</div>
           <div className="to-fill-sign"></div>
         </div>
         <div className="row-sign">
-          <div className="descrip-sign">NOMBRE Y APELLIDO</div>
+          <div className="descrip-sign">Nombre y Apellido</div>
           <div className="to-fill-sign"></div>
         </div>
         <div className="row-sign">
-          <div className="descrip-sign">CEDULA:</div>
+          <div className="descrip-sign">Cedula:</div>
           <div className="to-fill-sign"></div>
         </div>
       </div>
