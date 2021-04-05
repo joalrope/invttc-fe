@@ -42,7 +42,7 @@ export const InvoicePdfComponent = () => {
   return (productsForSale.length > 0) && (
     <div className="App content-22" id="content-22">
       <Invoice />
-      <p className="separator">--------------------------------------------------------------------------------------------------------------------</p>
+      <div className="separator">--------------------------------------------------------------------------------------------------------------------</div>
       <Invoice />
     </div>
   );

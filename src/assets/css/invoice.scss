@@ -2,34 +2,34 @@
 
 
 .invoice-container {
-  /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
-  color: $text-color;
-  width: 430px; 
-  margin-left: 14px;
-  margin-top: 12px;
-  // margin-bottom: 8px;
-  font-size: 6px;
+  background-color: white;
+  color: black;
+  font-family: Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 5pt;
+  margin-left: 10pt;
+  margin-top: 9pt;
+  letter-spacing: .2pt;
+  width: 322pt; 
 }
 
 .separator {
-  text-align: left;
-  height: 1px;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 12px;
-}
-
-.text-left {
+  padding-top: 5pt;
+  height: 2pt;
+  line-height: 0pt;
   text-align: left;
 }
 
-.text-center {
-  text-align: center;
-}
+// .text-left {
+//   text-align: left;
+// }
 
-.text-right {
-  text-align: right;
-}
+// .text-center {
+//   text-align: center;
+// }
+
+// .text-right {
+//   text-align: right;
+// }
 
 .invoice-header {
   display: flex;
@@ -38,56 +38,76 @@
 
 .left-header {
   flex: 1 1 75%;
-  margin-right: 5px;
+  margin-right: 5pt;
   text-align: left;
 }
 
 .right-header {
   flex: 1 25%;
-
 }
 
 .address p {
-  padding: 0px;
-  margin: 0px;
-  text-align: left;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 .client-data {
-  border: 1px solid black;
-  border-radius: 5px;
-  margin-top: 5px;
+  border: thin solid black;
+  border-radius: 3pt;
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  margin-top: 5pt;
+  padding: 2pt;
 }
 
 .row-client {
   display: flex;
   flex-direction: row;
-  padding: 4px 0;
+  padding: 3pt 0;
 }
 
 .to-fill {
-  border-bottom: 1px solid black;
+  border-bottom: thin solid black;
   flex: 1 1 20%;
-  padding: 2px 10px;
-  line-height: 2px;
   font-weight: bolder;
+  line-height: 2pt;
+  padding: 2pt;
 }
 
 .row-info {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-  margin-bottom: 1.6px;
+  border: 1pt solid black;
+  border-width: thin;
+  margin-bottom: 1pt;
   flex: 1 1 50%;
 }
 
 .descrip-order {
   flex-direction: row;
-  flex: 1 1 40%;
+  flex: 1 1 50%;
   text-align: left;
+  padding-left: 3pt;
+}
+
+.descrip-phones {
+  flex-direction: row;
+  flex: 1 1 20%;
+  padding-left: 3pt;
+}
+
+.descrip-rif, .descrip-nit {
+  flex-direction: row;
+  flex: 1 1 5%;
+  padding-left: 3pt;
+}
+
+.descrip-date {
+  flex-direction: row;
+  flex: 1 1 6%;
+  text-align: left;
+  padding-left: 3pt;
 }
 
 .to-fill-order {
@@ -95,30 +115,14 @@
   flex: 1 1 50%;
 }
 
-.descrip-phones {
-  flex-direction: row;
-  flex: 1 1 20%;
-}
-
 .to-fill-phones {
   flex-direction: row;
   flex: 1 1 80%;
 }
 
-.descrip-rif, .descrip-nit {
-  flex-direction: row;
-  flex: 1 1 5%;
-}
-
 .to-fill-rif, .to-fill-nit {
   flex-direction: row;
   flex: 1 1 95%;
-}
-
-.descrip-date {
-  flex-direction: row;
-  flex: 1 1 6%;
-  text-align: left;
 }
 
 .to-fill-date {
@@ -132,16 +136,18 @@
 .to-fill-nit,
 .to-fill-date {
   text-align: left;
-  text-overflow: clip;
-  padding-left: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 2pt;
 }
 
 .control-number-frame {
   display: flex;
   flex-direction: column;
   font-weight: bolder;
-  border: 1px solid black;
-  padding: 1px;
+  border: thin solid black;
+  // padding: 1pt;
 }
 
 .delivery-note, .quote {
@@ -151,11 +157,11 @@
 
 .delivery-sqr, .quote-sqr {
   flex: 1 1 10%;
-  border: 1px solid black;
-  margin: 1.6px;
-  height: 10px;
-  width: 10px;
-  line-height: 10.56px;
+  border: thin solid black;
+  margin: 2pt;
+  // height: 7pt;
+  width: 5pt;
+  line-height: 10.56pt;
 }
 
 .isSelected {
@@ -166,57 +172,72 @@
   flex: 1 1 90%;
   margin: 0.1;
   text-align: left;
-  line-height: 16px;
+  line-height: 11.5pt;
 }
 
 .control-number-counter {
-  padding: 1.6px;
+  padding: 1pt;
 }
 .centered {
   display: flex;
   justify-content: center;  
-  border-bottom: 15px;
 }
 
 .control-number-descrip {
   text-align: right;
-  margin-right: 2px;
+  margin-right: 2pt;
   font-weight: bolder;
 }
 
 .control-number-code {
   text-align: left;
-  margin-left: 2px;
+  margin-left: 2pt;
   font-weight: bolder;
   color: red;
 }
 
 .invoiced-products-for-sale-table {
-  width: 430px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 2pt;
+  border-right: thin solid black;
+  border-bottom: thin solid black;
+}
+
+.invoiced-products-for-sale-table td:first-child {
+  width: 15pt;
+}
+.invoiced-products-for-sale-table td:nth-child(2) {
+  width: 30pt;
+}
+.invoiced-products-for-sale-table td:nth-child(4) {
+  width: 40pt;
+}
+.invoiced-products-for-sale-table td:nth-child(5) {
+  width: 50pt;
+}
+.invoiced-products-for-sale-table td:last-child {
+  width: 50pt;
 }
 
 .invoiced-products-for-sale-table thead tr th,
 .invoiced-products-for-sale-table tbody tr td {
-  background-color: transparent;
-  padding: 1px 5px;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  padding: 0 5pt;
+  padding-bottom: 1pt;
+  border-left: thin solid black;
+  border-top: thin solid black;
 }
 
 .invoice-footer {
   display: flex;
   flex-direction: row;
   align-content: space-between;
-  margin-top: 5px;
+  margin-top: 2pt;
 }
 
 .left-invoice-signature, .right-invoice-signature {
   flex: 1 1 28%;
-  margin-right: 5px;
-  border-bottom: 1px solid black;
+  margin-right: 2pt;
+  border-bottom: thin solid black;
 }
 
 .row-sign {
@@ -225,18 +246,18 @@
 }
 
 .descrip-sign {
-  flex: 1 1 33%;;
+  flex: 1 1 50%;;
   text-align: left;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  padding: 0px 3px;
+  border-top: thin solid black;
+  border-left: thin solid black;
+  padding: 0pt 3pt;
 }
 
 .to-fill-sign {
   flex: 1 1 48%;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-top: thin solid black;
+  border-left: thin solid black;
+  border-right: thin solid black;
 }
 
 .invoive-summary {
@@ -246,29 +267,28 @@
 }
 
 .gral-total {
-  border-bottom: 1px solid black;
+  border-bottom: thin solid black;
 }
 
 
 .row-summ {
   display: flex;
   flex-direction: row;
-
 }
 
 .descrip-summ {
-  flex: 1 1 50%;
+  flex: 1 1 30%;
   font-weight: bolder;
-  padding: 0px 12px;
+  padding: 0pt 3pt;
   text-align: right;
 }
 
 .to-fill-summ {
-  flex: 1 1 45%;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+  flex: 1 1 22%;
+  border-left: thin solid black;
+  border-top: thin solid black;
+  border-right: thin solid black;
   font-weight: bolder;
-  padding: 0px 10px;
+  padding: 0pt 10pt;
   text-align: right;
 }

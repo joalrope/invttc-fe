@@ -29,6 +29,11 @@
     <title>TractoCenter, C.A.</title>
   </head>
   <body>
+    <script> 
+      // Consulte https://github.com/facebook/react/issues/20829#issuecomment-802088260 
+      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer; 
+    </script>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

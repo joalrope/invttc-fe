@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { findProductByCode, findProductById } from '../../actions/products';
-import { ListProductsFound } from './ListProductsFound';
+import { findProductByCode, findProductById, clearProductsLoaded } from '../../actions/products';
+import { ListDataFound } from './ListDataFound';
 import { useForm } from '../../hooks/userForm';
 import '../../assets/css/search-code.scss';
 
+const columns = [
+  ["id", "id", false],
+  ["code", "Código", true],
+  ["title", "Descripción", true]
+]
 
 export const SearchCode = () => {
-  const {products} = useSelector(state => state.product)
-  const {activeProduct} = useSelector(state => state.product);
   const dispatch = useDispatch();
+  const {products} = useSelector(state => state.product)
+  // const {activeProduct} = useSelector(state => state.product);
   const [formValues, handleInputChange, reset] = useForm({Code: ''});
   const {Code} = formValues;
-  const [isTableVisible, setIsTableVisible] = useState(true)
 
 
-  function handleClick(rowData) {
+  const handleClick = (rowData) => {
     const {id} = JSON.parse(JSON.stringify(rowData));
     dispatch(findProductById(id));
-    setIsTableVisible(false);
-    if (!!activeProduct) reset();
+    dispatch(clearProductsLoaded())
+    reset();
   } 
     
 
@@ -31,17 +35,12 @@ export const SearchCode = () => {
         const {id} = products[0]
         if (!!id) {
           dispatch(findProductById(id));
-          setIsTableVisible(false);
-          if(!!activeProduct) reset();
+          reset();
         }    
       }
     }
   }
     
-
-  const handleInputFocus = () => setIsTableVisible(true);
-  
-
   useEffect(() => {
     dispatch(findProductByCode(Code.toUpperCase()));
   }, [dispatch, Code])
@@ -52,7 +51,7 @@ export const SearchCode = () => {
       <h5 className="search-code-title">Buscar Producto</h5>
       <div className="input-group form-group group-input-search-code input-search-code">
         <div className="input-group-prepend">
-          <span className="input-group-text input-code-span-text"><i className="fas fa-search-dollar">Código</i></span>
+          <span className="input-group-text input-code-span-text">Código</span>
         </div>
         <input
           type="text"
@@ -62,15 +61,20 @@ export const SearchCode = () => {
           autoComplete="off"
           value={Code}
           onChange={handleInputChange}
-          onFocus={handleInputFocus}
+          // onFocus={handleInputFocus}
           onKeyPress={handleOnKeyPress}
         />
           
       </div>
       {
-        (products.length > 0 && isTableVisible) && (<div className="input-search-code"> 
-                                                      <ListProductsFound products={products} onClick={handleClick}/>
-                                                    </div>)
+        (products.length > 0) && (<div className="input-search-code"> 
+                                    <ListDataFound
+                                      data={products}
+                                      hasHeader={true}
+                                      columns={columns}
+                                      handleClick={handleClick}
+                                    />
+                                  </div>)
       }
     </div>
   )

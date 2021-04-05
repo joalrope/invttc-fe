@@ -48,18 +48,21 @@ export const findProductById = (id) => {
 }
 
 export const productSetActive = (product) => ({
-    type: types.productSetActive,
-    payload: product
+  type: types.productSetActive,
+  payload: product
 });
 
 export const productClearActive = () => ({
   type: types.productClearActive,
 });
 
-
 const setProductsLoaded = (products) => ({
-    type: types.productLoaded,
-    payload: products
+  type: types.productLoaded,
+  payload: products
+})
+
+export const clearProductsLoaded = () => ({
+  type: types.clearProductsLoaded
 })
 
 export const addProductForSale = (product) => ({
