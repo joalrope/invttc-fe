@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import Swal from 'sweetalert2';
 import { TableAttrib } from '../../classes/table-attrib-class';
-import { columns } from '../../assets/data/products-for-sale-table';
+import { columns } from '../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../actions/products';
 import { ActionButtom } from '../generics/ActionButtom';
@@ -28,7 +28,6 @@ export const ProductsForSale = ({products}) => {
         status: true,
         rowKey: id
       });
-      //TODO: Verificar existencia de qty
       setQty(currentQty);
     } else {
       if (onEditMode.status) {
@@ -85,6 +84,7 @@ export const ProductsForSale = ({products}) => {
                solo tiene <b>${selection['qtyAvailable']} </b>disponible${(selection['qtyAvailable']>1)?'s':''}`,
         icon: 'warning',
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Entendido!',
+        confirmButtonColor: '#f2bd15'
       })
     } else {
       selection['qty']++;
@@ -107,6 +107,7 @@ export const ProductsForSale = ({products}) => {
   }
 
   const handleCheckIn = (rowId) => {
+    
     if (productsForSale.length > 0)
       history.push('reports');
   } 

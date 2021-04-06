@@ -5,10 +5,9 @@ import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import {TableAttrib} from '../../classes/table-attrib-class'
-import {columns} from '../../assets/data/json-to-html-table'
 
 
-export const PortraitTable = ({data}) => {
+export const PortraitTable = ({data, columns}) => {
   const dispatch = useDispatch()
   const {activeProduct, productsForSale} = useSelector(state => state.product)
   const attrib = new TableAttrib(columns)

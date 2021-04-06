@@ -1,6 +1,6 @@
 import React from 'react';
 import { TableAttrib } from '../../../classes/table-attrib-class'
-import { columns } from '../../../assets/data/products-for-sale-table';
+import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import '../../../assets/css/invoice.scss'
 
 

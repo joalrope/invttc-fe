@@ -19,16 +19,16 @@ export const InvoiceHeader = ({customerData, transactionData}) => {
           <p>{ownerAddress1}</p>
           <p>{ownerAddress2}</p>
         </div>
-        <div className="client-data">
-          <div className="row-client">
+        <div className="customer-data">
+          <div className="row-customer">
             <div className="descrip">Razón Social:</div>
-            <div className="to-fill  client-name">{customer.name}</div>
+            <div className="to-fill  customer-name">{customer.name}</div>
           </div>
-          <div className="row-client">
+          <div className="row-customer">
             <div className="descrip">Domicilio Fiscal:</div>
             <div className="to-fill">{customer.address}</div>
           </div>
-          <div className="row-client">
+          <div className="row-customer">
             <div className="descrip">Condiciones de pago:</div>
             <div className="to-fill">{customer.paymentConditions}</div>
           </div>

@@ -7,9 +7,9 @@ import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { ActionButtom } from '../generics/ActionButtom';
 import { TableAttrib } from '../../classes/table-attrib-class';
 import { parseJwt } from '../../helpers/parse-jwt';
-import { columns } from '../../assets/data/json-to-html-table';
 
-export const LandscapeTable = ({data}) => {
+
+export const LandscapeTable = ({data, columns}) => {
   const dispatch = useDispatch();
   const {activeProduct, productsForSale} = useSelector(state => state.product);
   const attrib = new TableAttrib(columns);

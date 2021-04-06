@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {items} from '../../assets/data/navbarJson';
+import {items} from '../../assets/data/navbar.dataConfig';
 
 
 export const GetItems = () => {

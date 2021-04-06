@@ -1,4 +1,4 @@
-import { template } from '../assets/data/json-to-html-table';
+import { template } from '../assets/data/products.dataConfig';
 import { fetchWithToken } from '../helpers/fetch';
 import { jsonSort } from '../helpers/json-sort';
 import { types } from '../types/types';
