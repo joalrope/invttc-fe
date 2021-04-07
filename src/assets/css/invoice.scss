@@ -16,6 +16,19 @@
   padding-top: 5pt;
   height: 2pt;
   line-height: 0pt;
+  /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
+  color: $text-color;
+  width: 430px; 
+  margin-left: 14px;
+  margin-top: 12px;
+  // margin-bottom: 8px;
+  font-size: 6px;
+}
+
+.separator {
+  padding-top: 5pt;
+  height: 2pt;
+  line-height: 0pt;
   text-align: left;
 }
 
@@ -27,10 +40,6 @@
 //   text-align: center;
 // }
 
-// .text-right {
-//   text-align: right;
-// }
-
 .invoice-header {
   display: flex;
   flex-direction: row;
@@ -38,6 +47,7 @@
 
 .left-header {
   flex: 1 1 75%;
+  margin-right: 5pt;
   margin-right: 5pt;
   text-align: left;
 }
@@ -47,6 +57,14 @@
 }
 
 .address p {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.client-data {
+  border: thin solid black;
+  border-radius: 3pt;
   padding: 0;
   margin: 0;
   text-align: center;
@@ -73,6 +91,9 @@
   font-weight: bolder;
   line-height: 2pt;
   padding: 2pt;
+  font-weight: bolder;
+  line-height: 2pt;
+  padding: 2pt;
 }
 
 .row-info {
@@ -87,12 +108,15 @@
 .descrip-order {
   flex-direction: row;
   flex: 1 1 50%;
+  flex: 1 1 50%;
   text-align: left;
   padding-left: 3pt;
 }
 
 .descrip-phones {
   flex-direction: row;
+  flex: 1 1 20%;
+  padding-left: 3pt;
   flex: 1 1 20%;
   padding-left: 3pt;
 }
@@ -146,6 +170,8 @@
   display: flex;
   flex-direction: column;
   font-weight: bolder;
+  border: thin solid black;
+  // padding: 1pt;
   border: thin solid black;
   // padding: 1pt;
 }
@@ -238,6 +264,8 @@
   flex: 1 1 28%;
   margin-right: 2pt;
   border-bottom: thin solid black;
+  margin-right: 2pt;
+  border-bottom: thin solid black;
 }
 
 .row-sign {
@@ -246,6 +274,11 @@
 }
 
 .descrip-sign {
+  flex: 1 1 50%;;
+  text-align: left;
+  border-top: thin solid black;
+  border-left: thin solid black;
+  padding: 0pt 3pt;
   flex: 1 1 50%;;
   text-align: left;
   border-top: thin solid black;
@@ -279,6 +312,7 @@
 .descrip-summ {
   flex: 1 1 30%;
   font-weight: bolder;
+  padding: 0pt 3pt;
   padding: 0pt 3pt;
   text-align: right;
 }

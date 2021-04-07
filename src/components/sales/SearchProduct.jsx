@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { findProductByCode, findProductById, clearProductsLoaded } from '../../actions/products';
 import { ListDataFound } from './ListDataFound';
 import { useForm } from '../../hooks/userForm';
-import '../../assets/css/search-code.scss';
 
 const columns = [
   ["id", "id", false],
@@ -11,7 +10,7 @@ const columns = [
   ["title", "Descripción", true]
 ]
 
-export const SearchCode = () => {
+export const SearchProduct = () => {
   const dispatch = useDispatch();
   const {products} = useSelector(state => state.product)
   // const {activeProduct} = useSelector(state => state.product);

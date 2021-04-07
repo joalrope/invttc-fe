@@ -30,7 +30,7 @@ export const types = {
     clearProductsLoaded: '[product] clear Loaded products',
     productAddedForSale: '[product] added for sale',
     productSetProductsForSale: '[product] set products for sale',
-
+    
     
     customersLoaded: '[customer] Loaded customers',
     activeCustomer: '[customer] Set active'

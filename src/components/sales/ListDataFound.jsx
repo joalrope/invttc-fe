@@ -11,7 +11,6 @@ export const ListDataFound = ({data, columns, handleClick, hasHeader = false}) =
     handleClick(item)
   }
 
-  console.log(data)
 
   return (
     (isTableVisible) && <table className="found-data-table">
@@ -30,6 +29,7 @@ export const ListDataFound = ({data, columns, handleClick, hasHeader = false}) =
                             {
                               data.map(item => (
                                 <tr key={item[columns[0][0]]} onClick={() => manageClick(item)}>
+                                  {console.log(item)}
                                   { 
                                     columns.map(column => 
                                       (column[2]) && <td key={item[column[0]]}>{item[column[0]]}</td>
