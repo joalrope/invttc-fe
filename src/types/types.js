@@ -33,6 +33,7 @@ export const types = {
     
     
     customersLoaded: '[customer] Loaded customers',
-    activeCustomer: '[customer] Set active'
+    customerSetActive: '[customer] Set active',
+    clearCustomersLoaded: '[customer] Clear customers loaded'
 
 }

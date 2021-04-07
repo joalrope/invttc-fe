@@ -23,7 +23,6 @@ export const SearchClient = () => {
     const {id} = JSON.parse(JSON.stringify(rowData));
     dispatch(findCustomerById(id));
     dispatch(clearCustomersLoaded())
-    console.log(id)
     reset();
   } 
     
@@ -48,11 +47,11 @@ export const SearchClient = () => {
 
 
   return (
-    <div className="search-client">
-      <h5 className="search-client-title">Buscar Cliente</h5>
-      <div className="input-group form-group group-input-search-client input-search-client">
+    <div className="search-customer">
+      <h5 className="search-customer-title">Buscar Cliente</h5>
+      <div className="input-group form-group group-input-search-customer input-search-customer">
         <div className="input-group-prepend">
-          <span className="input-group-text input-client-span-text">RIF ó Nombre</span>
+          <span className="input-group-text input-customer-span-text">RIF ó Nombre</span>
         </div>
         <input
           type="text"
@@ -68,7 +67,7 @@ export const SearchClient = () => {
           
       </div>
       {
-        (customers.length > 0) && (<div className="input-search-client"> 
+        (customers.length > 0) && (<div className="input-search-customer"> 
                                     <ListDataFound
                                       data={customers}
                                       hasHeader={true}

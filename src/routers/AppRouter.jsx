@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {ErrorPage} from '../components/pages/ErrorPage';
 import { NavBar } from '../components/ui/NavBar';
-import {items} from '../assets/data/navbarJson';
+import {items} from '../assets/data/navbar.dataConfig';
 import '../assets/css/index.scss';
 
 export const AppRouter = () => {

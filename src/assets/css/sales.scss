@@ -18,16 +18,16 @@
 }
 
 .search-code,
-.search-client {
+.search-customer {
   text-align: left;
   width: $inputs-width-big-screen !important;  
 }
 
-.search-client {
+.search-customer {
   margin-right: 50px;
 }
 
-.input-client-span-text {
+.input-customer-span-text {
   width: 100px !important;
 }
 
@@ -127,11 +127,11 @@
   }
 
   .search-code,
-  .search-client {
+  .search-customer {
     max-width: $inputs-width-litle-screen !important;
   }
 
-  .search-client {
+  .search-customer {
     margin-right: 0;
   }
 }

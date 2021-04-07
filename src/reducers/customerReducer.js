@@ -17,12 +17,18 @@ export const customerReducer = ( state = initialState, action ) => {
         customers: [...action.payload]
       }
 
-    case types.activeCustomer:
+    case types.customerSetActive:
       return {
         ...state,
-        customers: {
+        activeCustomer: {
           ...action.payload
         }
+      }
+
+    case types.clearCustomersLoaded:
+      return {
+        ...state,
+        customers: []
       }
 
       default:
