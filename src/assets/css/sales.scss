@@ -119,6 +119,12 @@
 }
 
 @media screen and (max-width: 775px){
+
+  .container {
+    width: 90%;
+    justify-content: left;
+    margin: 10px;
+  }
   
   .search-container {
     display: flex;
@@ -128,6 +134,7 @@
 
   .search-code,
   .search-customer {
+    margin-top: 20px;
     max-width: $inputs-width-litle-screen !important;
   }
 

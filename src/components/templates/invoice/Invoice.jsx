@@ -6,15 +6,6 @@ import { InvoiceFooter } from "./InvoiceFooter";
 import { InvoiceBody } from "./InvoiceBody";
 import '../../../assets/css/invoice.scss'
 
-const customerData = {
-  "name": "IMG International",
-  "address": "Urbanización Unare II. Avenida Paseo Caroní. Puerto Ordaz Edo. Bolívar",
-  "rif": "J-30354578-1",
-  "phones": "0286-9945258 - 9947874",
-  "purchaseOrder": "6510-85-9",
-  "paymentConditions": "CREDITO 30 DÍAS"
-}
-
 const transactionData = {
   "date": moment().format("DD/MM/YYYY"),
   "controlNumber": "2102-05",
@@ -24,8 +15,12 @@ const transactionData = {
 
 export const  Invoice = () => {
   const {productsForSale} = useSelector(state => state.product);
+  const {activeCustomer} = useSelector(state => state.customer);
   let clonedProducts = JSON.parse(JSON.stringify(productsForSale));
+  let clonedCustomer = JSON.parse(JSON.stringify(activeCustomer));
   let i = 0
+
+  clonedCustomer['paymentConditions'] ='Pago de Contado'
 
   const products = clonedProducts.map(product => {
     i++ 
@@ -59,7 +54,7 @@ export const  Invoice = () => {
 
   return (
     <div className="invoice-container">
-      <InvoiceHeader customerData={customerData} transactionData={transactionData}/>
+      <InvoiceHeader customerData={clonedCustomer} transactionData={transactionData}/>
       <InvoiceBody products={products}/>
       <InvoiceFooter/>
     </div>

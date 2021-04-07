@@ -1,6 +1,11 @@
 @import './partials//variables';
 
 
+// .input-group>.form-control {
+//   height: 1.6rem !important;
+// }
+
+
 .invoice-container {
   background-color: white;
   color: black;
@@ -13,32 +18,11 @@
 }
 
 .separator {
-  padding-top: 5pt;
-  height: 2pt;
-  line-height: 0pt;
-  /* font-family: Calibri, 'Trebuchet MS', sans-serif; */
-  color: $text-color;
-  width: 430px; 
-  margin-left: 14px;
-  margin-top: 12px;
-  // margin-bottom: 8px;
-  font-size: 6px;
-}
-
-.separator {
-  padding-top: 5pt;
+  padding-top: 11pt;
   height: 2pt;
   line-height: 0pt;
   text-align: left;
 }
-
-// .text-left {
-//   text-align: left;
-// }
-
-// .text-center {
-//   text-align: center;
-// }
 
 .invoice-header {
   display: flex;
@@ -65,8 +49,7 @@
 .customer-data {
   border: thin solid black;
   border-radius: 3pt;
-  padding: 0;
-  margin: 0;
+  padding: 3pt 5pt;
   text-align: center;
 }
 
@@ -86,6 +69,7 @@
 }
 
 .to-fill {
+  text-align: left;
   border-bottom: thin solid black;
   flex: 1 1 20%;
   font-weight: bolder;
@@ -136,7 +120,7 @@
 
 .to-fill-order {
   flex-direction: row;
-  flex: 1 1 50%;
+  flex: 1 1 auto;
 }
 
 .to-fill-phones {
@@ -171,23 +155,21 @@
   flex-direction: column;
   font-weight: bolder;
   border: thin solid black;
-  // padding: 1pt;
+  padding: 1.66pt 0;
   border: thin solid black;
-  // padding: 1pt;
 }
 
 .delivery-note, .quote {
   display: flex;
   flex-direction: row;
+  margin: 1pt 0 1.5pt 3pt;
+  line-height: 6.5pt;
 }
 
 .delivery-sqr, .quote-sqr {
   flex: 1 1 10%;
   border: thin solid black;
-  margin: 2pt;
-  // height: 7pt;
-  width: 5pt;
-  line-height: 10.56pt;
+  height: 6.5pt;
 }
 
 .isSelected {
@@ -196,9 +178,9 @@
 
 .delivery-descrip, .quote-descrip {
   flex: 1 1 90%;
-  margin: 0.1;
+  margin-left: 3pt;
   text-align: left;
-  line-height: 11.5pt;
+  //line-height: 8pt;
 }
 
 .control-number-counter {

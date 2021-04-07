@@ -37,15 +37,15 @@ export const InvoiceHeader = ({customerData, transactionData}) => {
       <div className="right-header">
         <div className="row-info">
           <div className="descrip-order">N° O/de compra:</div>
-          <div className="to-fill-order">{customer.purchaseOrder}</div>
+          <div className="to-fill-order">{transaction.purchaseOrder}</div>
         </div>
         <div className="row-info">
           <div className="descrip-phones">Teléfono:</div>
-          <div className="to-fill-phones">{customer.phones}</div>
+          <div className="to-fill-phones">{customer.phone}</div>
         </div>
         <div className="row-info">
           <div className="descrip-rif">R.I.F.:</div>
-          <div className="to-fill-rif">{customer.rif}</div>
+          <div className="to-fill-rif">{customer.code}</div>
         </div>
         <div className="row-info">
           <div className="descrip-nit">N.I.T.:</div>

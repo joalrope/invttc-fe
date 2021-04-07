@@ -107,6 +107,8 @@ export const ProductsForSale = ({products}) => {
   }
 
   const handleCheckIn = (rowId) => {
+
+    console.log('facturar')
     
     if (productsForSale.length > 0)
       history.push('reports');
