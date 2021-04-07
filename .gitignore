@@ -13,11 +13,13 @@
 
 # misc
 .DS_Store
+.gitignore
+.vscode/settings.json
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.eslintrc.json
+.eslintrc
 .prettierrc
 
 npm-debug.log*
