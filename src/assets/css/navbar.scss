@@ -1,6 +1,7 @@
 @import './partials//variables';
 
-html, body {
+html,
+body {
   font-size: 12px;
   width: 100vw;
 }
@@ -11,7 +12,7 @@ html, body {
   background-color: $bg-navbar;
 }
 
-#navbarSupportedContent{
+#navbarSupportedContent {
   z-index: 999;
 }
 
@@ -45,12 +46,13 @@ html, body {
 
   &:hover {
     background-color: transparent;
-      // border-bottom: 2px solid #f2bd15;
-      transition: 0.5s;
+    // border-bottom: 2px solid #f2bd15;
+    transition: 0.5s;
   }
 }
 
-.navbar-item, .dropdown-toggle {
+.navbar-item,
+.dropdown-toggle {
   font-size: 1.33rem;
   text-align: center;
   color: $primary !important;
@@ -86,7 +88,7 @@ html, body {
   justify-content: flex-end;
 }
 
-.navbar-buttons .btn{
+.navbar-buttons .btn {
   width: 130px;
   color: $primary;
   font-size: 1.3rem;
@@ -96,12 +98,12 @@ html, body {
   margin: 0px 12px;
 }
 
-.navbar-buttons .btn:hover{
+.navbar-buttons .btn:hover {
   color: $black;
   background-color: $primary;
 }
 
-.navbar-buttons .btn:focus{
+.navbar-buttons .btn:focus {
   box-shadow: none;
 }
 
@@ -118,60 +120,50 @@ html, body {
 }
 
 @media screen and (max-width: 1435px) {
-
   .navbar-nav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
-
 }
 
 @media screen and (max-width: 1205px) {
-
   .navbar-items {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap-reverse;
   }
-
 }
 
 @media screen and (max-width: 1165px) {
-
   .navbar-items {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
   }
-
 }
 
 @media screen and (max-width: 950px) {
-
   .navbar-buttons {
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
   }
-
 }
 
 @media screen and (max-width: 775px) {
-
   .navbar-nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
-
 }
 
 @media screen and (max-width: 250px) {
-
-  .navbar-item, .wweb-item {
+  .navbar-item,
+  .wweb-item {
     font-size: 1.3rem;
   }
 
@@ -179,19 +171,16 @@ html, body {
     padding: 0px;
     height: 40px;
   }
-
 }
 
 @media screen and (max-width: 200px) {
-
-  .navbar-item, .wweb-item {
+  .navbar-item,
+  .wweb-item {
     font-size: 1rem;
   }
 
   .navbar-logo img {
-      
     padding: 0px;
     height: 20px;
   }
-
 }

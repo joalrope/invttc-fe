@@ -1,60 +1,58 @@
-
 let jsonEntries = {};
-  
+
 export const getJsonEntries = (json) => {
-  let i = 0
-  
-  const jsonData = getJsonData(json)
-  const maxLen = getMaxLen(jsonData)
+  let i = 0;
+
+  const jsonData = getJsonData(json);
+  const maxLen = getMaxLen(jsonData);
 
   Object.values(jsonEntries).map((entry) => {
     entry.map((item, id) => {
       if (maxLen > entry.length && entry.length === id + 1) {
-        item[0] = maxLen
+        item[0] = maxLen;
       }
-      if (item.length === 3) item.push(i)
-      return null
-    })
-    i++
-    return null
-  })
-  
-  return jsonData
-}
+      if (item.length === 3) item.push(i);
+      return null;
+    });
+    i++;
+    return null;
+  });
+
+  return jsonData;
+};
 
 const getJsonData = (json, lastSpan = 1, reset = true) => {
-
-  if (reset) jsonEntries = {}
+  if (reset) jsonEntries = {};
 
   Object.keys(json).map((k) => {
     if (json[k] && typeof json[k] === 'object') {
       if (Array.isArray(json[k]) && typeof json[k][0] !== 'object') {
-        return Object.keys(json[k]).map((index) => pushItem([lastSpan, json[k][index], k]))
-      } 
+        return Object.keys(json[k]).map((index) => pushItem([lastSpan, json[k][index], k]));
+      }
       return getJsonData(json[k], getSpan(json[k]), false);
     }
-    return pushItem([lastSpan, json[k], k])
-  })
+    return pushItem([lastSpan, json[k], k]);
+  });
 
-  return jsonEntries
-}
+  return jsonEntries;
+};
 
 const getMaxLen = (json) => {
-  const lengths = []
-  
+  const lengths = [];
+
   Object.values(json).map((value) => {
-    lengths.push(value.length)
-    return null
+    lengths.push(value.length);
+    return null;
   });
-  
-  return Math.max.apply(null, lengths)
-}
+
+  return Math.max.apply(null, lengths);
+};
 
 const pushItem = (item) => {
   const Items = jsonEntries[item[2]] || [];
   Items.push(item);
   jsonEntries[item[2]] = Items;
-}
+};
 
 const getSpan = (data) => {
   let span = 1;
@@ -64,11 +62,11 @@ const getSpan = (data) => {
         span = data[key].length;
       }
       if (Array.isArray(data[key])) {
-        span = 1
+        span = 1;
       }
-      return null
-    })
+      return null;
+    });
   }
-  
-  return span
-}
+
+  return span;
+};

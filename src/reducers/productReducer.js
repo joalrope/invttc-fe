@@ -1,67 +1,58 @@
 import { types } from '../types/types';
 
-
 const initialState = {
   products: [],
   productsForSale: [],
-  activeProduct: null
-}
+  activeProduct: null,
+};
 
-
-export const productReducer = ( state = initialState, action ) => {
-
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case types.productLoaded:
       return {
         ...state,
-        products: [...action.payload]
-      }
+        products: [...action.payload],
+      };
 
     case types.clearProductsLoaded:
       return {
         ...state,
-        products: []
-      }
-    
+        products: [],
+      };
+
     case types.productSetActive:
       return {
         ...state,
         activeProduct: {
-          ...action.payload
-        }
-      }
+          ...action.payload,
+        },
+      };
 
     case types.productClearActive:
       return {
         ...state,
-        activeProduct: null
-      }
+        activeProduct: null,
+      };
 
     case types.productClearActivePoduct:
       return {
         ...state,
-        ...initialState
-      }
+        ...initialState,
+      };
 
     case types.productAddedForSale:
       return {
         ...state,
-        productsForSale: [
-          ...state.productsForSale,
-          action.payload
-        ]
-      }
+        productsForSale: [...state.productsForSale, action.payload],
+      };
 
     case types.productSetProductsForSale:
       return {
         ...state,
-          productsForSale: action.payload
-          
-      }
+        productsForSale: action.payload,
+      };
 
     default:
       return state;
-
   }
-}
+};

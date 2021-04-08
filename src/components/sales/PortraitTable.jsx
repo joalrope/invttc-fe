@@ -4,24 +4,24 @@ import Swal from 'sweetalert2';
 import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
-import {TableAttrib} from '../../classes/table-attrib-class'
+import { TableAttrib } from '../../classes/table-attrib-class';
 
+export const PortraitTable = ({ data, columns }) => {
+  const dispatch = useDispatch();
+  const { activeProduct, productsForSale } = useSelector((state) => state.product);
+  const attrib = new TableAttrib(columns);
 
-export const PortraitTable = ({data, columns}) => {
-  const dispatch = useDispatch()
-  const {activeProduct, productsForSale} = useSelector(state => state.product)
-  const attrib = new TableAttrib(columns)
-
-  const selectedIndex = (code, trademark) => productsForSale.findIndex(item =>  item.code === code &&
-                                                                                item.trademark === trademark )
+  const selectedIndex = (code, trademark) =>
+    productsForSale.findIndex((item) => item.code === code && item.trademark === trademark);
 
   const handleClick = (key, brand) => {
     if (key === 'trademark') {
-      const selectedProduct = getSelectedProduct(brand, activeProduct)
-      const {code, trademark} = selectedProduct
-      
-      const isLoadedProduct = productsForSale.some(product => product.code === code &&
-        product.trademark === trademark)
+      const selectedProduct = getSelectedProduct(brand, activeProduct);
+      const { code, trademark } = selectedProduct;
+
+      const isLoadedProduct = productsForSale.some(
+        (product) => product.code === code && product.trademark === trademark
+      );
 
       if (isLoadedProduct) {
         Swal.fire({
@@ -31,62 +31,55 @@ export const PortraitTable = ({data, columns}) => {
           showDenyButton: true,
           confirmButtonText: '<i class="fa fa-thumbs-up"></i> Si!',
           denyButtonText: '<i class="fa fa-thumbs-down"></i> No!',
-        }).then((result) => { 
-          if (result.isConfirmed) {              
-            const index = selectedIndex(code, trademark)
-            const prodForSaleSel = productsForSale[index]
-            let qtyLoaded 
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const index = selectedIndex(code, trademark);
+            const prodForSaleSel = productsForSale[index];
+            let qtyLoaded;
 
-            productsForSale.some(product => {
+            productsForSale.some((product) => {
               if (product.code === code && product.trademark === trademark) {
-                qtyLoaded = Number(product.qty)
+                qtyLoaded = Number(product.qty);
               }
-              return null
-            })
+              return null;
+            });
 
-            prodForSaleSel['qty'] = Number(qtyLoaded) + 1
-            prodForSaleSel['total'] = Number(qtyLoaded) * Number(prodForSaleSel['salePrice'])
+            prodForSaleSel['qty'] = Number(qtyLoaded) + 1;
+            prodForSaleSel['total'] = Number(qtyLoaded) * Number(prodForSaleSel['salePrice']);
 
-            const products = replaceItemProdForSale(prodForSaleSel, productsForSale)
+            const products = replaceItemProdForSale(prodForSaleSel, productsForSale);
 
-            dispatch(setProductsForSale(products))  
+            dispatch(setProductsForSale(products));
           }
-        })
+        });
       } else {
-        dispatch(addProductForSale(selectedProduct))
+        dispatch(addProductForSale(selectedProduct));
       }
     }
-  }
+  };
 
- 
   return (
-    <table className="portrait-table" >
+    <table className='portrait-table'>
       <tbody>
-        {
-          Object.entries(data).map(([key, value]) => (   
-            <tr key={key}> 
-              {
-                (attrib.isCellVisible(key)) && <th key={key}>
-                                            {attrib.getTitleHeader(key)}
-                                          </th>
-              }
-              {
-                Object.values(value).map(({value, span}) => (            
-                  (attrib.isCellVisible(key)) && <td key={key+value}
-                                                colSpan={span}
-                                                align={attrib.getCellAlign(key)}
-                                                className={attrib.getCellClass(key)}
-                                                onClick={() => handleClick(key, value)}
-                                            >
-                                              {attrib.getCellValue(key, value)}
-                                            </td>
-                ))
-              }
-            </tr>  
-          ))
-        }
-
+        {Object.entries(data).map(([key, value]) => (
+          <tr key={key}>
+            {attrib.isCellVisible(key) && <th key={key}>{attrib.getTitleHeader(key)}</th>}
+            {Object.values(value).map(
+              ({ value, span }) =>
+                attrib.isCellVisible(key) && (
+                  <td
+                    key={key + value}
+                    colSpan={span}
+                    align={attrib.getCellAlign(key)}
+                    className={attrib.getCellClass(key)}
+                    onClick={() => handleClick(key, value)}>
+                    {attrib.getCellValue(key, value)}
+                  </td>
+                )
+            )}
+          </tr>
+        ))}
       </tbody>
     </table>
-  )
-}
+  );
+};

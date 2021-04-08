@@ -1,6 +1,5 @@
 @import './partials//variables';
 
-
 .found-data-table {
   z-index: 100 !important;
   position: absolute;
@@ -9,17 +8,17 @@
   width: 25%;
   border: 1px solid $tbl-border;
   border-collapse: collapse;
-  
-  thead tr th { 
+
+  thead tr th {
     text-align: center;
     background-color: $bg-tbl-header;
     border: 1px solid $tbl-border;
     padding: 1px 20px;
-  } 
+  }
 
-  tbody tr td{
+  tbody tr td {
     text-align: left;
     border: 1px solid $tbl-border;
-    padding: 3px 20px;    
-  }  
+    padding: 3px 20px;
+  }
 }

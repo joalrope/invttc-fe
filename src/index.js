@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 import App from './App';
 import '../src/assets/css/index.scss';
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +13,5 @@ ReactDOM.render(
       <App />
     </Router>
   </React.StrictMode>,
-    document.getElementById('root')
+  document.getElementById('root')
 );
-

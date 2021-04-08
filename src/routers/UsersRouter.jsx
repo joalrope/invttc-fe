@@ -17,33 +17,31 @@ import { ForgotPage } from '../components/auth/ForgotPage';
 import { ReportPage } from '../components/pages/ReportPage';
 
 export const UsersRouter = () => {
+  return (
+    <Switch>
+      <Route exact path='/app' component={HomePage} />
+      <Route exact path='/app/rental' component={RentalPage} />
+      <Route exact path='/app/contact' component={ContactPage} />
+      <Route exact path='/app/about' component={AboutPage} />
+      <Route exact path='/app/quote' component={QuotePage} />
+      <Route exact path='/app/login' component={LoginPage} />
+      <Route exact path='/app/register' component={RegisterPage} />
+      <Route exact path='/app/forgot' component={ForgotPage} />
+      <Route exact path='/app/inventory/quote' component={QuotePage} />
+      <Route exact path='/app/inventary/prods-in' component={ProductsPage} />
+      <Route exact path='/app/inventary/prods-out' component={ProductsPage} />
+      <Route exact path='/app/inventory/quote' component={QuotePage} />
+      <Route exact path='/app/sales' component={SalesPage} />
+      <Route exact path='/app/sales/quote' component={QuotePage} />
+      <Route exact path='/app/admin/inventary/prods-in' component={ProductsPage} />
+      <Route exact path='/app/admin/inventary/prods-out' component={ProductsPage} />
+      <Route exact path='/app/admin/sales' component={SalesPage} />
+      <Route exact path='/app/admin/quote' component={QuotePage} />
+      <Route exact path='/app/admin/reports' component={ReportPage} />
+      <Route exact path='/app/dashboard' component={DashboardPage} />
+      <Route exact path='/app/service' component={ServicePage} />
 
-    
-    return (
-        <Switch >
-            <Route exact path="/app" component={HomePage} />
-            <Route exact path="/app/rental" component={RentalPage} />
-            <Route exact path="/app/contact" component={ContactPage} />
-            <Route exact path="/app/about" component={AboutPage} />
-            <Route exact path="/app/quote" component={QuotePage} />
-            <Route exact path="/app/login" component={LoginPage} />
-            <Route exact path="/app/register" component={RegisterPage} />
-            <Route exact path="/app/forgot" component={ForgotPage} />
-            <Route exact path='/app/inventory/quote' component={QuotePage} />
-            <Route exact path='/app/inventary/prods-in' component={ProductsPage} />
-            <Route exact path='/app/inventary/prods-out' component={ProductsPage} />
-            <Route exact path='/app/inventory/quote' component={QuotePage} />
-            <Route exact path='/app/sales' component={SalesPage} />
-            <Route exact path='/app/sales/quote' component={QuotePage} />
-            <Route exact path='/app/admin/inventary/prods-in' component={ProductsPage} />
-            <Route exact path='/app/admin/inventary/prods-out' component={ProductsPage} />
-            <Route exact path='/app/admin/sales' component={SalesPage} />
-            <Route exact path='/app/admin/quote' component={QuotePage} />
-            <Route exact path='/app/admin/reports' component={ReportPage} />
-            <Route exact path='/app/dashboard' component={DashboardPage} />
-            <Route exact path='/app/service' component={ServicePage} />
-
-            <Route component={ErrorPage}/>
-        </Switch>
-    )
-}
+      <Route component={ErrorPage} />
+    </Switch>
+  );
+};

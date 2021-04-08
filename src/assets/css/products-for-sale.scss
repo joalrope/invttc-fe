@@ -1,19 +1,17 @@
 @import './partials//variables';
 
-
 .products-for-sale-title {
   text-align: left;
 }
 
 .products-for-sale-table {
-  
   thead tr th {
     text-align: center;
     background-color: $bg-tbl-header;
     border: 1px solid $tbl-border;
     padding: 1px 10px;
   }
-    
+
   tbody tr td {
     border: 1px solid $tbl-border;
     background-color: $bg-tbl-td-cell;
@@ -25,7 +23,6 @@
     background-color: $bg-tbl-tf-cell;
     padding: 3px 10px;
   }
-
 }
 
 .td-input-qty {
@@ -42,8 +39,6 @@
   width: max-content;
   height: max-content;
 }
-
-
 
 // .input-qty {
 //   position: relative;

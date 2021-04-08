@@ -1,9 +1,8 @@
- @import './partials//variables';
+@import './partials//variables';
 
- .container {
-   justify-content: center;
- }
-
+.container {
+  justify-content: center;
+}
 
 .table-container {
   padding: 5px;
@@ -20,7 +19,7 @@
 .search-code,
 .search-customer {
   text-align: left;
-  width: $inputs-width-big-screen !important;  
+  width: $inputs-width-big-screen !important;
 }
 
 .search-customer {
@@ -58,7 +57,6 @@
   text-align: left;
 }
 
-
 .fade-in {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -68,25 +66,32 @@
   animation-fill-mode: both;
 }
 
-  @-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-  } 
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .landscape-table {
-  
   thead tr th {
     text-align: center;
     background-color: $bg-tbl-header;
     border: 1px solid $tbl-border;
     padding: 1px 10px;
   }
-    
+
   tbody tr td {
     border: 1px solid $tbl-border;
     background-color: $bg-tbl-td-cell;
@@ -109,23 +114,21 @@
     padding: 0 10px;
     margin-right: 10px;
   }
-  
-  tr td{
-    border: 1px solid $tbl-border;;
+
+  tr td {
+    border: 1px solid $tbl-border;
     background-color: $bg-tbl-td-cell;
     padding: 0 10px;
   }
-
 }
 
-@media screen and (max-width: 775px){
-
+@media screen and (max-width: 775px) {
   .container {
     width: 90%;
     justify-content: left;
     margin: 10px;
   }
-  
+
   .search-container {
     display: flex;
     flex-direction: column;

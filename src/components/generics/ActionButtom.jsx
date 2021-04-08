@@ -1,44 +1,41 @@
 import React from 'react';
-import '../../assets/css/action-button.scss'
+import '../../assets/css/action-button.scss';
 
-export const ActionButtom = ({type, row, handleClick, title}) => {
-
+export const ActionButtom = ({ type, row, handleClick, title }) => {
   let icon;
 
   switch (type) {
     case 'delete':
-      icon = 'fa fa-backspace'
+      icon = 'fa fa-backspace';
       break;
 
     case 'edit':
-      icon = 'fa fa-edit'
+      icon = 'fa fa-edit';
       break;
 
     case 'select':
-      icon = 'fas fa-cart-plus'
+      icon = 'fas fa-cart-plus';
       break;
 
     case 'up':
-      icon = 'fas fa-chevron-up'
+      icon = 'fas fa-chevron-up';
       break;
-    
+
     case 'down':
-      icon = 'fas fa-chevron-down'
+      icon = 'fas fa-chevron-down';
       break;
-    
+
     default:
       break;
   }
-  const colSpan = (title) ? 3 : 1
+  const colSpan = title ? 3 : 1;
 
-  return (
-    [
-      <td key={1} colSpan={colSpan} className="td-action-button">
-        <button className= "action-button" onClick={() => handleClick(row)}>
-          <i className={icon}>{title}</i>
-        </button>
-      </td>,
-      (colSpan > 1) && (<td key={2}></td>, <td key={3}></td>)
-    ]
-  )
-}
+  return [
+    <td key={1} colSpan={colSpan} className='td-action-button'>
+      <button className='action-button' onClick={() => handleClick(row)}>
+        <i className={icon}>{title}</i>
+      </button>
+    </td>,
+    colSpan > 1 && ((<td key={2}></td>), (<td key={3}></td>)),
+  ];
+};

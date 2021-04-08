@@ -1,20 +1,18 @@
 @import './partials//variables';
 
-
 // .input-group>.form-control {
 //   height: 1.6rem !important;
 // }
 
-
 .invoice-container {
   background-color: white;
   color: black;
-  font-family: Calibri, 'Trebuchet MS', sans-serif; 
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
   font-size: 5pt;
   margin-left: 10pt;
   margin-top: 9pt;
-  letter-spacing: .2pt;
-  width: 322pt; 
+  letter-spacing: 0.2pt;
+  width: 322pt;
 }
 
 .separator {
@@ -105,7 +103,8 @@
   padding-left: 3pt;
 }
 
-.descrip-rif, .descrip-nit {
+.descrip-rif,
+.descrip-nit {
   flex-direction: row;
   flex: 1 1 5%;
   padding-left: 3pt;
@@ -128,7 +127,8 @@
   flex: 1 1 80%;
 }
 
-.to-fill-rif, .to-fill-nit {
+.to-fill-rif,
+.to-fill-nit {
   flex-direction: row;
   flex: 1 1 95%;
 }
@@ -159,14 +159,16 @@
   border: thin solid black;
 }
 
-.delivery-note, .quote {
+.delivery-note,
+.quote {
   display: flex;
   flex-direction: row;
   margin: 1pt 0 1.5pt 3pt;
   line-height: 6.5pt;
 }
 
-.delivery-sqr, .quote-sqr {
+.delivery-sqr,
+.quote-sqr {
   flex: 1 1 10%;
   border: thin solid black;
   height: 6.5pt;
@@ -176,7 +178,8 @@
   background-color: black;
 }
 
-.delivery-descrip, .quote-descrip {
+.delivery-descrip,
+.quote-descrip {
   flex: 1 1 90%;
   margin-left: 3pt;
   text-align: left;
@@ -188,7 +191,7 @@
 }
 .centered {
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .control-number-descrip {
@@ -242,7 +245,8 @@
   margin-top: 2pt;
 }
 
-.left-invoice-signature, .right-invoice-signature {
+.left-invoice-signature,
+.right-invoice-signature {
   flex: 1 1 28%;
   margin-right: 2pt;
   border-bottom: thin solid black;
@@ -256,12 +260,12 @@
 }
 
 .descrip-sign {
-  flex: 1 1 50%;;
+  flex: 1 1 50%;
   text-align: left;
   border-top: thin solid black;
   border-left: thin solid black;
   padding: 0pt 3pt;
-  flex: 1 1 50%;;
+  flex: 1 1 50%;
   text-align: left;
   border-top: thin solid black;
   border-left: thin solid black;
@@ -284,7 +288,6 @@
 .gral-total {
   border-bottom: thin solid black;
 }
-
 
 .row-summ {
   display: flex;

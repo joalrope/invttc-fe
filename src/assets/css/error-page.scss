@@ -3,14 +3,13 @@
     404 page
 =======================*/
 
-
 .page_404 {
   background: $primary;
   font-family: 'Arvo', serif;
 }
 
 .page_404 img {
-  width:100%;
+  width: 100%;
 }
 
 .text-centered {
@@ -24,19 +23,18 @@
   background-position: center;
   background-repeat: no-repeat;
 }
- 
- 
+
 .four_zero_four_bg h1 {
   display: block;
-  font-size:80px;
+  font-size: 80px;
 }
- 
+
 .lost {
-	font-size: 50px;
+  font-size: 50px;
 }
-			 
-.link_404 {			 
-	color: $white !important;
+
+.link_404 {
+  color: $white !important;
   padding: 10px 20px;
   background: $black;
   margin: 20px 0;

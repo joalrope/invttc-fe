@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
 
-.body{
+.body {
   position: static;
   height: 85vh;
   background-size: cover;
@@ -10,15 +10,15 @@
   filter: blur(6px);
 }
 
-.login-img{
+.login-img {
   background-image: url('https://cdn.pixabay.com/photo/2017/12/11/20/06/spanner-3013135_960_720.jpg');
 }
 
-.register-img{
+.register-img {
   background-image: url('https://cdn.pixabay.com/photo/2016/10/06/19/57/engine-1719889_960_720.jpg');
 }
 
-.login{
+.login {
   font-family: 'Numans', sans-serif;
   position: absolute;
   top: 0;
@@ -28,7 +28,7 @@
   background-color: $form-bg !important;
 }
 
-.register{
+.register {
   font-family: 'Numans', sans-serif;
   position: absolute;
   top: 0;
@@ -38,14 +38,14 @@
   background-color: $form-bg !important;
 }
 
-.forgot{
+.forgot {
   font-family: 'Numans', sans-serif;
   position: absolute;
   top: 0;
   height: 170px;
   width: 500px;
   margin-top: 25vh;
-  background-color:$form-bg !important;
+  background-color: $form-bg !important;
 }
 
 .card-header {
@@ -56,23 +56,22 @@
   }
 }
 
-.card-footer{
+.card-footer {
   font-size: 14px;
 }
 
-.btn-submit{
+.btn-submit {
   margin: 0px;
 }
 
-
-.social_icon span{
+.social_icon span {
   font-size: 30px;
   margin-left: 10px;
   color: $primary;
   transition: 0.3s;
 }
 
-.social_icon span:hover{
+.social_icon span:hover {
   color: $white;
   cursor: pointer;
   transition: 0.3s;
@@ -82,54 +81,54 @@
   margin-top: 5px;
 }
 
-.input-group-prepend span{
+.input-group-prepend span {
   width: 50px;
   background-color: $primary;
   color: $black;
-  border:0 !important;
+  border: 0 !important;
 }
 
-input:focus{
-  outline: 0 0 0 0  !important;
+input:focus {
+  outline: 0 0 0 0 !important;
   box-shadow: 0 0 0 0 !important;
 }
 
-.remember{
+.remember {
   color: $white;
   font-size: 14px;
 }
 
-.remember input{
+.remember input {
   width: 20px;
   height: 20px;
   margin-left: 15px;
   margin-right: 5px;
 }
 
-.submit-btn{
+.submit-btn {
   color: $black;
   background-color: $primary;
   width: 100px;
   transition: 0.3s;
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
   color: $black;
   background-color: $white;
   transition: 0.3s;
 }
 
-.links{
+.links {
   color: $white;
 }
 
-.links a{
+.links a {
   color: $primary;
   margin-left: 4px;
   text-decoration: none;
 }
 
-.links a:hover{
+.links a:hover {
   color: $primary;
 }
 

@@ -1,37 +1,33 @@
 import { types } from '../types/types';
 
-
 const initialState = {
   customers: [],
-  activeCustomer: null
-}
+  activeCustomer: null,
+};
 
-
-export const customerReducer = ( state = initialState, action ) => {
-
+export const customerReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case types.customersLoaded:
       return {
         ...state,
-        customers: [...action.payload]
-      }
+        customers: [...action.payload],
+      };
 
     case types.customerSetActive:
       return {
         ...state,
         activeCustomer: {
-          ...action.payload
-        }
-      }
+          ...action.payload,
+        },
+      };
 
     case types.clearCustomersLoaded:
       return {
         ...state,
-        customers: []
-      }
+        customers: [],
+      };
 
-      default:
-        return state;
+    default:
+      return state;
   }
-}  
+};
