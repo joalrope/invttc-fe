@@ -1,16 +1,18 @@
-import { HomePage } from '../../components/pages/HomePage';
-import { EquipmentPage } from '../../components/pages/EquipmentPage';
-import { ContactPage } from '../../components/pages/ContactPage';
-import { AboutPage } from '../../components/pages/AboutPage';
-import { LoginPage } from '../../components/auth/LoginPage';
-import { RegisterPage } from '../../components/auth/RegisterPage';
-import { ForgotPage } from '../../components/auth/ForgotPage';
-import { InventoryPage } from '../../components/pages/InventoryPage';
-import { ProductsPage } from '../../components/pages/ProductsPage';
-import { SalesPage } from '../../components/pages/SalesPage';
-import { QuotePage } from '../../components/pages/QuotePage';
-import { ReportPage } from '../../components/pages/ReportPage';
-import { DashboardPage } from '../../components/pages/DashboardPage';
+import {
+  AboutPage,
+  ContactPage,
+  DashboardPage,
+  EquipmentPage,
+  ForgotPage,
+  HomePage,
+  InventoryPage,
+  LoginPage,
+  ProductsPage,
+  QuotePage,
+  RegisterPage,
+  ReportPage,
+  SalesPage,
+} from '../../components/pages';
 
 const arAll = 'all'; // Todos
 
