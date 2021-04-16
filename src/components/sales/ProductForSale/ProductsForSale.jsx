@@ -2,24 +2,32 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import Swal from 'sweetalert2';
-import { TableAttrib } from '../../classes/table-attrib-class';
-import { columns } from '../../assets/data/products-for-sale.dataConig';
-import { deleteItemProdForSale, replaceItemProdForSale } from '../../helpers/sales/sales-utils';
-import { setProductsForSale } from '../../actions/products';
-import { ActionButtom } from '../generics/ActionButtom';
-import '../../assets/css/products-for-sale.scss';
+import { TableAttrib } from '../../../classes/table-attrib-class';
+import { columns } from '../../../assets/data/products-for-sale.dataConig';
+import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
+import { setProductsForSale } from '../../../actions/products';
+import { ActionButtom } from '../../generics/ActionButtom';
+import './products-for-sale.scss';
+import { useEffect } from 'react';
 
 export const ProductsForSale = ({ products }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [qty, setQty] = useState(null);
   const [onEditMode, setOnEditMode] = useState({ status: false, rowKey: null });
+  const [indexRow, setIndexRow] = useState(null);
   const [headData] = products;
   const attrib = new TableAttrib(columns);
   const tax = 0.15;
   const coin = 'Bs.';
+  const initRow = products[0]['id'];
+
+  useEffect(() => {
+    setIndexRow(initRow);
+  }, [initRow]);
 
   const { productsForSale } = useSelector((state) => state.product);
+  // const { activeCustomer } = useSelector((state) => state.customer);
   const selectedIndex = (id) => productsForSale.findIndex((item) => item.id === id);
 
   const onEdit = (key, id, currentQty) => {
@@ -107,7 +115,7 @@ export const ProductsForSale = ({ products }) => {
   };
 
   const handleCheckIn = (rowId) => {
-    console.log('facturar');
+    console.log('facturar: ', rowId);
 
     if (productsForSale.length > 0) history.push('reports');
   };
@@ -128,7 +136,7 @@ export const ProductsForSale = ({ products }) => {
           </thead>
           <tbody>
             {Object.values(products).map((values) => (
-              <tr key={values.id}>
+              <tr key={values.id} onMouseOver={() => setIndexRow(values.id)}>
                 {Object.entries(values).map(([key, value]) =>
                   onEditMode.status && onEditMode.rowKey === values.id && attrib.isCellEditable(key)
                     ? attrib.isCellVisible(key) && (
@@ -146,14 +154,20 @@ export const ProductsForSale = ({ products }) => {
                         <td
                           key={key}
                           className={attrib.getCellClass(key)}
-                          onClick={() => onEdit(key, values.id, Number(value))}>
+                          onClick={() => onEdit(key, values.id, Number(value))}
+                        >
                           {attrib.getCellValue(key, value)}
                         </td>
                       )
                 )}
-                <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
-                <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
-                <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
+
+                {indexRow === values.id && (
+                  <>
+                    <ActionButtom type='delete' row={values.id} handleClick={handleDeleteBtnClick} />
+                    <ActionButtom type='up' row={values.id} handleClick={handleUpBtnClick} />
+                    <ActionButtom type='down' row={values.id} handleClick={handleDownBtnClick} />
+                  </>
+                )}
               </tr>
             ))}
           </tbody>
@@ -176,7 +190,7 @@ export const ProductsForSale = ({ products }) => {
                 TOTAL VENTA ({coin}):
               </th>
               <th className='text-right'>{attrib.getCellValue('total', gralTotal)}</th>
-              <ActionButtom type='edit' row={5} handleClick={handleCheckIn} />
+              <ActionButtom title={'Facturar'} type='edit' row={gralTotal} handleClick={handleCheckIn} />
             </tr>
           </tfoot>
         </table>

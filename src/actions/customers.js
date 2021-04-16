@@ -37,12 +37,12 @@ export const findCustomerById = (id) => {
 };
 
 export const customerSetActive = (customer) => ({
-  type: types.customerSetActive,
+  type: types.customerSetActiveCustomer,
   payload: customer,
 });
 
 export const customerClearActive = () => ({
-  type: types.customerClearActive,
+  type: types.customerClearActiveCustomer,
 });
 
 const setCustomersLoaded = (customers) => ({
@@ -57,10 +57,6 @@ export const clearCustomersLoaded = () => ({
 export const addCustomerForSale = (customer) => ({
   type: types.customerAddedForSale,
   payload: customer,
-});
-
-export const clearActivePoduct = () => ({
-  type: types.customerClearActivePoduct,
 });
 
 export const setCustomersForSale = (data) => ({

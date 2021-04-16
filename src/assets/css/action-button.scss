@@ -1,7 +1,7 @@
 @import './partials//variables';
 
 .td-action-button {
-  width: 30px;
+  width: 2em;
   border: 0 !important;
   background-color: transparent !important;
   margin: 0 !important;
@@ -14,4 +14,8 @@
   border-radius: 3px;
   background-color: transparent;
   margin-left: 1px;
+  span {
+    margin-left: 0.5em;
+    font-weight: bolder;
+  }
 }

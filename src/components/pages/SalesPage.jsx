@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ProductsForSale } from '../sales/ProductsForSale';
+import { ProductsForSale } from '../sales/ProductForSale/ProductsForSale';
 import { SearchClient } from '../sales/SearchClient';
-import { ProductInfo } from '../sales/ProductInfo';
-import { ClientInfo } from '../sales/ClientInfo';
+import { ProductInfo } from '../sales/ProductInfo/ProductInfo';
+import { CustomerInfo } from '../sales/CustomerInfo/CustomerInfo';
 import { SearchProduct } from '../sales/SearchProduct';
 import '../../assets/css/sales.scss';
 
@@ -18,11 +18,9 @@ export const SalesPage = () => {
         <SearchClient />
         <SearchProduct />
       </div>
-      {activeCustomer !== null && <ClientInfo customer={activeCustomer} />}
-      {activeProduct !== null && <ProductInfo product={activeProduct} />}
-      {productsForSale.length > 0 && (
-        <ProductsForSale products={productsForSale} />
-      )}
+      {activeCustomer && <CustomerInfo customer={activeCustomer} />}
+      {activeProduct && <ProductInfo product={activeProduct} />}
+      {productsForSale.length > 0 && <ProductsForSale products={productsForSale} />}
     </div>
   );
 };

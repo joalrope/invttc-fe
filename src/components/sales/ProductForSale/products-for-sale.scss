@@ -1,10 +1,14 @@
-@import './partials//variables';
+@import '../../../assets/css/partials/variables.scss';
 
+.products-for-sale {
+  width: 100%;
+}
 .products-for-sale-title {
   text-align: left;
 }
 
 .products-for-sale-table {
+  width: 80.5%;
   thead tr th {
     text-align: center;
     background-color: $bg-tbl-header;
