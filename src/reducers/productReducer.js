@@ -28,16 +28,10 @@ export const productReducer = (state = initialState, action) => {
         },
       };
 
-    case types.productClearActive:
-      return {
-        ...state,
-        activeProduct: null,
-      };
-
     case types.productClearActivePoduct:
       return {
         ...state,
-        ...initialState,
+        activeProduct: null,
       };
 
     case types.productAddedForSale:

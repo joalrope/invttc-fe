@@ -13,12 +13,18 @@ export const customerReducer = (state = initialState, action) => {
         customers: [...action.payload],
       };
 
-    case types.customerSetActive:
+    case types.customerSetActiveCustomer:
       return {
         ...state,
         activeCustomer: {
           ...action.payload,
         },
+      };
+
+    case types.customerClearActiveCustomer:
+      return {
+        ...state,
+        activeCustomer: null,
       };
 
     case types.clearCustomersLoaded:

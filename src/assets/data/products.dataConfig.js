@@ -1,15 +1,16 @@
 const auth = ['storer-chief', 'admin', 'owner'];
-export const template = [
-  'code',
-  'title',
-  'details',
-  'category',
-  'replacement',
-  'measurement',
-  'status',
-];
-
+export const template = ['code', 'title', 'details', 'category', 'replacement', 'measurement', 'status'];
+// ESLint
 export const columns = [
+  {
+    name: '_id',
+    visible: false,
+    type: 'string',
+    title: 'id',
+    class: 'celldata',
+    width: '10%',
+    aling: 'left',
+  },
   {
     name: 'id',
     visible: false,

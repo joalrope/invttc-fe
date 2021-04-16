@@ -1,0 +1,24 @@
+.client-info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.client-info-title {
+  text-align: left;
+}
+
+.client-info {
+  width: 75%;
+}
+
+.sale-mode {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.form-check {
+  align-self: center;
+  margin-left: 2em;
+  font-size: 1.2em;
+}

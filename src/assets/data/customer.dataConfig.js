@@ -1,12 +1,4 @@
-export const template = [
-  'code',
-  'name',
-  'address',
-  'email',
-  'phone',
-  'isCustomer',
-  'contact',
-];
+export const template = ['code', 'name', 'address', 'email', 'phone', 'isRegularCustomer', 'contact'];
 
 export const columns = [
   {
@@ -66,7 +58,7 @@ export const columns = [
     class: 'text-left',
   },
   {
-    name: 'isCustomer',
+    name: 'isRegularCustomer',
     title: 'Cliente',
     type: 'boolean',
     visible: false,

@@ -33,7 +33,8 @@ export const ActionButtom = ({ type, row, handleClick, title }) => {
   return [
     <td key={1} colSpan={colSpan} className='td-action-button'>
       <button className='action-button' onClick={() => handleClick(row)}>
-        <i className={icon}>{title}</i>
+        <i className={icon}></i>
+        <span>{title}</span>
       </button>
     </td>,
     colSpan > 1 && ((<td key={2}></td>), (<td key={3}></td>)),

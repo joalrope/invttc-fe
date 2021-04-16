@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import { store } from '../store/store';
 import { startLogout } from '../actions/auth';
+import { parseJwt } from './parse-jwt';
 
 const baseUrl = process.env.REACT_APP_API_URL;
 const history = createBrowserHistory();
@@ -24,6 +25,7 @@ const fetchWithoutToken = (endpoint, data, method = 'GET') => {
       method,
       headers: {
         'content-type': 'application/json',
+        'x-role': 'basic',
       },
       body: JSON.stringify(data),
     }).then((resp) => {
@@ -42,8 +44,9 @@ const fetchWithoutToken = (endpoint, data, method = 'GET') => {
 
 const fetchWithToken = (endpoint, data, method = 'GET', header) => {
   const url = `${baseUrl}${endpoint}`;
+  const role = parseJwt();
   const token = sessionStorage.token;
-  const getHeaders = { 'x-token': token, ...header };
+  const getHeaders = { 'x-token': token, 'x-role': role, ...header };
   const postHeaders = { 'content-type': 'application/json', 'x-token': token, ...header };
 
   if (method === 'GET') {
