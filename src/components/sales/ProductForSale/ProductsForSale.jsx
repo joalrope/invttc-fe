@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import Swal from 'sweetalert2';
 import { TableAttrib } from '../../../classes/table-attrib-class';
 import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../../actions/products';
 import { ActionButtom } from '../../generics/ActionButtom';
+import { startShowInvoicePdf } from '../../../actions/reports';
 import './products-for-sale.scss';
 import { useEffect } from 'react';
 
 export const ProductsForSale = ({ products }) => {
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [qty, setQty] = useState(null);
   const [onEditMode, setOnEditMode] = useState({ status: false, rowKey: null });
@@ -115,9 +116,11 @@ export const ProductsForSale = ({ products }) => {
   };
 
   const handleCheckIn = (rowId) => {
+    dispatch(startShowInvoicePdf(true));
     console.log('facturar: ', rowId);
 
-    if (productsForSale.length > 0) history.push('reports');
+    //TODO:
+    // if (productsForSale.length > 0) history.push('reports');
   };
 
   const handleFocus = (e) => e.target.select();

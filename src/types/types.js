@@ -30,4 +30,6 @@ export const types = {
   customerSetActiveCustomer: '[customer] Set active customer',
   customerClearActiveCustomer: '[customer] clear active customer',
   clearCustomersLoaded: '[customer] Clear customers loaded',
+
+  reportShowInvoicePdf: '[reports] Show Invoice pdf',
 };
