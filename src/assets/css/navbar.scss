@@ -24,13 +24,17 @@ body {
 
 .navbar-toggler {
   position: fixed;
-  right: 10px;
-  top: 10px;
+  right: 0.8rem;
+  top: 1rem;
 }
 
 .navbar-logo {
-  padding: 10px;
-  flex: 0 1 15%;
+  padding: 0.8rem;
+  flex: 0 1 10%;
+
+  img {
+    width: 100%;
+  }
 }
 
 .dropdown-menu {
@@ -68,7 +72,7 @@ body {
 }
 
 .navbar-user-name {
-  margin: 0px 20px;
+  margin: 0px 1rem;
   font-size: 1.2rem;
   font-weight: bolder;
   line-height: 3rem;
@@ -83,20 +87,22 @@ body {
 
 .navbar-buttons {
   flex: 0 1 30%;
-  margin: 10px 0px;
+  margin: 0.8rem 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-end;
-}
 
-.navbar-buttons .btn {
-  width: 130px;
-  color: $primary;
-  font-size: 1.3rem;
-  border: 1px solid $primary;
-  border-radius: 6px;
-  text-align: center;
-  margin: 0px 12px;
+  .btn {
+    width: 10rem;
+    height: 2.5rem;
+    color: $primary;
+    font-size: 1.2em !important;
+    border: 1px solid $primary;
+    border-radius: 6px;
+    text-align: center;
+    margin: 0.3rem 0.8rem;
+  }
 }
 
 .navbar-buttons .btn:hover {
@@ -109,10 +115,11 @@ body {
 }
 
 .navbar-nav {
-  flex: 0 1 100%;
-  justify-content: center;
+  flex: 0 1 70%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-link:focus {
@@ -120,68 +127,68 @@ body {
   border-radius: 5px;
 }
 
-@media screen and (max-width: 1435px) {
-  .navbar-nav {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-}
+// @media screen and (max-width: 1435px) {
+//   .navbar-nav {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//   }
+// }
 
-@media screen and (max-width: 1205px) {
-  .navbar-items {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap-reverse;
-  }
-}
+// @media screen and (max-width: 1205px) {
+//   .navbar-items {
+//     display: flex;
+//     justify-content: space-between;
+//     flex-direction: row;
+//     flex-wrap: wrap-reverse;
+//   }
+// }
 
-@media screen and (max-width: 1165px) {
-  .navbar-items {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-}
+// @media screen and (max-width: 1165px) {
+//   .navbar-items {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//   }
+// }
 
-@media screen and (max-width: 950px) {
-  .navbar-buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
+// @media screen and (max-width: 950px) {
+//   .navbar-buttons {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//   }
+// }
 
-@media screen and (max-width: 775px) {
-  .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
+// @media screen and (max-width: 575px) {
+//   .navbar-nav {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//   }
+// }
 
-@media screen and (max-width: 250px) {
-  .navbar-item,
-  .wweb-item {
-    font-size: 1.3rem;
-  }
+// @media screen and (max-width: 250px) {
+//   .navbar-item,
+//   .wweb-item {
+//     font-size: 1.3rem;
+//   }
 
-  .navbar-logo img {
-    padding: 0px;
-    height: 40px;
-  }
-}
+//   .navbar-logo img {
+//     padding: 0px;
+//     height: 40px;
+//   }
+// }
 
-@media screen and (max-width: 200px) {
-  .navbar-item,
-  .wweb-item {
-    font-size: 1rem;
-  }
+// @media screen and (max-width: 200px) {
+//   .navbar-item,
+//   .wweb-item {
+//     font-size: 1rem;
+//   }
 
-  .navbar-logo img {
-    padding: 0px;
-    height: 20px;
-  }
-}
+//   .navbar-logo img {
+//     padding: 0px;
+//     height: 20px;
+//   }
+// }

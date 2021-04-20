@@ -10,7 +10,7 @@ export const AuthButtons = () => {
       </Link>
       <Link to='/register' className='btn'>
         <i className='fas fa-user-plus'></i>
-        Registrarse
+        <span>Registrarse</span>
       </Link>
     </div>
   );

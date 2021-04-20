@@ -9,9 +9,9 @@ export const NavBar = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
   return (
-    <nav className='navbar navbar-expand-md navbar-light navbar-app'>
+    <nav className='navbar navbar-expand-sm navbar-light navbar-app'>
       <div className='navbar-brand navbar-logo'>
-        <img src='/logo.png' height='50' alt='logo de TractoCenter' />
+        <img src='/logo.png' alt='logo de TractoCenter' />
       </div>
 
       <button
@@ -21,7 +21,8 @@ export const NavBar = () => {
         data-target='#navbarSupportedContent'
         aria-controls='navbarSupportedContent'
         aria-expanded='true'
-        aria-label='Toggle navigation'>
+        aria-label='Toggle navigation'
+      >
         <span className='navbar-toggler-icon'></span>
       </button>
 
@@ -29,7 +30,8 @@ export const NavBar = () => {
         className='navbar-items collapse navbar-collapse'
         id='navbarSupportedContent'
         data-toggle='collapse'
-        data-target='#navbarSupportedContent.show'>
+        data-target='#navbarSupportedContent.show'
+      >
         <ul className='navbar-nav'>
           <GetItems />
         </ul>
