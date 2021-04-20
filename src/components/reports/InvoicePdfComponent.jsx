@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { Invoice } from '../templates/invoice/Invoice';
 
 export const InvoicePdfComponent = () => {
-  const history = useHistory();
   const { productsForSale } = useSelector((state) => state.product);
 
   useEffect(() => {
@@ -23,7 +21,6 @@ export const InvoicePdfComponent = () => {
       callback: function (doc) {
         doc.viewerPreferences({ FitWindow: true });
         doc.output('dataurlnewwindow');
-        //history.goBack();
       },
       margin: [20, 20, 20, 20],
     });
@@ -31,11 +28,7 @@ export const InvoicePdfComponent = () => {
     return () => {
       return <div></div>;
     };
-  }, [history]);
-
-  if (productsForSale.length === 0) {
-    history.goBack();
-  }
+  }, []);
 
   return (
     productsForSale.length > 0 && (

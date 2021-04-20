@@ -1,7 +1,7 @@
 /* eslint-disable no-extend-native */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import '../../../assets/css/invoice.scss';
+import './invoice.scss';
 
 export const InvoiceFooter = () => {
   const { productsForSale } = useSelector((state) => state.product);

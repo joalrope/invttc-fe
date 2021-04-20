@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../../assets/images/logo.png';
-import '../../../assets/css/invoice.scss';
+import './invoice.scss';
 
 export const InvoiceHeader = ({ customerData, transactionData }) => {
   const customer = customerData;

@@ -4,7 +4,7 @@ import moment from 'moment';
 import { InvoiceHeader } from './InvoiceHeader';
 import { InvoiceFooter } from './InvoiceFooter';
 import { InvoiceBody } from './InvoiceBody';
-import '../../../assets/css/invoice.scss';
+import './invoice.scss';
 
 const transactionData = {
   date: moment().format('DD/MM/YYYY'),
