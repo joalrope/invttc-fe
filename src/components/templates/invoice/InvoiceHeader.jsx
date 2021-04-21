@@ -13,7 +13,7 @@ export const InvoiceHeader = ({ customerData, transactionData }) => {
   return (
     <div className='invoice-header'>
       <div className='left-header'>
-        <img className='logo' src={logo} alt='' width='80px' />
+        <img className='logo' src={logo} alt='' width='120px' />
         <div className='address'>
           <p>{ownerAddress1}</p>
           <p>{ownerAddress2}</p>

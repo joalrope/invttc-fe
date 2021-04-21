@@ -27,7 +27,6 @@ export const InvoicePdfComponent = () => {
       callback: function (doc) {
         doc.viewerPreferences({ FitWindow: true });
         doc.output('dataurlnewwindow');
-        //history.goBack();
         dispatch(startShowInvoicePdf(false));
       },
       margin: [40, 40, 40, 40],
