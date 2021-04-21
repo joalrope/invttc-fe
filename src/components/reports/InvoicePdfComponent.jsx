@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import moment from 'moment';
 import { Invoice } from '../templates/invoice/Invoice';
 import { startShowInvoicePdf } from '../../actions/reports';
 
@@ -10,12 +11,13 @@ export const InvoicePdfComponent = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { productsForSale } = useSelector((state) => state.product);
+  const { activeCustomer } = useSelector((state) => state.customer);
 
   useEffect(() => {
     window.html2canvas = html2canvas;
     var doc = new jsPDF({
       orientation: 'portrait',
-      unit: 'px',
+      unit: 'pt',
       format: 'letter',
     });
 
@@ -28,7 +30,7 @@ export const InvoicePdfComponent = () => {
         //history.goBack();
         dispatch(startShowInvoicePdf(false));
       },
-      margin: [20, 20, 20, 20],
+      margin: [40, 40, 40, 40],
     });
 
     return () => {
@@ -40,14 +42,16 @@ export const InvoicePdfComponent = () => {
   //   history.goBack();
   // }
 
+  const transactionData = {
+    date: moment().format('DD/MM/YYYY'),
+    controlNumber: '2102-05',
+    deliveryMode: true,
+  };
+
   return (
     productsForSale.length > 0 && (
       <div className='App content-22' id='content-22'>
-        <Invoice />
-        <div className='separator'>
-          --------------------------------------------------------------------------------------------------------------------
-        </div>
-        <Invoice />
+        <Invoice data={{ transactionData, activeCustomer, productsForSale }} />
       </div>
     )
   );
