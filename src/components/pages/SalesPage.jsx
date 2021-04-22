@@ -1,12 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
+import { CustomerInfo } from '../sales/CustomerInfo/CustomerInfo';
+import { Invoice } from '../templates/invoice/Invoice';
+import { GeneratePdfFromHtml } from '../HOC/GeneratePdfFromHtml';
+import { ProductInfo } from '../sales/ProductInfo/ProductInfo';
 import { ProductsForSale } from '../sales/ProductForSale/ProductsForSale';
 import { SearchClient } from '../sales/SearchClient';
-import { ProductInfo } from '../sales/ProductInfo/ProductInfo';
-import { CustomerInfo } from '../sales/CustomerInfo/CustomerInfo';
 import { SearchProduct } from '../sales/SearchProduct';
 import '../../assets/css/sales.scss';
-import { InvoicePdfComponent } from '../reports/InvoicePdfComponent';
+
+const transactionData = {
+  date: moment().format('DD/MM/YYYY'),
+  controlNumber: '2102-05',
+  deliveryMode: true,
+};
 
 export const SalesPage = () => {
   const { activeProduct } = useSelector((state) => state.product);
@@ -17,7 +25,9 @@ export const SalesPage = () => {
   return (
     <div className='container mt-5'>
       <div className='search-container'>
-        {showInvoicePdf && <InvoicePdfComponent />}
+        {showInvoicePdf && (
+          <GeneratePdfFromHtml Component={Invoice} data={{ transactionData, activeCustomer, productsForSale }} />
+        )}
         <SearchClient />
         <SearchProduct />
       </div>
