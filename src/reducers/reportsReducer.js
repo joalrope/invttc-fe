@@ -6,7 +6,7 @@ const initialState = {
 
 export const reportsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.reportShowInvoicePdf:
+    case types.reportGeneratePdf:
       return {
         ...state,
         showInvoicePdf: action.payload,

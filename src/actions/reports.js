@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
-export const startShowInvoicePdf = (show) => ({
-  type: types.reportShowInvoicePdf,
+export const showPdfGenerated = (show) => ({
+  type: types.reportGeneratePdf,
   payload: show,
 });
 

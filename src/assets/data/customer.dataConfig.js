@@ -105,4 +105,8 @@ export const columns = [
     editable: false,
     class: 'text-left',
   },
+  {
+    name: 'paymentConditions',
+    visible: false,
+  },
 ];

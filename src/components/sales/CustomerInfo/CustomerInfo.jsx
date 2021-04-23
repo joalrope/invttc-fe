@@ -5,7 +5,7 @@ import { useWindowSize } from '../../../hooks/useWindowSize';
 import { LandscapeTable } from '../LandscapeTable/LandscapeTable';
 import { PortraitTable } from '../PortraitTable';
 import { columns } from '../../../assets/data/customer.dataConfig';
-import { customerClearActive } from '../../../actions/customers';
+import { customerClearActive, customerSetActive } from '../../../actions/customers';
 import './customer-info.scss';
 import { useDispatch } from 'react-redux';
 
@@ -28,11 +28,15 @@ export const CustomerInfo = (customer) => {
   };
 
   const handleCreditClick = (numDays) => {
+    curCustomer['paymentConditions'] = `Venta a credito ${numDays} días`;
+    dispatch(customerSetActive(curCustomer));
     setCreditDays(numDays);
   };
 
   const handleSaleMode = () => {
     setCreditDays(0);
+    curCustomer['paymentConditions'] = 'Venta a contado';
+    dispatch(customerSetActive(curCustomer));
     setIsSaleOnCredit(document.getElementById('creditSaleCheck').checked);
   };
 

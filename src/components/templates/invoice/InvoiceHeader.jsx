@@ -4,6 +4,7 @@ import './invoice.scss';
 
 export const InvoiceHeader = ({ customerData, transactionData }) => {
   const customer = customerData;
+  console.log(customer);
   const transaction = transactionData;
 
   //TODO: Obtener ownerAddress1 y ownerAddress2 de la base de datos del Propietario

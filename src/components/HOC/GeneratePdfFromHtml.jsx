@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { startShowInvoicePdf } from '../../actions/reports';
+import { showPdfGenerated } from '../../actions/reports';
 
-export const GeneratePdfFromHtml = ({ Component, data }) => {
+export const GeneratePdfFromHtml = ({ WrappedComponent, data }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const GeneratePdfFromHtml = ({ Component, data }) => {
       callback: function (doc) {
         doc.viewerPreferences({ FitWindow: true });
         doc.output('dataurlnewwindow');
-        dispatch(startShowInvoicePdf(false));
+        dispatch(showPdfGenerated(false));
       },
       margin: [40, 40, 40, 40],
     });
@@ -29,7 +29,7 @@ export const GeneratePdfFromHtml = ({ Component, data }) => {
 
   return (
     <div className='App content-22' id='content-22'>
-      <Component data={data} />
+      <WrappedComponent data={data} />
     </div>
   );
 };

@@ -7,12 +7,11 @@ import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../../actions/products';
 import { ActionButtom } from '../../generics/ActionButtom';
-import { startShowInvoicePdf } from '../../../actions/reports';
+import { showPdfGenerated } from '../../../actions/reports';
 import './products-for-sale.scss';
 import { useEffect } from 'react';
 
 export const ProductsForSale = ({ products }) => {
-  // const history = useHistory();
   const dispatch = useDispatch();
   const [qty, setQty] = useState(null);
   const [onEditMode, setOnEditMode] = useState({ status: false, rowKey: null });
@@ -28,7 +27,6 @@ export const ProductsForSale = ({ products }) => {
   }, [initRow]);
 
   const { productsForSale } = useSelector((state) => state.product);
-  // const { activeCustomer } = useSelector((state) => state.customer);
   const selectedIndex = (id) => productsForSale.findIndex((item) => item.id === id);
 
   const onEdit = (key, id, currentQty) => {
@@ -116,7 +114,7 @@ export const ProductsForSale = ({ products }) => {
   };
 
   const handleCheckIn = (rowId) => {
-    dispatch(startShowInvoicePdf(true));
+    dispatch(showPdfGenerated(true));
     console.log('facturar: ', rowId);
 
     //TODO:

@@ -31,5 +31,5 @@ export const types = {
   customerClearActiveCustomer: '[customer] clear active customer',
   clearCustomersLoaded: '[customer] Clear customers loaded',
 
-  reportShowInvoicePdf: '[reports] Show Invoice pdf',
+  reportGeneratePdf: '[reports] Generate pdf',
 };
