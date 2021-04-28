@@ -22,7 +22,7 @@ export const types = {
   productUpdated: '[product] product updated',
   productDeleted: '[product] product deleted',
   productLoaded: '[product] Loaded products',
-  clearProductsLoaded: '[product] clear Loaded products',
+  productclearProductsLoaded: '[product] clear Loaded products',
   productAddedForSale: '[product] added for sale',
   productSetProductsForSale: '[product] set products for sale',
 
@@ -30,6 +30,10 @@ export const types = {
   customerSetActiveCustomer: '[customer] Set active customer',
   customerClearActiveCustomer: '[customer] clear active customer',
   clearCustomersLoaded: '[customer] Clear customers loaded',
+
+  transactionSetTransactionData: '[invoice] set transaction data',
+  transactionClearTransactionData: '[invoice] clear transaction data',
+  transactionUpdatePaymentConditions: '[invoice] update payment conditions',
 
   reportGeneratePdf: '[reports] Generate pdf',
 };

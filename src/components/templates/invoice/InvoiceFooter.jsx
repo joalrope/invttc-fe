@@ -1,16 +1,11 @@
 /* eslint-disable no-extend-native */
 import React from 'react';
-import { useSelector } from 'react-redux';
 import './invoice.scss';
 
-export const InvoiceFooter = () => {
-  const { productsForSale } = useSelector((state) => state.product);
+export const InvoiceFooter = ({ totals }) => {
+  const { purchaseTotal, ivaTaxAmount, invoiceTotal } = totals;
   const locale = 'es-Es';
   const digits = 2;
-  const ivaTax = 0.16;
-  const purchaseTotal = productsForSale.reduce((grandTotal, { total }) => Number(grandTotal) + Number(total), 0);
-  const ivaTaxAmount = purchaseTotal * ivaTax;
-  const invoiceTotal = purchaseTotal + ivaTaxAmount;
 
   return (
     <div className='invoice-footer'>

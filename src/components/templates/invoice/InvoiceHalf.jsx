@@ -7,12 +7,10 @@ import { InvoiceBody } from './InvoiceBody';
 import './invoice.scss';
 
 export const InvoiceHalf = ({ data }) => {
-  const { transactionData, activeCustomer, productsForSale } = data;
+  const { transactionData, activeCustomer, productsForSale, totals } = data;
   let clonedProducts = JSON.parse(JSON.stringify(productsForSale));
   let clonedCustomer = JSON.parse(JSON.stringify(activeCustomer));
   let i = 0;
-
-  // clonedCustomer['paymentConditions'] = 'Pago de Contado';
 
   const products = clonedProducts.map((product) => {
     i++;
@@ -45,9 +43,9 @@ export const InvoiceHalf = ({ data }) => {
 
   return (
     <div className='invoice-container'>
-      <InvoiceHeader customerData={clonedCustomer} transactionData={transactionData} />
+      <InvoiceHeader customer={clonedCustomer} transaction={transactionData} />
       <InvoiceBody products={products} />
-      <InvoiceFooter />
+      <InvoiceFooter totals={totals} />
     </div>
   );
 };

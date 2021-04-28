@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { showPdfGenerated } from '../../actions/reports';
 
-export const GeneratePdfFromHtml = ({ WrappedComponent, data }) => {
+export const GeneratePdfFromHtml = ({ WrappedComponent, data, msgWhenUnmounting }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +26,14 @@ export const GeneratePdfFromHtml = ({ WrappedComponent, data }) => {
       margin: [40, 40, 40, 40],
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    return () => {
+      if (msgWhenUnmounting) {
+        msgWhenUnmounting();
+      }
+    };
+  });
 
   return (
     <div className='App content-22' id='content-22'>

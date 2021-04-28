@@ -2,11 +2,7 @@ import React from 'react';
 import logo from '../../../assets/images/logo.png';
 import './invoice.scss';
 
-export const InvoiceHeader = ({ customerData, transactionData }) => {
-  const customer = customerData;
-  console.log(customer);
-  const transaction = transactionData;
-
+export const InvoiceHeader = ({ customer, transaction }) => {
   //TODO: Obtener ownerAddress1 y ownerAddress2 de la base de datos del Propietario
   const ownerAddress1 = 'Zona industrial Los Pinos Manzana 24 Parcela 07 – Estado Bolívar Cod. Postal 8050';
   const ownerAddress2 = 'Telefonos: 0286-9948874/-0414-8664310/0414-8672189 Email- Tractocenter71@gmail.com';

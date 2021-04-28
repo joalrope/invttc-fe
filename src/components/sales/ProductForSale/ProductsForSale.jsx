@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory } from 'react-router';
 import Swal from 'sweetalert2';
+import { ActionButtom } from '../../generics/ActionButtom';
 import { TableAttrib } from '../../../classes/table-attrib-class';
 import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../../actions/products';
-import { ActionButtom } from '../../generics/ActionButtom';
 import { showPdfGenerated } from '../../../actions/reports';
 import './products-for-sale.scss';
-import { useEffect } from 'react';
 
 export const ProductsForSale = ({ products }) => {
   const dispatch = useDispatch();
@@ -17,9 +15,10 @@ export const ProductsForSale = ({ products }) => {
   const [onEditMode, setOnEditMode] = useState({ status: false, rowKey: null });
   const [indexRow, setIndexRow] = useState(null);
   const [headData] = products;
+  const { activeCustomer } = useSelector((state) => state.customer);
   const attrib = new TableAttrib(columns);
   const tax = 0.15;
-  const coin = 'Bs.';
+  const coin = 'USD$.';
   const initRow = products[0]['id'];
 
   useEffect(() => {
@@ -114,11 +113,10 @@ export const ProductsForSale = ({ products }) => {
   };
 
   const handleCheckIn = (rowId) => {
-    dispatch(showPdfGenerated(true));
-    console.log('facturar: ', rowId);
-
-    //TODO:
-    // if (productsForSale.length > 0) history.push('reports');
+    if (activeCustomer) {
+      return dispatch(showPdfGenerated(true));
+    }
+    Swal.fire('No ha seleccionado Cliente al cual facturar', 'Por favor seleccione uno', 'warning');
   };
 
   const handleFocus = (e) => e.target.select();

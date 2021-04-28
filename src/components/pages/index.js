@@ -8,7 +8,7 @@ import { InventoryPage } from './InventoryPage';
 import { ProductsPage } from './ProductsPage';
 import { QuotePage } from './QuotePage';
 import { ReportPage } from './ReportPage';
-import { SalesPage } from './SalesPage';
+import { SalesPage } from '../pages/SalesPage/SalesPage';
 
 import { ForgotPage } from '../auth/ForgotPage';
 import { LoginPage } from '../auth/LoginPage';
