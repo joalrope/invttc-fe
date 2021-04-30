@@ -47,6 +47,9 @@ export const SalesPage = () => {
     invoiceTotal,
   };
 
+  const pdfTitle = `Nota de Entrega ${controlNumber}`;
+  const pdfCustomer = activeCustomer ? activeCustomer.name : '';
+
   const msgWhenUnmounting = () => {
     Swal.fire({
       title: `¿Se generó correctamente la nota de entrega ${controlNumber}?`,
@@ -73,6 +76,7 @@ export const SalesPage = () => {
             WrappedComponent={Invoice}
             data={{ transactionData, activeCustomer, productsForSale, totals }}
             msgWhenUnmounting={msgWhenUnmounting}
+            pdfProps={{ pdfTitle, pdfCustomer }}
           />
         )}
         <SearchClient />
