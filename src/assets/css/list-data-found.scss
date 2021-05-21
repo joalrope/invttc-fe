@@ -1,11 +1,11 @@
 @import './partials//variables';
 
 .found-data-table {
-  z-index: 100 !important;
+  z-index: 2 !important;
   position: absolute;
   background-color: $bg-tbl-td-cell;
   cursor: pointer;
-  width: 25%;
+  width: 100%;
   border: 1px solid $tbl-border;
   border-collapse: collapse;
 

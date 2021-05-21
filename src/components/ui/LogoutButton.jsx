@@ -2,15 +2,18 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { startLogout } from '../../actions/auth';
-import { clearActivePoduct } from '../../actions/products';
+import { customerClearActive } from '../../actions/customers';
+import { clearActivePoduct, setProductsForSale } from '../../actions/products';
 
 export const LogoutButton = () => {
-  const dispatch = useDispatch();
   const { name } = useSelector((state) => state.auth);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     sessionStorage.clear();
+    dispatch(setProductsForSale([]));
+    dispatch(customerClearActive());
     dispatch(clearActivePoduct());
     dispatch(startLogout());
     history.push('/');

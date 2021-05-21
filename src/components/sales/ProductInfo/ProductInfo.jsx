@@ -2,7 +2,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { jsonToTabular } from '../../../helpers/jsonTab/json-to-tabular';
-import { useWindowSize } from '../../../hooks/useWindowSize';
+// import { useWindowSize } from '../../../hooks/useWindowSize';
 import { LandscapeTable } from '../LandscapeTable/LandscapeTable';
 import { PortraitTable } from '../PortraitTable';
 import { columns } from '../../../assets/data/products.dataConfig';
@@ -12,14 +12,14 @@ import { getSelectedProduct } from '../../../helpers/sales/add-products-for-sale
 import { replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
 import { addProductForSale, clearActivePoduct, setProductsForSale } from '../../../actions/products';
 
-export const ProductInfo = (product) => {
+export const ProductInfo = ({ product, mode }) => {
   const dispatch = useDispatch();
   const { activeProduct, productsForSale } = useSelector((state) => state.product);
 
-  const size = useWindowSize();
-  let mode;
+  // const size = useWindowSize();
+  // let mode;
 
-  mode = size.width <= 775 ? 'portrait' : 'landscape';
+  // mode = size.width <= 775 ? 'portrait' : 'landscape';
 
   const data = jsonToTabular(product, mode);
   const selectedIndex = (code, trademark) =>
@@ -93,7 +93,7 @@ export const ProductInfo = (product) => {
       <div className='list-product-found'>
         <h5 className='list-products-found-title'>Detalle de Producto</h5>
         {mode === 'portrait' ? (
-          <PortraitTable data={data} columns={columns} />
+          <PortraitTable data={data} columns={columns} actionButtons={actionButtonsProductInfo} />
         ) : (
           <LandscapeTable key={data} data={data} columns={columns} actionButtons={actionButtonsProductInfo} />
         )}

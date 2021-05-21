@@ -4,11 +4,7 @@ import { fetchWithoutToken, fetchWithToken } from '../helpers/fetch';
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
-    const { ok, msg, token, uid, name, role } = await fetchWithoutToken(
-      '/auth',
-      { email, password },
-      'POST'
-    );
+    const { ok, msg, token, uid, name, role } = await fetchWithoutToken('/auth', { email, password }, 'POST');
 
     if (ok) {
       dispatch(
@@ -29,14 +25,11 @@ export const startLogin = (email, password) => {
 
 export const startRegister = (name, email, password) => {
   return async (dispatch) => {
-    const {
-      ok,
-      msg,
-      token,
-      uid,
-      name: userName,
-      role,
-    } = await fetchWithoutToken('/auth/new', { name, email, password }, 'POST');
+    const { ok, msg, token, uid, name: userName, role } = await fetchWithoutToken(
+      '/auth/new',
+      { name, email, password },
+      'POST'
+    );
 
     if (ok) {
       sessionStorage.token = token;
@@ -60,9 +53,7 @@ export const startPassRecovery = (email) => {};
 export const startChecking = () => {
   return async (dispatch) => {
     if ('token' in sessionStorage) {
-      const { ok, token, uid, name, role } = await fetchWithToken(
-        '/auth/renew'
-      );
+      const { ok, token, uid, name, role } = await fetchWithToken('/auth/renew');
 
       if (ok) {
         sessionStorage.token = token;

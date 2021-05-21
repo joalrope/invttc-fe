@@ -13,7 +13,6 @@ const columns = [
 export const SearchClient = () => {
   const dispatch = useDispatch();
   const { customers } = useSelector((state) => state.customer);
-
   const { activeCustomer } = useSelector((state) => state.customer);
   const [formValues, handleInputChange, reset] = useForm({ Code: '' });
   const { Code } = formValues;
@@ -44,11 +43,11 @@ export const SearchClient = () => {
   }, [dispatch, Code]);
 
   return (
-    <div className='search-customer'>
-      <h5 className='search-customer-title'>Buscar Cliente</h5>
-      <div className='input-group form-group group-input-search-customer input-search-customer'>
+    <div className='search-group'>
+      <h5 className='search-title'>Cliente</h5>
+      <div className='input-group form-group search-input'>
         <div className='input-group-prepend'>
-          <span className='input-group-text input-customer-span-text'>RIF ó Nombre</span>
+          <span className='input-group-text input-span-text'>RIF ó Nombre</span>
         </div>
         <input
           type='text'
@@ -62,11 +61,11 @@ export const SearchClient = () => {
           onKeyPress={handleOnKeyPress}
         />
       </div>
-      {customers.length > 0 && (
-        <div className='input-search-customer'>
+      <div className='search-list'>
+        {customers.length > 0 && (
           <ListDataFound data={customers} hasHeader={true} columns={columns} handleClick={handleClick} />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

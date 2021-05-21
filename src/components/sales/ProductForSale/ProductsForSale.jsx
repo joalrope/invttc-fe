@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { ActionButtom } from '../../generics/ActionButtom';
+import { ActionButtom } from '../../generics/ActionButtom/ActionButtom';
 import { TableAttrib } from '../../../classes/table-attrib-class';
 import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
@@ -9,7 +9,7 @@ import { setProductsForSale } from '../../../actions/products';
 import { showPdfGenerated } from '../../../actions/reports';
 import './products-for-sale.scss';
 
-export const ProductsForSale = ({ products }) => {
+export const ProductsForSale = ({ products, tax }) => {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(null);
   const [onEditMode, setOnEditMode] = useState({ status: false, rowKey: null });
@@ -17,7 +17,6 @@ export const ProductsForSale = ({ products }) => {
   const [headData] = products;
   const { activeCustomer } = useSelector((state) => state.customer);
   const attrib = new TableAttrib(columns);
-  const tax = 0.15;
   const coin = 'USD$.';
   const initRow = products[0]['id'];
 
@@ -70,7 +69,7 @@ export const ProductsForSale = ({ products }) => {
     return total + item;
   }, 0);
 
-  const totalTax = subTotal * tax;
+  const totalTax = (subTotal * tax) / 100;
   const gralTotal = subTotal + totalTax;
 
   const handleDeleteBtnClick = (rowId) => {

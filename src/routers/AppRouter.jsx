@@ -5,6 +5,7 @@ import { ErrorPage } from '../components/pages/ErrorPage';
 import { NavBar } from '../components/ui/NavBar';
 import { items } from '../assets/data/navbar.dataConfig';
 import '../assets/css/index.scss';
+import { AsideBar } from '../components/aside/AsideBar';
 
 export const AppRouter = () => {
   const checking = false;
@@ -23,10 +24,8 @@ export const AppRouter = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='aside-options p-5 col-2'>
-            <button className='btn btn-block btn-outline-info'>reporte</button>
-          </div>
-          <div className='col-10'>
+          <AsideBar />
+          <section className='col-10'>
             <Switch>
               {items
                 .filter((item) => item.roles.includes(role) || item.roles === 'all')
@@ -35,7 +34,7 @@ export const AppRouter = () => {
                 ))}
               <Route component={ErrorPage} />
             </Switch>
-          </div>
+          </section>
         </div>
       </div>
     </Router>

@@ -5,8 +5,9 @@ import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import { TableAttrib } from '../../classes/table-attrib-class';
+import { ActionButtom } from '../generics/ActionButtom/ActionButtom';
 
-export const PortraitTable = ({ data, columns }) => {
+export const PortraitTable = ({ data, columns, actionButtons }) => {
   const dispatch = useDispatch();
   const { activeProduct, productsForSale } = useSelector((state) => state.product);
   const attrib = new TableAttrib(columns);
@@ -61,23 +62,28 @@ export const PortraitTable = ({ data, columns }) => {
   return (
     <table className='portrait-table'>
       <tbody>
-        {Object.entries(data).map(([key, value]) => (
+        {Object.entries(data).map(([key, value], index, array) => (
           <tr key={key}>
             {attrib.isCellVisible(key) && <th key={key}>{attrib.getTitleHeader(key)}</th>}
             {Object.values(value).map(
               ({ value, span }) =>
-                attrib.isCellVisible(key) && (
+                attrib.isCellVisible(key) && [
                   <td
                     key={key + value}
                     colSpan={span}
                     align={attrib.getCellAlign(key)}
                     className={attrib.getCellClass(key)}
-                    onClick={() => handleClick(key, value)}>
+                    onClick={() => handleClick(key, value)}
+                  >
                     {attrib.getCellValue(key, value)}
-                  </td>
-                )
+                  </td>,
+                  index === array.length && <td>{'aqui'}</td>,
+                ]
             )}
           </tr>
+        ))}
+        {Object.values(actionButtons).map(({ type, handleButtonClick }, index) => (
+          <ActionButtom key={index} type={type} handleClick={handleButtonClick} />
         ))}
       </tbody>
     </table>

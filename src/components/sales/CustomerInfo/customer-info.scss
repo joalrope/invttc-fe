@@ -1,7 +1,5 @@
 .client-info-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  text-align: left;
 }
 
 .client-info-title {
@@ -19,6 +17,5 @@
 }
 .form-check {
   align-self: center;
-  margin-left: 2em;
   font-size: 1.2em;
 }

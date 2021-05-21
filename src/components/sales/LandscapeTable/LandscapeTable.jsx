@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActionButtom } from '../../generics/ActionButtom';
+import { ActionButtom } from '../../generics/ActionButtom/ActionButtom';
 import { TableAttrib } from '../../../classes/table-attrib-class';
 import { parseJwt } from '../../../helpers/parse-jwt';
 import './landscape-table.scss';

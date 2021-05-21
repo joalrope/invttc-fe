@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import { jsonToTabular } from '../../../helpers/jsonTab/json-to-tabular';
-import { useWindowSize } from '../../../hooks/useWindowSize';
+// import { useWindowSize } from "../../../hooks/useWindowSize";
 import { LandscapeTable } from '../LandscapeTable/LandscapeTable';
 import { PortraitTable } from '../PortraitTable';
 import { columns } from '../../../assets/data/customer.dataConfig';
@@ -9,38 +9,31 @@ import { customerClearActive, customerSetActive } from '../../../actions/custome
 import './customer-info.scss';
 import { useDispatch } from 'react-redux';
 
-export const CustomerInfo = (customer) => {
+export const CustomerInfo = ({ customer, mode = 'landscape' }) => {
   const dispatch = useDispatch();
-
-  const size = useWindowSize();
-  let mode;
-
-  mode = size.width <= 775 ? 'portrait' : 'landscape';
-
   const data = jsonToTabular(customer, mode);
-  const { customer: curCustomer } = customer;
-  const { isRegularCustomer } = curCustomer;
+  const { isRegularCustomer } = customer;
   const [isSaleOnCredit, setIsSaleOnCredit] = useState(false);
   const [creditDays, setCreditDays] = useState(0);
 
-  const handleClickCustomerActiveDelete = () => {
+  const handleClickDeleteCustomerActive = () => {
     dispatch(customerClearActive());
   };
 
   const handleCreditClick = (numDays) => {
-    curCustomer['paymentConditions'] = `Venta a credito ${numDays} días`;
-    dispatch(customerSetActive(curCustomer));
+    customer['paymentConditions'] = `Venta a credito ${numDays} días`;
+    dispatch(customerSetActive(customer));
     setCreditDays(numDays);
   };
 
   const handleSaleMode = () => {
     setCreditDays(0);
-    curCustomer['paymentConditions'] = 'Venta a contado';
-    dispatch(customerSetActive(curCustomer));
+    customer['paymentConditions'] = 'Venta a contado';
+    dispatch(customerSetActive(customer));
     setIsSaleOnCredit(document.getElementById('creditSaleCheck').checked);
   };
 
-  const actionButtonsCustomerInfo = [{ type: 'delete', handleButtonClick: handleClickCustomerActiveDelete }];
+  const actionButtonsCustomerInfo = [{ type: 'delete', handleButtonClick: handleClickDeleteCustomerActive }];
 
   if (data === null) {
     return <></>;
@@ -51,7 +44,7 @@ export const CustomerInfo = (customer) => {
       <div className='client-info'>
         <h5 className='client-info-title'>Información del Cliente</h5>
         {mode === 'portrait' ? (
-          <PortraitTable data={data} columns={columns} />
+          <PortraitTable data={data} columns={columns} actionButtons={actionButtonsCustomerInfo} />
         ) : (
           <LandscapeTable key={data} data={data} columns={columns} actionButtons={actionButtonsCustomerInfo} />
         )}

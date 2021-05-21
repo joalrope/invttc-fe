@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../assets/css/action-button.scss';
+import './action-button.scss';
 
 export const ActionButtom = ({ type, row, handleClick, title }) => {
   let icon;

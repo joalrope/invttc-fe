@@ -47,7 +47,11 @@ const fetchWithToken = (endpoint, data, method = 'GET', header) => {
   const role = parseJwt();
   const token = sessionStorage.token;
   const getHeaders = { 'x-token': token, 'x-role': role, ...header };
-  const postHeaders = { 'content-type': 'application/json', 'x-token': token, ...header };
+  const postHeaders = {
+    'content-type': 'application/json',
+    'x-token': token,
+    ...header,
+  };
 
   if (method === 'GET') {
     response = fetch(url, {
@@ -58,8 +62,8 @@ const fetchWithToken = (endpoint, data, method = 'GET', header) => {
         return resp.json();
       } else {
         sessionStorage.clear();
-        history.push('/login');
         store.dispatch(startLogout());
+        history.push('/login');
         return {
           ok: false,
           msg: 'unauthorized',

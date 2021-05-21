@@ -43,11 +43,11 @@ export const SearchProduct = () => {
   }, [dispatch, Code]);
 
   return (
-    <div className='search-code'>
-      <h5 className='search-code-title'>Buscar Producto</h5>
-      <div className='input-group form-group group-input-search-code input-search-code'>
+    <div className='search-group'>
+      <h5 className='search-title'>Producto</h5>
+      <div className='input-group form-group search-input'>
         <div className='input-group-prepend'>
-          <span className='input-group-text input-code-span-text'>Código</span>
+          <span className='input-group-text input-span-text'>Código</span>
         </div>
         <input
           type='text'
@@ -61,11 +61,11 @@ export const SearchProduct = () => {
           onKeyPress={handleOnKeyPress}
         />
       </div>
-      {products.length > 0 && (
-        <div className='input-search-code'>
+      <div className='search-list'>
+        {products.length > 0 && (
           <ListDataFound data={products} hasHeader={true} columns={columns} handleClick={handleClick} />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
