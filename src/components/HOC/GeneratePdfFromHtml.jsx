@@ -42,7 +42,7 @@ export const GeneratePdfFromHtml = ({ WrappedComponent, data, msgWhenUnmounting 
   });
 
   return (
-    <div className='App content-22' id='content-22'>
+    <div className='content-22' id='content-22'>
       <WrappedComponent data={data} />
     </div>
   );

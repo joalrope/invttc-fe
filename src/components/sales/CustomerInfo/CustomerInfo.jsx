@@ -1,44 +1,45 @@
 /* eslint-disable array-callback-return */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { customerClearActive, customerSetActive } from '../../../actions/customers';
 import { jsonToTabular } from '../../../helpers/jsonTab/json-to-tabular';
-// import { useWindowSize } from "../../../hooks/useWindowSize";
 import { LandscapeTable } from '../LandscapeTable/LandscapeTable';
 import { PortraitTable } from '../PortraitTable';
 import { columns } from '../../../assets/data/customer.dataConfig';
-import { customerClearActive, customerSetActive } from '../../../actions/customers';
 import './customer-info.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { RadioInput } from '../../controls/RadioInput/RadioInput';
+import { OnCredit } from './OnCredit';
 
 export const CustomerInfo = ({ mode = 'landscape' }) => {
   const dispatch = useDispatch();
   const [isSaleOnCredit, setIsSaleOnCredit] = useState(false);
-  const [creditDays, setCreditDays] = useState(0);
   const { activeCustomer: customer } = useSelector((state) => state.customer);
+
+  useEffect(
+    function () {
+      if (customer) {
+        customer['paymentConditions'] = `Venta de contado`;
+        customer['creditDays'] = '0';
+      }
+    },
+    [customer]
+  );
+
   if (!customer) return null;
   const data = jsonToTabular(customer, mode);
-  const { isRegularCustomer } = customer;
+  const { isRegularCustomer, creditDays } = customer;
 
   const handleClickDeleteCustomerActive = () => {
     dispatch(customerClearActive());
   };
 
-  // const handleCreditClick = (numDays) => {
-  //   customer['paymentConditions'] = `Venta a credito ${numDays} días`;
-  //   dispatch(customerSetActive(customer));
-  //   setCreditDays(numDays);
-  // };
-
-  const handleOnClick = () => {
-    customer['paymentConditions'] = 'Venta a contado';
+  const handleOnClick = (e) => {
+    if (e.target.checked) {
+      customer['paymentConditions'] = `Venta a credito ${creditDays} días`;
+    } else {
+      customer['paymentConditions'] = `Venta de contado`;
+    }
     dispatch(customerSetActive(customer));
     setIsSaleOnCredit(document.getElementById('creditSaleCheck').checked);
-  };
-
-  const handleOnChange = (value) => {
-    console.log(Number(value));
-    customer['paymentConditions'] = `Venta a credito ${value} días`;
-    dispatch(customerSetActive(customer));
   };
 
   const actionButtonsCustomerInfo = [{ type: 'delete', handleButtonClick: handleClickDeleteCustomerActive }];
@@ -60,37 +61,12 @@ export const CustomerInfo = ({ mode = 'landscape' }) => {
       {isRegularCustomer && (
         <div className='sale-mode'>
           <div className='form-check'>
-            <input type='checkbox' className='form-check-input' id='creditSaleCheck' onClick={handleOnClick} />
+            <input type='checkbox' className='form-check-input' id='creditSaleCheck' onChange={handleOnClick} />
             <label className='form-check-label' htmlFor='creditSaleCheck'>
               Venta a Crédito
             </label>
           </div>
-          {isSaleOnCredit && (
-            <fieldset className='options'>
-              <legend className='legend-days'>Plazo en días</legend>
-              <RadioInput
-                label={'7'}
-                value={'7'}
-                checked={creditDays}
-                setter={setCreditDays}
-                handleOnChange={handleOnChange}
-              />
-              <RadioInput
-                label={'15'}
-                value={'15'}
-                checked={creditDays}
-                setter={setCreditDays}
-                handleOnChange={handleOnChange}
-              />
-              <RadioInput
-                label={'30'}
-                value={'30'}
-                checked={creditDays}
-                setter={setCreditDays}
-                handleOnChange={handleOnChange}
-              />
-            </fieldset>
-          )}
+          {isSaleOnCredit && <OnCredit />}
         </div>
       )}
     </div>

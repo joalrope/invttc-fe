@@ -109,4 +109,8 @@ export const columns = [
     name: 'paymentConditions',
     visible: false,
   },
+  {
+    name: 'creditDays',
+    visible: false,
+  },
 ];
