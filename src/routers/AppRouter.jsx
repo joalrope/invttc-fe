@@ -24,8 +24,10 @@ export const AppRouter = () => {
           </div>
         </div>
         <div className='row'>
-          <AsideBar />
-          <section className='col-10'>
+          <section className='aside-options pl-5'>
+            <AsideBar />
+          </section>
+          <section className='col-9'>
             <Switch>
               {items
                 .filter((item) => item.roles.includes(role) || item.roles === 'all')

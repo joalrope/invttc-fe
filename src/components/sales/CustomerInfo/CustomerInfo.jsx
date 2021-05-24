@@ -8,6 +8,7 @@ import { columns } from '../../../assets/data/customer.dataConfig';
 import { customerClearActive, customerSetActive } from '../../../actions/customers';
 import './customer-info.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { RadioInput } from '../../controls/RadioInput/RadioInput';
 
 export const CustomerInfo = ({ mode = 'landscape' }) => {
   const dispatch = useDispatch();
@@ -22,17 +23,22 @@ export const CustomerInfo = ({ mode = 'landscape' }) => {
     dispatch(customerClearActive());
   };
 
-  const handleCreditClick = (numDays) => {
-    customer['paymentConditions'] = `Venta a credito ${numDays} días`;
-    dispatch(customerSetActive(customer));
-    setCreditDays(numDays);
-  };
+  // const handleCreditClick = (numDays) => {
+  //   customer['paymentConditions'] = `Venta a credito ${numDays} días`;
+  //   dispatch(customerSetActive(customer));
+  //   setCreditDays(numDays);
+  // };
 
-  const handleSaleMode = () => {
-    setCreditDays(0);
+  const handleOnClick = () => {
     customer['paymentConditions'] = 'Venta a contado';
     dispatch(customerSetActive(customer));
     setIsSaleOnCredit(document.getElementById('creditSaleCheck').checked);
+  };
+
+  const handleOnChange = (value) => {
+    console.log(Number(value));
+    customer['paymentConditions'] = `Venta a credito ${value} días`;
+    dispatch(customerSetActive(customer));
   };
 
   const actionButtonsCustomerInfo = [{ type: 'delete', handleButtonClick: handleClickDeleteCustomerActive }];
@@ -51,43 +57,42 @@ export const CustomerInfo = ({ mode = 'landscape' }) => {
           <LandscapeTable key={data} data={data} columns={columns} actionButtons={actionButtonsCustomerInfo} />
         )}
       </div>
-      <div className='sale-mode'>
-        {isRegularCustomer && (
-          <div>
-            <div className='form-check'>
-              <input type='checkbox' className='form-check-input' id='creditSaleCheck' onClick={handleSaleMode} />
-              <label className='form-check-label' htmlFor='creditSaleCheck'>
-                Venta a Crédito{creditDays > 0 && `: ${creditDays} días`}
-              </label>
-            </div>
-            {isSaleOnCredit && creditDays === 0 && (
-              <div className='dropdown'>
-                <button
-                  className='btn btn-outline-warning btn-sm dropdown-toggle'
-                  type='button'
-                  id='dropdownMenuButton'
-                  data-toggle='dropdown'
-                  aria-haspopup='true'
-                  aria-expanded='false'
-                >
-                  Seleccione Días de Credito
-                </button>
-                <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <button className='dropdown-item' onClick={() => handleCreditClick(7)}>
-                    7 Días
-                  </button>
-                  <button className='dropdown-item' onClick={() => handleCreditClick(15)}>
-                    15 Días
-                  </button>
-                  <button className='dropdown-item' onClick={() => handleCreditClick(30)}>
-                    30 Días
-                  </button>
-                </div>
-              </div>
-            )}
+      {isRegularCustomer && (
+        <div className='sale-mode'>
+          <div className='form-check'>
+            <input type='checkbox' className='form-check-input' id='creditSaleCheck' onClick={handleOnClick} />
+            <label className='form-check-label' htmlFor='creditSaleCheck'>
+              Venta a Crédito
+            </label>
           </div>
-        )}
-      </div>
+          {isSaleOnCredit && (
+            <fieldset className='options'>
+              <legend className='legend-days'>Plazo en días</legend>
+              <RadioInput
+                label={'7'}
+                value={'7'}
+                checked={creditDays}
+                setter={setCreditDays}
+                handleOnChange={handleOnChange}
+              />
+              <RadioInput
+                label={'15'}
+                value={'15'}
+                checked={creditDays}
+                setter={setCreditDays}
+                handleOnChange={handleOnChange}
+              />
+              <RadioInput
+                label={'30'}
+                value={'30'}
+                checked={creditDays}
+                setter={setCreditDays}
+                handleOnChange={handleOnChange}
+              />
+            </fieldset>
+          )}
+        </div>
+      )}
     </div>
   );
 };
