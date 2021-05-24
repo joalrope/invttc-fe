@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { showPdfGenerated } from '../../actions/reports';
 
-export const GeneratePdfFromHtml = ({ WrappedComponent, data, pdfProps, msgWhenUnmounting }) => {
+export const GeneratePdfFromHtml = ({ WrappedComponent, data, msgWhenUnmounting }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,15 +14,6 @@ export const GeneratePdfFromHtml = ({ WrappedComponent, data, pdfProps, msgWhenU
       unit: 'pt',
       format: 'letter',
     });
-
-    doc.setProperties(
-      Object.entries(pdfProps).map(({ key, value }) => ({
-        [key]: [value],
-      }))
-
-      //title: `Nota de Entrega ${pdfProps}`,
-      //customer: `${66}`,
-    );
 
     let content = document.getElementById('content-22');
     let urlBlob;
@@ -39,7 +30,7 @@ export const GeneratePdfFromHtml = ({ WrappedComponent, data, pdfProps, msgWhenU
       },
       margin: [40, 40, 40, 40],
     });
-  }, [dispatch, pdfProps]);
+  }, [dispatch]);
 
   useEffect(() => {
     return (urlBlob) => {

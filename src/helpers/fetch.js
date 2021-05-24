@@ -63,7 +63,9 @@ const fetchWithToken = (endpoint, data, method = 'GET', header) => {
       } else {
         sessionStorage.clear();
         store.dispatch(startLogout());
+        const previousUrl = window.location.pathname;
         history.push('/login');
+        history.replace(previousUrl);
         return {
           ok: false,
           msg: 'unauthorized',

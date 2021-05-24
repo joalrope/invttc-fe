@@ -30,7 +30,7 @@ export const AppRouter = () => {
               {items
                 .filter((item) => item.roles.includes(role) || item.roles === 'all')
                 .map((filtreredRole) => (
-                  <Route key={filtreredRole.id} component={filtreredRole.component} exact path={filtreredRole.to} />
+                  <Route key={filtreredRole.to} component={filtreredRole.component} exact path={filtreredRole.to} />
                 ))}
               <Route component={ErrorPage} />
             </Switch>

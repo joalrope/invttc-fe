@@ -5,7 +5,7 @@ import { getSelectedProduct } from '../../helpers/sales/add-products-for-sale';
 import { addProductForSale, setProductsForSale } from '../../actions/products';
 import { replaceItemProdForSale } from '../../helpers/sales/sales-utils';
 import { TableAttrib } from '../../classes/table-attrib-class';
-import { ActionButtom } from '../generics/ActionButtom/ActionButtom';
+import { ActionButtom } from '../controls/ActionButtom/ActionButtom';
 
 export const PortraitTable = ({ data, columns, actionButtons }) => {
   const dispatch = useDispatch();
@@ -82,9 +82,11 @@ export const PortraitTable = ({ data, columns, actionButtons }) => {
             )}
           </tr>
         ))}
-        {Object.values(actionButtons).map(({ type, handleButtonClick }, index) => (
-          <ActionButtom key={index} type={type} handleClick={handleButtonClick} />
-        ))}
+        <tr>
+          {Object.values(actionButtons).map(({ type, handleButtonClick }, index) => (
+            <ActionButtom key={index} type={type} handleClick={handleButtonClick} />
+          ))}
+        </tr>
       </tbody>
     </table>
   );

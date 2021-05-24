@@ -15,12 +15,6 @@ import { addProductForSale, clearActivePoduct, setProductsForSale } from '../../
 export const ProductInfo = ({ product, mode }) => {
   const dispatch = useDispatch();
   const { activeProduct, productsForSale } = useSelector((state) => state.product);
-
-  // const size = useWindowSize();
-  // let mode;
-
-  // mode = size.width <= 775 ? 'portrait' : 'landscape';
-
   const data = jsonToTabular(product, mode);
   const selectedIndex = (code, trademark) =>
     productsForSale.findIndex((item) => item.code === code && item.trademark === trademark);
@@ -32,7 +26,7 @@ export const ProductInfo = ({ product, mode }) => {
       const isLoadedProduct = productsForSale.some(
         (product) => product.code === code && product.trademark === trademark
       );
-      //TODO: Verificar disponibilidad del producto (cantidad disponible)
+      //TODO: Verificar cantidad disponible
       if (isLoadedProduct) {
         Swal.fire({
           title: 'Desea sumarlo al anterior?',
@@ -73,9 +67,10 @@ export const ProductInfo = ({ product, mode }) => {
     const brand = activeProduct.details[pos].trademark;
 
     handleClick('trademark', brand);
+    dispatch(clearActivePoduct());
   };
 
-  const handleDeleteBtnClick = (row) => {
+  const handleDeleteBtnClick = () => {
     dispatch(clearActivePoduct());
   };
 
@@ -89,7 +84,7 @@ export const ProductInfo = ({ product, mode }) => {
   }
 
   return (
-    <div className='list-product-found-container mt-5'>
+    <div className='list-product-found-container mt-5 animate__animated animate__fadeInDown animate__faster'>
       <div className='list-product-found'>
         <h5 className='list-products-found-title'>Detalle de Producto</h5>
         {mode === 'portrait' ? (

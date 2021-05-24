@@ -2,17 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import { startLogin } from '../../actions/auth';
-import '../../assets/css/auth.scss';
-import { useForm } from '../../hooks/userForm';
+import { startLogin } from '../../../actions/auth';
+import { useForm } from '../../../hooks/userForm';
+import { goBack } from './controllers/goBack';
+import '../../../assets/css/auth.scss';
 
 export const LoginPage = () => {
   const history = useHistory();
-
-  const goBack = () => {
-    history.length >= 1 ? history.goBack() : history.push('/');
-  };
-
   const dispatch = useDispatch();
 
   const [formValues, handleInputChange] = useForm({
@@ -93,40 +89,26 @@ export const LoginPage = () => {
                   Recordarme
                 </div>
                 <div className='form-group d-flex justify-content-end'>
-                  <input
-                    type='submit'
-                    value='Ingresar'
-                    className='btn submit-btn'
-                  />
+                  <input type='submit' value='Ingresar' className='btn submit-btn' />
                 </div>
                 <div className='d-flex justify-content-end social_icon'>
                   <span>
-                    <i
-                      onClick={handleLoginFacebk}
-                      className='fab fa-facebook-square'></i>
+                    <i onClick={handleLoginFacebk} className='fab fa-facebook-square'></i>
                   </span>
                   <span>
-                    <i
-                      onClick={handleLoginGoogle}
-                      className='fab fa-google-plus-square'></i>
+                    <i onClick={handleLoginGoogle} className='fab fa-google-plus-square'></i>
                   </span>
                   <span>
-                    <i
-                      onClick={handleLoginTwittr}
-                      className='fab fa-twitter-square'></i>
+                    <i onClick={handleLoginTwittr} className='fab fa-twitter-square'></i>
                   </span>
                 </div>
               </form>
             </div>
             <div className='card-footer'>
-              <div
-                className='d-flex justify-content-end links'
-                onClick={handleShowRegister}>
+              <div className='d-flex justify-content-end links' onClick={handleShowRegister}>
                 ¿No tiene una cuenta?<Link to='/register'>Registrese</Link>
               </div>
-              <div
-                className='d-flex justify-content-end links'
-                onClick={handleShowPasswordForgot}>
+              <div className='d-flex justify-content-end links' onClick={handleShowPasswordForgot}>
                 <Link to='/forgot'>Olvidó su contraseña?</Link>
               </div>
             </div>

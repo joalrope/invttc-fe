@@ -1,18 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { useForm } from '../../hooks/userForm';
-import { startRegister } from '../../actions/auth';
-import '../../assets/css/auth.scss';
+import { useForm } from '../../../hooks/userForm';
+import { startRegister } from '../../../actions/auth';
+import { goBack } from './controllers/goBack';
+import '../../../assets/css/auth.scss';
 
 export const RegisterPage = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
-
-  const goBack = () => {
-    history.length >= 1 ? history.goBack() : history.push('/');
-  };
 
   const [formValues, handleInputChange] = useForm({
     Name: 'Joalrope2',
@@ -32,11 +28,7 @@ export const RegisterPage = () => {
   const handleValidatePassword = () => {
     if (Password && Password2) {
       if (Password !== Password2) {
-        Swal.fire(
-          'Las contraseñas NO son iguales',
-          'Por favor corrija',
-          'warning'
-        );
+        Swal.fire('Las contraseñas NO son iguales', 'Por favor corrija', 'warning');
       }
     }
   };
@@ -119,11 +111,7 @@ export const RegisterPage = () => {
                 </div>
 
                 <div className='form-group d-flex justify-content-end'>
-                  <input
-                    type='submit'
-                    value='Registrar'
-                    className='btn submit-btn'
-                  />
+                  <input type='submit' value='Registrar' className='btn submit-btn' />
                 </div>
                 <div className='d-flex justify-content-end social_icon'>
                   <span>

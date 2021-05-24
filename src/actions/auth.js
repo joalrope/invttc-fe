@@ -17,6 +17,7 @@ export const startLogin = (email, password) => {
       );
 
       sessionStorage.token = token;
+      sessionStorage.authState = 'current';
     } else {
       Swal.fire('Error', msg, 'error');
     }

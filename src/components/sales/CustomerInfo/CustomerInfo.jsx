@@ -7,14 +7,16 @@ import { PortraitTable } from '../PortraitTable';
 import { columns } from '../../../assets/data/customer.dataConfig';
 import { customerClearActive, customerSetActive } from '../../../actions/customers';
 import './customer-info.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const CustomerInfo = ({ customer, mode = 'landscape' }) => {
+export const CustomerInfo = ({ mode = 'landscape' }) => {
   const dispatch = useDispatch();
-  const data = jsonToTabular(customer, mode);
-  const { isRegularCustomer } = customer;
   const [isSaleOnCredit, setIsSaleOnCredit] = useState(false);
   const [creditDays, setCreditDays] = useState(0);
+  const { activeCustomer: customer } = useSelector((state) => state.customer);
+  if (!customer) return null;
+  const data = jsonToTabular(customer, mode);
+  const { isRegularCustomer } = customer;
 
   const handleClickDeleteCustomerActive = () => {
     dispatch(customerClearActive());

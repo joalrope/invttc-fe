@@ -1,15 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-
-import '../../assets/css/auth.scss';
+import { goBack } from './controllers/goBack';
+import '../../../assets/css/auth.scss';
 
 export const ForgotPage = () => {
-  const history = useHistory();
-
-  const goBack = () => {
-    history.length >= 1 ? history.goBack() : history.push('/');
-  };
-
   const handleSubmit = () => {
     alert('Submit');
   };
@@ -34,18 +27,10 @@ export const ForgotPage = () => {
                       <i className='fas fa-user'></i>
                     </span>
                   </div>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Nombre de usuario'
-                  />
+                  <input type='text' className='form-control' placeholder='Nombre de usuario' />
                 </div>
                 <div className='form-group d-flex justify-content-end'>
-                  <input
-                    type='submit'
-                    value='Ingresar'
-                    className='btn submit-btn'
-                  />
+                  <input type='submit' value='Ingresar' className='btn submit-btn' />
                 </div>
               </form>
             </div>

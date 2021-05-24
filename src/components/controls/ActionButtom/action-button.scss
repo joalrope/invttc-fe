@@ -1,4 +1,4 @@
-@import '../../../assets/css/partials/variables.scss';
+@import "../../../assets/css/partials/variables.scss";
 
 .td-action-button {
   width: 2em;
@@ -14,6 +14,8 @@
   border-radius: 3px;
   background-color: transparent;
   margin-left: 1px;
+  color: $bg-tbl-td-cell;
+  mix-blend-mode: difference;
   span {
     margin-left: 0.5em;
     font-weight: bolder;
