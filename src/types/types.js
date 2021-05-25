@@ -35,5 +35,6 @@ export const types = {
   transactionClearTransactionData: '[invoice] clear transaction data',
   transactionUpdatePaymentConditions: '[invoice] update payment conditions',
 
-  reportGeneratePdf: '[reports] Generate pdf',
+  displayGeneratePdf: '[display] Generate pdf',
+  displayAddCustomerForm: '[display] Add Customer Form',
 };

@@ -6,7 +6,7 @@ import { TableAttrib } from '../../../classes/table-attrib-class';
 import { columns } from '../../../assets/data/products-for-sale.dataConig';
 import { deleteItemProdForSale, replaceItemProdForSale } from '../../../helpers/sales/sales-utils';
 import { setProductsForSale } from '../../../actions/products';
-import { showPdfGenerated } from '../../../actions/reports';
+import { displayPdfGenerated } from '../../../actions/display';
 import './products-for-sale.scss';
 
 export const ProductsForSale = ({ products, tax }) => {
@@ -113,7 +113,7 @@ export const ProductsForSale = ({ products, tax }) => {
 
   const handleCheckIn = (rowId) => {
     if (activeCustomer) {
-      return dispatch(showPdfGenerated(true));
+      return dispatch(displayPdfGenerated(true));
     }
     Swal.fire('No ha seleccionado Cliente al cual facturar', 'Por favor seleccione uno', 'warning');
   };

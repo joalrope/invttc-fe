@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ListDataFound } from './ListDataFound';
 import { useForm } from '../../hooks/userForm';
 import { clearCustomersLoaded, findCustomerByCode, findCustomerById } from '../../actions/customers';
+import { displayAddCustomerForm } from '../../actions/display';
 
 const columns = [
   ['id', 'id', false],
@@ -18,7 +19,13 @@ export const SearchClient = () => {
   const { Code } = formValues;
 
   const handleClick = (rowData) => {
-    const { id } = JSON.parse(JSON.stringify(rowData));
+    const { id, code, name } = JSON.parse(JSON.stringify(rowData));
+
+    if (id === 0 && code === '' && name === 'agregar') {
+      dispatch(displayAddCustomerForm(true));
+      return dispatch(clearCustomersLoaded());
+    }
+
     dispatch(findCustomerById(id));
     dispatch(clearCustomersLoaded());
     reset();

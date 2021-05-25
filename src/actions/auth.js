@@ -85,12 +85,6 @@ export const startLogout = () => {
   };
 };
 
-export const startShowLogin = () => {
-  return (dispatch) => {
-    dispatch(showLoginForm(true));
-  };
-};
-
 export const startShowRegister = () => {
   return (dispatch) => {
     dispatch(showRegisterForm(true));
@@ -128,11 +122,6 @@ const checkingFinish = () => ({
 
 const logout = () => ({
   type: types.authlogout,
-});
-
-const showLoginForm = (valVisible) => ({
-  type: types.authShowLogin,
-  payload: valVisible,
 });
 
 const showRegisterForm = (valVisible) => ({
