@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import { authReducer } from './authReducer';
 import { customerReducer } from './customerReducer';
 import { productReducer } from './productReducer';
-import { reportsReducer } from './reportsReducer';
+import { displayReducer } from './displayReducer';
 import { transactionReducer } from './transactionReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
   customer: customerReducer,
   product: productReducer,
-  reports: reportsReducer,
+  display: displayReducer,
   transaction: transactionReducer,
 });

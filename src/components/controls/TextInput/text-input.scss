@@ -1,0 +1,25 @@
+.--input-text__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 0.66em;
+
+  label {
+    display: block;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input {
+    padding: 0.25rem 0.5rem;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+}

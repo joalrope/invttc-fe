@@ -1,15 +1,22 @@
 import { types } from '../types/types';
 
 const initialState = {
-  showInvoicePdf: false,
+  displayInvoicePdf: false,
+  displayAddCustomerForm: false,
 };
 
-export const reportsReducer = (state = initialState, action) => {
+export const displayReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.reportGeneratePdf:
+    case types.displayGeneratePdf:
       return {
         ...state,
-        showInvoicePdf: action.payload,
+        displayInvoicePdf: action.payload,
+      };
+
+    case types.displayAddCustomerForm:
+      return {
+        ...state,
+        displayAddCustomerForm: action.payload,
       };
 
     // case types.uiCloseModal:
