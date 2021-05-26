@@ -2,11 +2,12 @@ import React from 'react';
 import Modal from 'react-modal';
 import './modal-frame.scss';
 
-export const ModalFrame = ({ WrappedComponent, width, showFrm, closeFrm, result }) => {
+export const ModalFrame = ({ WrappedComponent, title, width, showFrm, closeFrm, result }) => {
   const customStyles = {
     content: {
+      position: 'absolute',
       padding: '0px',
-      top: '25%',
+      top: '30%',
       left: '50%',
       right: `calc(100vw - ${width}%)`,
       bottom: 'auto',
@@ -20,7 +21,10 @@ export const ModalFrame = ({ WrappedComponent, width, showFrm, closeFrm, result 
 
   return (
     <Modal isOpen={showFrm} onRequestClose={closeFrm} style={customStyles}>
-      <div className='--frame-header'>header</div>
+      <div className='--frame-header'>
+        <label>{title}</label>
+        <img alt='logo tractocenter' />
+      </div>
       <div className='--frame-body'>
         <WrappedComponent result={result} />
       </div>

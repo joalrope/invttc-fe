@@ -21,7 +21,7 @@ export const SearchClient = () => {
   const handleClick = (rowData) => {
     const { id, code, name } = JSON.parse(JSON.stringify(rowData));
 
-    if (id === 0 && code === '' && name === 'agregar') {
+    if (id === 0 && code === '' && name === 'Agregar') {
       dispatch(displayAddCustomerForm(true));
       return dispatch(clearCustomersLoaded());
     }

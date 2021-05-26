@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CustomerInfo } from '../../sales/CustomerInfo/CustomerInfo';
 import { Invoice } from '../../templates/invoice/Invoice';
 import { GeneratePdfFromHtml } from '../../wrappers/GeneratePdfFromHtml';
@@ -11,11 +11,14 @@ import { controlNumber, ivaTax } from './controllers/getTransactionInfo';
 import { AddCustomerForm } from '../../forms/AddCustomerForm';
 import '../../../assets/css/sales.scss';
 import { ModalFrame } from '../../wrappers/ModalFrame/ModalFrame';
+import { displayAddCustomerForm } from '../../../actions/display';
+import { persistCustomer } from './controllers/persist';
 
 export const SalesPage = () => {
+  const dispatch = useDispatch();
   const { productsForSale } = useSelector((state) => state.product);
   const { displayInvoicePdf } = useSelector((state) => state.display);
-  const { displayAddCustomerForm } = useSelector((state) => state.display);
+  const { displayAddCustomerFrm } = useSelector((state) => state.display);
 
   useEffect(() => {
     getTransactionInfo();
@@ -23,11 +26,15 @@ export const SalesPage = () => {
 
   const addCusromerResult = ({ ok, data }) => {
     if (ok) {
-      alert(`Los datos introducidos son: \n ${JSON.stringify(data, null, 2)}`);
+      persistCustomer(data);
     }
   };
 
   const data = getTotals(controlNumber, ivaTax);
+
+  const closeFrm = () => {
+    dispatch(displayAddCustomerForm(false));
+  };
 
   return (
     <div className='container mt-5'>
@@ -38,9 +45,10 @@ export const SalesPage = () => {
       </div>
       <ModalFrame
         WrappedComponent={AddCustomerForm}
-        width={80}
-        showFrm={displayAddCustomerForm}
-        closeFrm={displayAddCustomerForm}
+        title={'Crear Cliente'}
+        width={35}
+        showFrm={displayAddCustomerFrm}
+        closeFrm={closeFrm}
         result={addCusromerResult}
       />
       {/* {displayAddCustomerForm && <AddCustomerForm />} */}
