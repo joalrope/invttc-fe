@@ -1,0 +1,12 @@
+.--first-row {
+  display: flex;
+  flex-direction: row;
+
+  .--input-code {
+    flex: 1 0 20%;
+  }
+
+  .--button-row {
+    margin: 0 3em;
+  }
+}

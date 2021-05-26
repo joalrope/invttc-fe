@@ -38,7 +38,7 @@ export const SalesPage = () => {
       </div>
       <ModalFrame
         WrappedComponent={AddCustomerForm}
-        width={20}
+        width={80}
         showFrm={displayAddCustomerForm}
         closeFrm={displayAddCustomerForm}
         result={addCusromerResult}

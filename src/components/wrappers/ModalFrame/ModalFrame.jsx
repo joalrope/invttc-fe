@@ -20,7 +20,10 @@ export const ModalFrame = ({ WrappedComponent, width, showFrm, closeFrm, result 
 
   return (
     <Modal isOpen={showFrm} onRequestClose={closeFrm} style={customStyles}>
-      <WrappedComponent result={result} />
+      <div className='--frame-header'>header</div>
+      <div className='--frame-body'>
+        <WrappedComponent result={result} />
+      </div>
     </Modal>
   );
 };
